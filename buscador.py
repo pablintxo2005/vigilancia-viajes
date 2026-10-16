@@ -17,13 +17,18 @@ import json
 import sys
 import time
 import traceback
-from dataclasses import asdict, dataclass, field
+from dataclasses import asdict, dataclass
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 import requests
 import yaml
-from fast_flights import FlightQuery, Passengers, create_query, get_flights
+
+try:  # si la librería falla al importar, seguimos con Ryanair y lo indicamos en el informe
+    from fast_flights import FlightQuery, Passengers, create_query, get_flights
+    ERROR_IMPORT_GOOGLE = None
+except Exception as _e:  # pragma: no cover
+    ERROR_IMPORT_GOOGLE = f"{type(_e).__name__}: {_e}"
 
 RAIZ = Path(__file__).parent
 DATA = RAIZ / "data"
@@ -79,55 +84,83 @@ def log(msg: str) -> None:
 # ------------------------------------------------------------ Google Flights
 class Google:
     def __init__(self, cfg: dict):
-        self.cfg = cfg
+        self.cfg = {"idioma": "es", "moneda": "EUR", "max_escalas": 1,
+                    "pausa_entre_peticiones_s": 1.5, "max_peticiones_google": 650, **cfg}
+        cfg = self.cfg
         self.presupuesto = cfg["max_peticiones_google"]
         self.peticiones = 0
         self.errores = 0
+        self.errores_seguidos = 0
+        self.desactivado = ERROR_IMPORT_GOOGLE  # motivo si Google queda fuera de juego
         self.cache: dict[tuple, list[Tramo]] = {}
+
+    def _consultar(self, q):
+        """get_flights con reintentos y espera creciente (errores de red / 429)."""
+        ultimo = None
+        for intento in range(3):
+            try:
+                return get_flights(q)
+            except Exception as e:
+                if "FlightsNotFound" in type(e).__name__:
+                    raise
+                ultimo = e
+                time.sleep(5 * (intento + 1))
+        raise ultimo
 
     def tramo(self, origen: str, destino: str, fecha: str) -> list[Tramo]:
         """Devuelve hasta 3 opciones (más baratas) de un vuelo de ida."""
         clave = (origen, destino, fecha)
         if clave in self.cache:
             return self.cache[clave]
-        if origen == destino or self.peticiones >= self.presupuesto:
+        if self.desactivado or origen == destino or self.peticiones >= self.presupuesto:
             return []
         self.peticiones += 1
-        q = create_query(
-            flights=[FlightQuery(date=fecha, from_airport=origen, to_airport=destino)],
-            trip="one-way",
-            passengers=Passengers(adults=1),
-            language=self.cfg["idioma"],
-            currency=self.cfg["moneda"],
-            max_stops=self.cfg["max_escalas"],
-            hide_separate_and_self_transfer=True,
-        )
         resultado: list[Tramo] = []
         try:
-            vuelos = get_flights(q)
-            for f in vuelos:
-                if not f.flights or not f.price:
-                    continue
-                resultado.append(Tramo(
-                    origen=origen, destino=destino, fecha=fecha,
-                    precio=float(f.price),
-                    aerolineas=", ".join(f.airlines),
-                    salida=fmt_dt(f.flights[0].departure),
-                    llegada=fmt_dt(f.flights[-1].arrival),
-                    escalas=len(f.flights) - 1,
-                    duracion_vuelo_min=sum(s.duration for s in f.flights),
-                    fuente="Google Flights",
-                    enlace=q.url(),
-                ))
+            q = create_query(
+                flights=[FlightQuery(date=fecha, from_airport=origen, to_airport=destino)],
+                trip="one-way",
+                passengers=Passengers(adults=1),
+                language=self.cfg["idioma"],
+                currency=self.cfg["moneda"],
+                max_stops=self.cfg["max_escalas"],
+                hide_separate_and_self_transfer=True,
+            )
+            for f in self._consultar(q):
+                try:
+                    if not f.flights or not f.price:
+                        continue
+                    resultado.append(Tramo(
+                        origen=origen, destino=destino, fecha=fecha,
+                        precio=float(f.price),
+                        aerolineas=", ".join(f.airlines or []),
+                        salida=fmt_dt(f.flights[0].departure),
+                        llegada=fmt_dt(f.flights[-1].arrival),
+                        escalas=len(f.flights) - 1,
+                        duracion_vuelo_min=sum((s.duration or 0) for s in f.flights),
+                        fuente="Google Flights",
+                        enlace=q.url(),
+                    ))
+                except Exception:
+                    continue  # un resultado raro no tumba la consulta
+            self.errores_seguidos = 0
         except Exception as e:  # sin vuelos, bloqueo o cambio de formato
             if "FlightsNotFound" not in type(e).__name__:
                 self.errores += 1
+                self.errores_seguidos += 1
                 log(f"  ! Google {origen}->{destino} {fecha}: {type(e).__name__}: {e}"[:200])
+                if self.errores_seguidos >= 15:
+                    self.desactivado = (f"15 errores seguidos (último: {type(e).__name__}); "
+                                        "posible bloqueo o cambio en Google Flights")
+                    log("  !! " + self.desactivado)
         resultado.sort(key=lambda t: t.precio)
         resultado = resultado[:3]
         self.cache[clave] = resultado
         time.sleep(self.cfg["pausa_entre_peticiones_s"])
         return resultado
+
+    def cache_con_datos(self) -> bool:
+        return any(self.cache.values())
 
     def ida_vuelta(self, origen: str, destinos: list[str], f_ida: str, f_vuelta: str) -> IdaVuelta | None:
         """Mejor ida+vuelta desde `origen` a cualquiera de `destinos` (puede volar
@@ -284,7 +317,10 @@ def detectar_bajadas(previo: list[dict], cache: dict, pct: float) -> list[dict]:
     """Compara el mejor precio de hoy por (origen, destino, fecha) con el mínimo
     registrado en días anteriores."""
     minimos: dict[tuple, float] = {}
+    hoy_iso = hoy().isoformat()
     for r in previo:
+        if r.get("fecha_consulta", "") >= hoy_iso:  # solo días anteriores
+            continue
         try:
             k = (r["origen"], r["destino"], r["fecha"])
             p = float(r["precio"])
@@ -323,6 +359,10 @@ def informe_md(res: dict) -> str:
            f"Consultas Google Flights: {res['peticiones_google']} (errores: {res['errores_google']}). "
            "Precios por persona en €, ida y vuelta sumando dos billetes de ida "
            "(solo equipaje de mano básico; revisar suplemento de maleta de cabina).", ""]
+    if res.get("avisos"):
+        out.append("**⚠️ Avisos de la ejecución:**")
+        out += [f"- {a}" for a in res["avisos"]]
+        out.append("")
 
     out.append("## Bajadas de precio respecto a días anteriores")
     if res["bajadas"]:
@@ -375,54 +415,88 @@ def informe_md(res: dict) -> str:
 
 
 # --------------------------------------------------------------------- main
-def main() -> int:
+def ejecutar() -> int:
+    DATA.mkdir(parents=True, exist_ok=True)
     cfg = yaml.safe_load((RAIZ / "config.yaml").read_text(encoding="utf-8"))
-    DATA.mkdir(exist_ok=True)
     previo = leer_historico()
     g = Google(cfg)
     fecha_consulta = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    res = {"fecha_consulta": fecha_consulta, "umbral": cfg.get("umbral_aviso_ida_vuelta_eur", 150),
+           "avisos": [], "puente": [], "esqui": [], "sorpresa": [], "bajadas": []}
 
-    res = {"fecha_consulta": fecha_consulta, "umbral": cfg["umbral_aviso_ida_vuelta_eur"]}
     for nombre, fn in [("puente", campana_puente), ("esqui", campana_esqui)]:
         try:
             res[nombre] = fn(cfg, g)
-        except Exception:
+        except Exception as e:
             traceback.print_exc()
-            res[nombre] = []
+            res["avisos"].append(f"Fallo en campaña {nombre}: {type(e).__name__}: {e}")
     try:
         res["sorpresa"] = ryanair_sorpresa(cfg, cfg["viajeros"]["B"]["aeropuertos"])
-    except Exception:
+        if not res["sorpresa"]:
+            res["avisos"].append("Ryanair no devolvió tarifas hoy (API caída, cambiada o sin vuelos).")
+    except Exception as e:
         traceback.print_exc()
-        res["sorpresa"] = []
+        res["avisos"].append(f"Fallo en ofertas Ryanair: {type(e).__name__}: {e}")
+    if g.desactivado:
+        res["avisos"].append(f"Google Flights desactivado en esta ejecución: {g.desactivado}")
 
     res["peticiones_google"] = g.peticiones
     res["errores_google"] = g.errores
-    res["bajadas"] = detectar_bajadas(previo, g.cache, cfg["bajada_relevante_pct"])
+    try:
+        res["bajadas"] = detectar_bajadas(previo, g.cache, cfg.get("bajada_relevante_pct", 20))
+    except Exception as e:
+        res["avisos"].append(f"No se pudieron calcular bajadas: {e}")
 
     filas = []
     for tramos in g.cache.values():
         for t in tramos[:1]:
             filas.append({"fecha_consulta": fecha_consulta[:10], "campana": "google",
-                          "viajero": "", **asdict(t)})
+                          "viajero": "", "tramo": "ida", **asdict(t)})
     for o in res["sorpresa"]:
         filas.append({"fecha_consulta": fecha_consulta[:10], "campana": "sorpresa", "viajero": "B",
                       "origen": o["origen"], "destino": o["destino"], "fecha": o["salida_ida"][:10],
                       "tramo": "ida-vuelta", "precio": o["precio_ida_vuelta"], "aerolineas": "Ryanair",
                       "salida": o["salida_ida"], "llegada": o["llegada_ida"], "escalas": 0,
                       "duracion_vuelo_min": "", "fuente": "Ryanair", "enlace": o["enlace"]})
-    for f in filas:
-        f.setdefault("tramo", "ida")
-    guardar_historico(filas)
+    try:
+        guardar_historico(filas)
+    except Exception as e:
+        res["avisos"].append(f"No se pudo guardar el histórico: {e}")
 
-    (DATA / "ultimo.json").write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
-    (DATA / "ultimo.md").write_text(informe_md(res), encoding="utf-8")
+    escribir_salidas(res)
     log(f"Hecho: {g.peticiones} consultas Google, {g.errores} errores, "
         f"{len(res['sorpresa'])} tarifas Ryanair, {len(res['bajadas'])} bajadas.")
-    # Si Google bloqueó casi todo, marcamos fallo para que GitHub avise por email
-    if g.peticiones > 20 and g.errores > 0.8 * g.peticiones:
-        log("Demasiados errores en Google Flights: posible bloqueo o cambio de formato.")
+    # Fallo "visible" (email de GitHub) solo si no se ha conseguido NINGÚN dato
+    if not g.cache_con_datos() and not res["sorpresa"]:
+        log("Ninguna fuente devolvió datos hoy.")
         return 1
     return 0
+
+
+def escribir_salidas(res: dict) -> None:
+    DATA.mkdir(exist_ok=True)
+    (DATA / "ultimo.json").write_text(json.dumps(res, ensure_ascii=False, indent=1, default=str),
+                                      encoding="utf-8")
+    try:
+        md = informe_md(res)
+    except Exception as e:
+        md = (f"# Vigilancia de vuelos — {res.get('fecha_consulta')}\n\n"
+              f"Error al generar el informe: {type(e).__name__}: {e}\n"
+              "Consulta data/ultimo.json para los datos en bruto.\n")
+    (DATA / "ultimo.md").write_text(md, encoding="utf-8")
+
+
+def main() -> int:
+    try:
+        return ejecutar()
+    except Exception as e:  # último recurso: dejar siempre un informe
+        traceback.print_exc()
+        ahora = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+        escribir_salidas({"fecha_consulta": ahora, "umbral": 150,
+                          "avisos": [f"Error general: {type(e).__name__}: {e}"],
+                          "puente": [], "esqui": [], "sorpresa": [], "bajadas": [],
+                          "peticiones_google": 0, "errores_google": 0})
+        return 1
 
 
 if __name__ == "__main__":
