@@ -1,0 +1,73 @@
+# Configuración de la vigilancia de viajes
+# Edita este archivo para cambiar aeropuertos, destinos o fechas.
+
+moneda: EUR
+idioma: es
+pausa_entre_peticiones_s: 1.5   # para no saturar Google Flights
+max_peticiones_google: 650      # tope diario de consultas a Google Flights
+max_escalas: 1
+
+viajeros:
+  A:
+    nombre: "Stuttgart"
+    aeropuertos: [STR, FKB, FMM, FDH, FRA, MUC, ZRH, BSL]
+    principales_esqui: [STR, FMM, MUC, ZRH, BSL]   # para no disparar el nº de consultas
+  B:
+    nombre: "Bilbao"
+    aeropuertos: [BIO, EAS, VIT, SDR, BIQ, PNA]
+    principales_esqui: [BIO, SDR, BIQ]
+
+# Destinos de esquí: aeropuerto(s) de llegada razonables (< ~2 h a pistas).
+# vuela_A: si tiene sentido que el viajero de Stuttgart vuele (si no, irá por tierra,
+# y ese tramo lo calcula la tarea de Claude con DB/ÖBB/SBB).
+destinos_esqui:
+  - zona: "Tirol (Innsbruck, Zillertal, Stubai)"
+    aeropuertos: [INN, MUC, SZG]
+    vuela_A: false
+  - zona: "Salzburgerland (Ski Amadé, Saalbach)"
+    aeropuertos: [SZG, MUC]
+    vuela_A: false
+  - zona: "Valais / Alpes franceses (Verbier, Chamonix, Tres Valles)"
+    aeropuertos: [GVA, LYS, CMF, GNB]
+    vuela_A: false
+  - zona: "Dolomitas (Val Gardena, Alta Badia, Cortina)"
+    aeropuertos: [VRN, BGY, VCE, TSF, INN]
+    vuela_A: false
+  - zona: "Valle de Aosta / Piamonte (Cervinia, Courmayeur, Vía Láctea)"
+    aeropuertos: [TRN, MXP, GVA]
+    vuela_A: false
+  - zona: "Pirineos / Andorra (Baqueira, Grandvalira)"
+    aeropuertos: [BCN, TLS, ZAZ]
+    vuela_A: true
+  - zona: "Sierra Nevada"
+    aeropuertos: [GRX, AGP]
+    vuela_A: true
+  - zona: "Bulgaria (Bansko)"
+    aeropuertos: [SOF]
+    vuela_A: true
+
+# Temporada de esquí: se revisan fines de semana largos (jueves/viernes -> domingo/lunes)
+temporada_esqui:
+  desde: "2026-12-10"
+  hasta: "2027-03-31"
+  fines_de_semana_por_dia: 1   # fines de semana distintos revisados cada día (rotan; ciclo completo ~16 días)
+
+# Puente de diciembre: combinaciones a comparar
+puente:
+  hasta: "2026-12-08"          # después de esta fecha no se busca
+  combinaciones:
+    - ["2026-12-04", "2026-12-08"]
+    - ["2026-12-04", "2026-12-09"]
+    - ["2026-12-05", "2026-12-09"]
+  # destinos a revisar en el puente (además de los de esquí si quieres)
+  aeropuertos_destino: [MXP, BGY, GVA, MUC, VCE, TRN, LYS, INN, SZG]
+
+# Ofertas sorpresa desde Bilbao vía tarifas públicas de Ryanair
+sorpresa:
+  semanas_vista: 10
+  duracion_min_dias: 2
+  duracion_max_dias: 4
+  umbral_ida_vuelta_eur: 150
+
+umbral_aviso_ida_vuelta_eur: 150
+bajada_relevante_pct: 20
