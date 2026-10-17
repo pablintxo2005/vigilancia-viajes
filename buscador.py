@@ -156,7 +156,9 @@ DEFECTO = {'moneda': 'EUR',
             'destinos_extra_ryanair': 5},
  'sorpresa': {'semanas_vista': 10,
               'duracion_min_dias': 2,
-              'duracion_max_dias': 4,
+              'duracion_max_dias': 2,
+              'dias_salida': ['vie'],
+              'dias_vuelta': ['dom'],
               'max_ofertas_informe': 8},
  'alojamiento': {'activo': True,
                  'huespedes': 2,
@@ -557,67 +559,134 @@ def ryanair_sorpresa(cfg: dict, origenes: list[str]) -> tuple[list[dict], list[s
     fallos: list[str] = []
     inicio = hoy() + timedelta(days=3)
     fin = hoy() + timedelta(weeks=int(s["semanas_vista"]))
+    dias_ida = dias_semana(s.get("dias_salida"))
+    dias_vta = dias_semana(s.get("dias_vuelta"))
+    dmin, dmax = int(s["duracion_min_dias"]), int(s["duracion_max_dias"])
+    # Ventanas de consulta: con días fijos (p. ej. viernes→domingo) una consulta por fin de
+    # semana con fechas exactas; sin días fijos, una sola consulta para todo el periodo.
+    ventanas = []
+    if dias_ida:
+        d = inicio
+        while d <= fin:
+            if d.weekday() in dias_ida:
+                vueltas = [d + timedelta(days=k) for k in range(dmin, dmax + 1)
+                           if not dias_vta or (d + timedelta(days=k)).weekday() in dias_vta]
+                if vueltas:
+                    ventanas.append((d, d, min(vueltas), max(vueltas)))
+            d += timedelta(days=1)
+    else:
+        ventanas.append((inicio, fin, inicio, fin + timedelta(days=dmax)))
+    fallos_seguidos = 0
     for o in origenes:
-        params = {
-            "departureAirportIataCode": o,
-            "outboundDepartureDateFrom": inicio.isoformat(),
-            "outboundDepartureDateTo": fin.isoformat(),
-            "inboundDepartureDateFrom": inicio.isoformat(),
-            "inboundDepartureDateTo": (fin + timedelta(days=int(s["duracion_max_dias"]))).isoformat(),
-            "durationFrom": int(s["duracion_min_dias"]),
-            "durationTo": int(s["duracion_max_dias"]),
-            "currency": cfg["moneda"],
-            "market": "es-es",
-            "language": "es",
-        }
-        datos = None
-        for intento in range(3):
-            try:
-                r = requests.get(URL_RYANAIR, params=params, timeout=30,
-                                 headers={"User-Agent": "Mozilla/5.0", "Accept": "application/json"})
-                if r.status_code == 200:
-                    datos = r.json()
-                    break
-                if r.status_code in (400, 404):  # aeropuerto sin Ryanair: no reintentar
-                    datos = {"fares": []}
-                    break
-                err = f"HTTP {r.status_code}"
-            except Exception as e:
-                err = f"{type(e).__name__}: {e}"
-            time.sleep(3 * (intento + 1))
-        if datos is None:
-            fallos.append(f"{o}: {err}"[:150])
-            log(f"  ! Ryanair {o}: {err}"[:200])
-            continue
-        for fare in (datos.get("fares") or []) if isinstance(datos, dict) else []:
-            try:
-                ida, vuelta = fare.get("outbound") or {}, fare.get("inbound") or {}
-                total = ((fare.get("summary") or {}).get("price") or {}).get("value")
-                dest = ida.get("arrivalAirport") or {}
-                iata = dest.get("iataCode")
-                if total is None or not iata:
-                    continue
-                f_ida = str(ida.get("departureDate") or "")
-                f_vta = str(vuelta.get("departureDate") or "")
-                ofertas.append({
-                    "origen": o,
-                    "destino": iata,
-                    "ciudad": (dest.get("city") or {}).get("name") or dest.get("name") or iata,
-                    "pais": dest.get("countryName") or "",
-                    "salida_ida": f_ida.replace("T", " ")[:16],
-                    "llegada_ida": str(ida.get("arrivalDate") or "").replace("T", " ")[:16],
-                    "salida_vuelta": f_vta.replace("T", " ")[:16],
-                    "llegada_vuelta": str(vuelta.get("arrivalDate") or "").replace("T", " ")[:16],
-                    "precio_ida_vuelta": round(float(total), 2),
-                    "enlace": ("https://www.ryanair.com/es/es/trip/flights/select?adults=1"
-                               f"&dateOut={f_ida[:10]}&dateIn={f_vta[:10]}&originIata={o}"
-                               f"&destinationIata={iata}&isReturn=true"),
-                })
-            except Exception:
+        fallo_origen = None
+        for ida_desde, ida_hasta, vta_desde, vta_hasta in ventanas:
+            if fallos_seguidos >= 4:
+                break
+            params = {
+                "departureAirportIataCode": o,
+                "outboundDepartureDateFrom": ida_desde.isoformat(),
+                "outboundDepartureDateTo": ida_hasta.isoformat(),
+                "inboundDepartureDateFrom": vta_desde.isoformat(),
+                "inboundDepartureDateTo": vta_hasta.isoformat(),
+                "durationFrom": dmin,
+                "durationTo": dmax,
+                "currency": cfg["moneda"],
+                "market": "es-es",
+                "language": "es",
+            }
+            datos, err = None, ""
+            for intento in range(3):
+                try:
+                    r = requests.get(URL_RYANAIR, params=params, timeout=30,
+                                     headers={"User-Agent": "Mozilla/5.0", "Accept": "application/json"})
+                    if r.status_code == 200:
+                        datos = r.json()
+                        break
+                    if r.status_code in (400, 404):  # aeropuerto sin Ryanair: no reintentar
+                        datos = {"fares": []}
+                        break
+                    err = f"HTTP {r.status_code}"
+                except Exception as e:
+                    err = f"{type(e).__name__}: {e}"
+                time.sleep(3 * (intento + 1))
+            if datos is None:
+                fallos_seguidos += 1
+                fallo_origen = err
                 continue
+            fallos_seguidos = 0
+            ofertas.extend(_fares_ryanair(datos, o))
+            time.sleep(0.3)
+        if fallo_origen:
+            fallos.append(f"{o}: {fallo_origen}"[:150])
+            log(f"  ! Ryanair {o}: {fallo_origen}"[:200])
+    if fallos_seguidos >= 4:
+        fallos.append("Ryanair dejó de responder; se cortó la búsqueda de ofertas sorpresa")
     ofertas = [x for x in ofertas if not destino_excluido(cfg, x["destino"], x.get("pais", ""))]
+    # Filtro estricto de días
+    ofertas = [x for x in ofertas
+               if dia_ok(x["salida_ida"], dias_ida) and dia_ok(x["salida_vuelta"], dias_vta)]
     ofertas.sort(key=lambda x: x["precio_ida_vuelta"])
     return ofertas, fallos
+
+
+def _fares_ryanair(datos, o: str) -> list[dict]:
+    ofertas = []
+    for fare in (datos.get("fares") or []) if isinstance(datos, dict) else []:
+        try:
+            ida, vuelta = fare.get("outbound") or {}, fare.get("inbound") or {}
+            total = ((fare.get("summary") or {}).get("price") or {}).get("value")
+            dest = ida.get("arrivalAirport") or {}
+            iata = dest.get("iataCode")
+            if total is None or not iata:
+                continue
+            f_ida = str(ida.get("departureDate") or "")
+            f_vta = str(vuelta.get("departureDate") or "")
+            ofertas.append({
+                "origen": o,
+                "destino": iata,
+                "ciudad": (dest.get("city") or {}).get("name") or dest.get("name") or iata,
+                "pais": dest.get("countryName") or "",
+                "salida_ida": f_ida.replace("T", " ")[:16],
+                "llegada_ida": str(ida.get("arrivalDate") or "").replace("T", " ")[:16],
+                "salida_vuelta": f_vta.replace("T", " ")[:16],
+                "llegada_vuelta": str(vuelta.get("arrivalDate") or "").replace("T", " ")[:16],
+                "precio_ida_vuelta": round(float(total), 2),
+                "enlace": ("https://www.ryanair.com/es/es/trip/flights/select?adults=1"
+                           f"&dateOut={f_ida[:10]}&dateIn={f_vta[:10]}&originIata={o}"
+                           f"&destinationIata={iata}&isReturn=true"),
+            })
+        except Exception:
+            continue
+    return ofertas
+
+
+_ALIAS_DIAS = {"lun": 0, "lunes": 0, "mar": 1, "martes": 1, "mie": 2, "mié": 2, "miercoles": 2,
+               "miércoles": 2, "jue": 3, "jueves": 3, "vie": 4, "viernes": 4, "sab": 5, "sáb": 5,
+               "sabado": 5, "sábado": 5, "dom": 6, "domingo": 6}
+
+
+def dias_semana(valor) -> set[int]:
+    """Convierte ['vie'] / 'viernes' / [4] en {4}. Vacío = cualquier día."""
+    if not valor:
+        return set()
+    if not isinstance(valor, (list, tuple)):
+        valor = [valor]
+    res = set()
+    for v in valor:
+        if isinstance(v, int) and 0 <= v <= 6:
+            res.add(v)
+        elif str(v).strip().lower() in _ALIAS_DIAS:
+            res.add(_ALIAS_DIAS[str(v).strip().lower()])
+    return res
+
+
+def dia_ok(fecha_hora: str, dias: set[int]) -> bool:
+    if not dias:
+        return True
+    try:
+        return date.fromisoformat(str(fecha_hora)[:10]).weekday() in dias
+    except Exception:
+        return False
 
 
 NOMBRES_PAIS = {"ES": {"españa", "spain", "espana"}}
@@ -1083,7 +1152,8 @@ def informe_md(res: dict) -> str:
 
     # ---------- Ofertas sorpresa
     umbral = res.get("umbral", 150)
-    out.append(f"## 🎁 Ofertas sorpresa desde Bilbao y alrededores (Ryanair, ida y vuelta < {eur(umbral)})")
+    out.append(f"## 🎁 Ofertas sorpresa de fin de semana (viernes → domingo) desde Bilbao y alrededores "
+               f"(Ryanair, ida y vuelta < {eur(umbral)}, solo destinos fuera de España)")
     top = res.get("sorpresa_top") or []
     if not top:
         out.append("- Sin ofertas bajo el umbral hoy (o Ryanair no respondió; ver avisos).")
