@@ -1,80 +1,64 @@
-# Configuración de la vigilancia de viajes
-# Puedes editar este archivo desde GitHub (icono del lápiz). Si algo queda mal escrito,
-# el script usa valores por defecto y lo avisa en data/ultimo.md, pero no se rompe.
+name: Vigilancia diaria de vuelos
 
-moneda: EUR
-idioma: es
-pausa_entre_peticiones_s: 1.0   # pausa entre consultas a Google Flights
-max_peticiones_google: 900      # tope diario de consultas a Google Flights
-tiempo_max_google_min: 70       # si se supera, corta Google y guarda lo conseguido
-timeout_peticion_s: 30          # tiempo máximo de espera por consulta
-max_escalas: 1
-historico_dias: 60              # días de histórico que se conservan
+on:
+  schedule:
+    # 03:05 UTC = 05:05 en verano / 04:05 en invierno (hora de Madrid).
+    # Margen de sobra antes de la tarea de Claude (7:51), aunque GitHub retrase el arranque.
+    - cron: "5 3 * * *"
+  workflow_dispatch: {}
 
-umbral_aviso_ida_vuelta_eur: 150
-bajada_relevante_pct: 20
+permissions:
+  contents: write
 
-viajeros:
-  A:
-    nombre: "Stuttgart"
-    aeropuertos: [STR, FKB, FMM, FDH, FRA, MUC, ZRH, BSL]
-    principales_esqui: [STR, FMM, MUC, ZRH, BSL]   # para no disparar el nº de consultas
-  B:
-    nombre: "Bilbao"
-    aeropuertos: [BIO, EAS, VIT, SDR, BIQ, PNA]
-    principales_esqui: [BIO, SDR, BIQ]
+concurrency:
+  group: vigilancia
+  cancel-in-progress: false
 
-# Destinos de esquí: aeropuertos a < ~2 h de pistas.
-# vuela_A: false -> el viajero de Stuttgart va por tierra (lo calcula la tarea de Claude).
-destinos_esqui:
-  - zona: "Tirol (Innsbruck, Zillertal, Stubai)"
-    aeropuertos: [INN, MUC, SZG]
-    vuela_A: false
-  - zona: "Salzburgerland (Ski Amadé, Saalbach)"
-    aeropuertos: [SZG, MUC]
-    vuela_A: false
-  - zona: "Valais / Alpes franceses (Verbier, Chamonix, Tres Valles)"
-    aeropuertos: [GVA, LYS, CMF, GNB]
-    vuela_A: false
-  - zona: "Dolomitas (Val Gardena, Alta Badia, Cortina)"
-    aeropuertos: [VRN, BGY, VCE, TSF, INN]
-    vuela_A: false
-  - zona: "Valle de Aosta / Piamonte (Cervinia, Courmayeur, Vía Láctea)"
-    aeropuertos: [TRN, MXP, GVA]
-    vuela_A: false
-  - zona: "Pirineos / Andorra (Baqueira, Grandvalira)"
-    aeropuertos: [BCN, TLS, ZAZ]
-    vuela_A: true
-  - zona: "Sierra Nevada"
-    aeropuertos: [GRX, AGP]
-    vuela_A: true
-  - zona: "Bulgaria (Bansko)"
-    aeropuertos: [SOF]
-    vuela_A: true
+jobs:
+  buscar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@v4
 
-# Esquí: fines de semana largos (jue->dom y vie->lun). Cada día se revisa uno distinto (rota).
-temporada_esqui:
-  desde: "2026-12-10"
-  hasta: "2027-03-31"
-  fines_de_semana_por_dia: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
 
-# Puente de diciembre (viajero B desde Bilbao)
-puente:
-  hasta: "2026-12-08"            # a partir del día siguiente ya no se busca
-  combinaciones:
-    - ["2026-12-04", "2026-12-08"]
-    - ["2026-12-04", "2026-12-09"]
-    - ["2026-12-05", "2026-12-09"]
-  aeropuertos_destino: [MXP, BGY, GVA, MUC, VCE, TRN, LYS, INN, SZG]
-  destinos_extra_ryanair: 5      # añade los 5 destinos más baratos que encuentre Ryanair ese día
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt || (sleep 30 && pip install -r requirements.txt)
 
-# Ofertas sorpresa (Ryanair) desde los aeropuertos de Bilbao
-sorpresa:
-  semanas_vista: 10
-  duracion_min_dias: 2
-  duracion_max_dias: 4
+      - name: Buscar vuelos
+        id: buscar
+        continue-on-error: true
+        timeout-minutes: 95
+        run: python -u buscador.py
 
-# Memoria de rutas sin vuelos (por día de la semana) para no repetir consultas inútiles
-sin_ruta:
-  fallos_para_saltar: 2          # días distintos sin vuelos antes de saltarla
-  dias_memoria: 10               # pasado este tiempo se vuelve a comprobar
+      - name: Guardar resultados en el repo
+        if: always()
+        run: |
+          mkdir -p data
+          git config user.name "vigilancia-bot"
+          git config user.email "vigilancia-bot@users.noreply.github.com"
+          git add -A data
+          if git diff --cached --quiet; then
+            echo "Sin cambios que guardar"
+            exit 0
+          fi
+          git commit -m "Vigilancia $(date -u +%F)"
+          for i in 1 2 3 4 5; do
+            if git pull --rebase -X theirs origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}"; then
+              exit 0
+            fi
+            echo "Reintentando push ($i)..."; sleep 15
+          done
+          exit 1
+
+      - name: Avisar si la búsqueda falló
+        if: steps.buscar.outcome == 'failure'
+        run: |
+          echo "::error::buscador.py terminó con error. Revisa data/ultimo.md (sección Avisos) y el log del paso 'Buscar vuelos'."
+          exit 1
