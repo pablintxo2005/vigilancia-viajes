@@ -17,7 +17,7 @@ concurrency:
 jobs:
   buscar:
     runs-on: ubuntu-latest
-    timeout-minutes: 110
+    timeout-minutes: 135
     steps:
       - uses: actions/checkout@v4
 
@@ -34,7 +34,7 @@ jobs:
       - name: Buscar vuelos
         id: buscar
         continue-on-error: true
-        timeout-minutes: 95
+        timeout-minutes: 120
         run: python -u buscador.py
 
       - name: Guardar resultados en el repo
