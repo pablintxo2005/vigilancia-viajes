@@ -91,6 +91,7 @@ DEFECTO = {'moneda': 'EUR',
  'historico_dias': 60,
  'umbral_aviso_ida_vuelta_eur': 150,
  'bajada_relevante_pct': 20,
+ 'excluir_paises_destino': ['ES'],
  'viajeros': {'A': {'nombre': 'Stuttgart',
                     'aeropuertos': ['STR', 'FKB', 'FMM', 'FDH', 'FRA', 'MUC', 'ZRH', 'BSL'],
                     'principales_esqui': ['STR', 'FMM', 'MUC', 'ZRH']},
@@ -136,12 +137,6 @@ DEFECTO = {'moneda': 'EUR',
                      'base': {'nombre': 'Andorra la Vella', 'lat': 42.5063, 'lon': 1.5218},
                      'transporte': 'Bus directo BCN/TLS→Andorra (~3h, Andbus/Alsa); ski-bus a '
                                    'pistas'},
-                    {'zona': 'Sierra Nevada',
-                     'aeropuertos': ['GRX', 'AGP'],
-                     'vuela_A': True,
-                     'base': {'nombre': 'Granada', 'lat': 37.1773, 'lon': -3.5986},
-                     'transporte': 'Bus aeropuerto→Granada y bus diario Granada→Sierra Nevada '
-                                   '(Alsa, ~45 min)'},
                     {'zona': 'Bansko (Bulgaria)',
                      'aeropuertos': ['SOF'],
                      'vuela_A': True,
@@ -620,8 +615,27 @@ def ryanair_sorpresa(cfg: dict, origenes: list[str]) -> tuple[list[dict], list[s
                 })
             except Exception:
                 continue
+    ofertas = [x for x in ofertas if not destino_excluido(cfg, x["destino"], x.get("pais", ""))]
     ofertas.sort(key=lambda x: x["precio_ida_vuelta"])
     return ofertas, fallos
+
+
+NOMBRES_PAIS = {"ES": {"españa", "spain", "espana"}}
+
+
+def destino_excluido(cfg: dict, iata: str, nombre_pais: str = "") -> bool:
+    """True si el destino está en un país excluido (por defecto España: solo viajes al extranjero)."""
+    try:
+        excluidos = {str(p).upper() for p in (cfg.get("excluir_paises_destino") or [])}
+        if not excluidos:
+            return False
+        c = coords_aeropuerto(iata)
+        if c and c[3]:
+            return c[3].upper() in excluidos
+        n = (nombre_pais or "").strip().lower()
+        return any(n in NOMBRES_PAIS.get(p, set()) for p in excluidos)
+    except Exception:
+        return False
 
 
 # --------------------------------------------------------------- Alojamiento
@@ -688,10 +702,20 @@ class Alojamiento:
             opciones = []
             for r in crudos:
                 try:
-                    total = float(((r.get("price") or {}).get("total") or {}).get("amount") or 0)
+                    precio = r.get("price") or {}
+                    total = 0.0
+                    # 1) Línea "Total" del desglose, si existe
+                    for item in precio.get("break_down") or []:
+                        if str(item.get("description", "")).strip().lower().startswith("total"):
+                            total = float(item.get("amount") or 0)
+                    # 2) Total de la línea secundaria
                     if total <= 0:
-                        unidad = float(((r.get("price") or {}).get("unit") or {}).get("amount") or 0)
-                        total = unidad * n if unidad > 0 else 0
+                        total = float((precio.get("total") or {}).get("amount") or 0)
+                    # 3) Línea principal: Airbnb (UE) ya muestra el precio TOTAL de la estancia,
+                    #    no por noche; se usa el precio con descuento si lo hay. NO multiplicar por noches.
+                    if total <= 0:
+                        unidad = precio.get("unit") or {}
+                        total = float(unidad.get("discount") or 0) or float(unidad.get("amount") or 0)
                     rating = r.get("rating") or {}
                     val = float(rating.get("value") or 0)
                     resenas = int(str(rating.get("reviewCount") or "0").replace(".", "").replace(",", "") or 0)
