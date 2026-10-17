@@ -15,6 +15,9 @@ historico_dias: 60              # días de histórico que se conservan
 umbral_aviso_ida_vuelta_eur: 150
 bajada_relevante_pct: 20
 
+# Solo viajes al extranjero: se descartan destinos en estos países (código ISO de 2 letras)
+excluir_paises_destino: [ES]
+
 viajeros:
   A:
     nombre: "Stuttgart"
@@ -65,11 +68,6 @@ destinos_esqui:
     vuela_A: true
     base: {nombre: "Andorra la Vella", lat: 42.5063, lon: 1.5218}
     transporte: "Bus directo BCN/TLS→Andorra (~3h, Andbus/Alsa); ski-bus a pistas"
-  - zona: "Sierra Nevada"
-    aeropuertos: [GRX, AGP]
-    vuela_A: true
-    base: {nombre: "Granada", lat: 37.1773, lon: -3.5986}
-    transporte: "Bus aeropuerto→Granada y bus diario Granada→Sierra Nevada (Alsa, ~45 min)"
   - zona: "Bansko (Bulgaria)"
     aeropuertos: [SOF]
     vuela_A: true
