@@ -1,12 +1,13 @@
 # Configuración de la vigilancia de viajes
 # Puedes editar este archivo desde GitHub (icono del lápiz). Si algo queda mal escrito,
-# el script usa valores por defecto y lo avisa en data/ultimo.md, pero no se rompe.
+# el script usa la configuración original y lo avisa en data/ultimo.md, pero no se rompe.
+# IMPORTANTE: los viajeros NO tienen coche. Todo el transporte por tierra es tren/bus/lanzadera.
 
 moneda: EUR
 idioma: es
 pausa_entre_peticiones_s: 1.0   # pausa entre consultas a Google Flights
-max_peticiones_google: 900      # tope diario de consultas a Google Flights
-tiempo_max_google_min: 70       # si se supera, corta Google y guarda lo conseguido
+max_peticiones_google: 1400     # tope diario de consultas a Google Flights
+tiempo_max_google_min: 85       # si se supera, corta Google y guarda lo conseguido
 timeout_peticion_s: 30          # tiempo máximo de espera por consulta
 max_escalas: 1
 historico_dias: 60              # días de histórico que se conservan
@@ -18,45 +19,71 @@ viajeros:
   A:
     nombre: "Stuttgart"
     aeropuertos: [STR, FKB, FMM, FDH, FRA, MUC, ZRH, BSL]
-    principales_esqui: [STR, FMM, MUC, ZRH, BSL]   # para no disparar el nº de consultas
+    principales_esqui: [STR, FMM, MUC, ZRH]        # para no disparar el nº de consultas
   B:
     nombre: "Bilbao"
     aeropuertos: [BIO, EAS, VIT, SDR, BIQ, PNA]
     principales_esqui: [BIO, SDR, BIQ]
 
-# Destinos de esquí: aeropuertos a < ~2 h de pistas.
-# vuela_A: false -> el viajero de Stuttgart va por tierra (lo calcula la tarea de Claude).
+# Destinos de esquí, pensados para llegar SIN COCHE (tren/bus desde el aeropuerto).
+# aeropuertos: a < ~2-3 h en transporte público de la base.
+# vuela_A: false -> el viajero de Stuttgart va en tren (lo calcula la tarea de Claude).
+# base: pueblo/ciudad donde se busca alojamiento (bien conectado con pistas en transporte público).
 destinos_esqui:
-  - zona: "Tirol (Innsbruck, Zillertal, Stubai)"
+  - zona: "Tirol (Innsbruck: Stubai, Axamer Lizum, Nordkette)"
     aeropuertos: [INN, MUC, SZG]
     vuela_A: false
-  - zona: "Salzburgerland (Ski Amadé, Saalbach)"
+    base: {nombre: "Innsbruck", lat: 47.2654, lon: 11.3928}
+    transporte: "Tren directo MUC/SZG→Innsbruck; ski-bus gratis con el forfait a las estaciones"
+  - zona: "Salzburgerland (Schladming-Dachstein, Ski Amadé)"
     aeropuertos: [SZG, MUC]
     vuela_A: false
-  - zona: "Valais / Alpes franceses (Verbier, Chamonix, Tres Valles)"
-    aeropuertos: [GVA, LYS, CMF, GNB]
+    base: {nombre: "Schladming", lat: 47.3925, lon: 13.6872}
+    transporte: "Tren SZG→Schladming (~1h30); estación a pie del telecabina Planai"
+  - zona: "Graubünden (Davos-Klosters, Laax)"
+    aeropuertos: [ZRH]
     vuela_A: false
-  - zona: "Dolomitas (Val Gardena, Alta Badia, Cortina)"
+    base: {nombre: "Davos", lat: 46.8027, lon: 9.8360}
+    transporte: "Tren ZRH→Davos (~2h20, SBB/RhB); A llega en tren Stuttgart→Zúrich"
+  - zona: "Valais / Mont Blanc (Chamonix, Verbier)"
+    aeropuertos: [GVA, LYS]
+    vuela_A: false
+    base: {nombre: "Chamonix", lat: 45.9237, lon: 6.8694}
+    transporte: "Lanzadera/bus GVA→Chamonix (~1h15); tren Mont-Blanc Express"
+  - zona: "Dolomitas (Val Gardena, Alta Badia)"
     aeropuertos: [VRN, BGY, VCE, TSF, INN]
     vuela_A: false
-  - zona: "Valle de Aosta / Piamonte (Cervinia, Courmayeur, Vía Láctea)"
+    base: {nombre: "Ortisei (Val Gardena)", lat: 46.5747, lon: 11.6714}
+    transporte: "Tren a Bolzano/Ponte Gardena + bus 350 a Val Gardena"
+  - zona: "Valle de Aosta (Pila, Cervinia, Courmayeur)"
     aeropuertos: [TRN, MXP, GVA]
     vuela_A: false
-  - zona: "Pirineos / Andorra (Baqueira, Grandvalira)"
-    aeropuertos: [BCN, TLS, ZAZ]
+    base: {nombre: "Aosta", lat: 45.7370, lon: 7.3150}
+    transporte: "Tren/bus a Aosta; telecabina Aosta→Pila desde la ciudad"
+  - zona: "Andorra (Grandvalira, Pal-Arinsal)"
+    aeropuertos: [BCN, TLS]
     vuela_A: true
+    base: {nombre: "Andorra la Vella", lat: 42.5063, lon: 1.5218}
+    transporte: "Bus directo BCN/TLS→Andorra (~3h, Andbus/Alsa); ski-bus a pistas"
   - zona: "Sierra Nevada"
     aeropuertos: [GRX, AGP]
     vuela_A: true
-  - zona: "Bulgaria (Bansko)"
+    base: {nombre: "Granada", lat: 37.1773, lon: -3.5986}
+    transporte: "Bus aeropuerto→Granada y bus diario Granada→Sierra Nevada (Alsa, ~45 min)"
+  - zona: "Bansko (Bulgaria)"
     aeropuertos: [SOF]
     vuela_A: true
+    base: {nombre: "Bansko", lat: 41.8383, lon: 23.4885}
+    transporte: "Transfer/bus Sofía→Bansko (~2h30); telecabina desde el pueblo"
 
-# Esquí: fines de semana largos (jue->dom y vie->lun). Cada día se revisa uno distinto (rota).
+# Esquí: viajes de entre 3 y 6 días. Cada día se revisa una ventana distinta de días
+# de salida (rota por toda la temporada) y se prueban todas las duraciones posibles.
 temporada_esqui:
   desde: "2026-12-10"
   hasta: "2027-03-31"
-  fines_de_semana_por_dia: 1
+  dias_min: 3                    # 3 días = 2 noches
+  dias_max: 6                    # 6 días = 5 noches
+  ventana_dias_salida: 6         # días de salida distintos revisados cada día
 
 # Puente de diciembre (viajero B desde Bilbao)
 puente:
@@ -73,6 +100,18 @@ sorpresa:
   semanas_vista: 10
   duracion_min_dias: 2
   duracion_max_dias: 4
+  max_ofertas_informe: 8         # destinos distintos que se muestran (con alojamiento)
+
+# Alojamiento con precio real (Airbnb: pisos, apartamentos y también hoteles)
+alojamiento:
+  activo: true
+  huespedes: 2
+  radio_km: 6                    # radio de búsqueda alrededor de la base / ciudad
+  valoracion_min: 4.5
+  resenas_min: 5
+  opciones_por_destino: 3
+  max_busquedas: 50
+  tiempo_max_min: 15
 
 # Memoria de rutas sin vuelos (por día de la semana) para no repetir consultas inútiles
 sin_ruta:
