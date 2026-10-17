@@ -1,11 +1,18 @@
 # Configuración de la vigilancia de viajes
-# Edita este archivo para cambiar aeropuertos, destinos o fechas.
+# Puedes editar este archivo desde GitHub (icono del lápiz). Si algo queda mal escrito,
+# el script usa valores por defecto y lo avisa en data/ultimo.md, pero no se rompe.
 
 moneda: EUR
 idioma: es
-pausa_entre_peticiones_s: 1.5   # para no saturar Google Flights
-max_peticiones_google: 650      # tope diario de consultas a Google Flights
+pausa_entre_peticiones_s: 1.0   # pausa entre consultas a Google Flights
+max_peticiones_google: 900      # tope diario de consultas a Google Flights
+tiempo_max_google_min: 70       # si se supera, corta Google y guarda lo conseguido
+timeout_peticion_s: 30          # tiempo máximo de espera por consulta
 max_escalas: 1
+historico_dias: 60              # días de histórico que se conservan
+
+umbral_aviso_ida_vuelta_eur: 150
+bajada_relevante_pct: 20
 
 viajeros:
   A:
@@ -17,9 +24,8 @@ viajeros:
     aeropuertos: [BIO, EAS, VIT, SDR, BIQ, PNA]
     principales_esqui: [BIO, SDR, BIQ]
 
-# Destinos de esquí: aeropuerto(s) de llegada razonables (< ~2 h a pistas).
-# vuela_A: si tiene sentido que el viajero de Stuttgart vuele (si no, irá por tierra,
-# y ese tramo lo calcula la tarea de Claude con DB/ÖBB/SBB).
+# Destinos de esquí: aeropuertos a < ~2 h de pistas.
+# vuela_A: false -> el viajero de Stuttgart va por tierra (lo calcula la tarea de Claude).
 destinos_esqui:
   - zona: "Tirol (Innsbruck, Zillertal, Stubai)"
     aeropuertos: [INN, MUC, SZG]
@@ -46,28 +52,29 @@ destinos_esqui:
     aeropuertos: [SOF]
     vuela_A: true
 
-# Temporada de esquí: se revisan fines de semana largos (jueves/viernes -> domingo/lunes)
+# Esquí: fines de semana largos (jue->dom y vie->lun). Cada día se revisa uno distinto (rota).
 temporada_esqui:
   desde: "2026-12-10"
   hasta: "2027-03-31"
-  fines_de_semana_por_dia: 1   # fines de semana distintos revisados cada día (rotan; ciclo completo ~16 días)
+  fines_de_semana_por_dia: 1
 
-# Puente de diciembre: combinaciones a comparar
+# Puente de diciembre (viajero B desde Bilbao)
 puente:
-  hasta: "2026-12-08"          # después de esta fecha no se busca
+  hasta: "2026-12-08"            # a partir del día siguiente ya no se busca
   combinaciones:
     - ["2026-12-04", "2026-12-08"]
     - ["2026-12-04", "2026-12-09"]
     - ["2026-12-05", "2026-12-09"]
-  # destinos a revisar en el puente (además de los de esquí si quieres)
   aeropuertos_destino: [MXP, BGY, GVA, MUC, VCE, TRN, LYS, INN, SZG]
+  destinos_extra_ryanair: 5      # añade los 5 destinos más baratos que encuentre Ryanair ese día
 
-# Ofertas sorpresa desde Bilbao vía tarifas públicas de Ryanair
+# Ofertas sorpresa (Ryanair) desde los aeropuertos de Bilbao
 sorpresa:
   semanas_vista: 10
   duracion_min_dias: 2
   duracion_max_dias: 4
-  umbral_ida_vuelta_eur: 150
 
-umbral_aviso_ida_vuelta_eur: 150
-bajada_relevante_pct: 20
+# Memoria de rutas sin vuelos (por día de la semana) para no repetir consultas inútiles
+sin_ruta:
+  fallos_para_saltar: 2          # días distintos sin vuelos antes de saltarla
+  dias_memoria: 10               # pasado este tiempo se vuelve a comprobar
