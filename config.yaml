@@ -94,10 +94,13 @@ puente:
   destinos_extra_ryanair: 5      # añade los 5 destinos más baratos que encuentre Ryanair ese día
 
 # Ofertas sorpresa (Ryanair) desde los aeropuertos de Bilbao
+# SOLO FINES DE SEMANA: ida el viernes y vuelta el domingo.
 sorpresa:
   semanas_vista: 10
   duracion_min_dias: 2
-  duracion_max_dias: 4
+  duracion_max_dias: 2
+  dias_salida: [vie]
+  dias_vuelta: [dom]
   max_ofertas_informe: 8         # destinos distintos que se muestran (con alojamiento)
 
 # Alojamiento con precio real (Airbnb: pisos, apartamentos y también hoteles)
