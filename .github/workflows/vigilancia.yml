@@ -2,9 +2,13 @@ name: Vigilancia diaria de vuelos
 
 on:
   schedule:
-    # 03:05 UTC = 05:05 en verano / 04:05 en invierno (hora de Madrid).
-    # Margen de sobra antes de la tarea de Claude (7:51), aunque GitHub retrase el arranque.
-    - cron: "5 3 * * *"
+    # GitHub puede retrasar las ejecuciones programadas VARIAS HORAS (el 18/10 terminó a las
+    # 09:50, después de la tarea de Claude de las 7:51). Por eso se lanza la noche anterior:
+    # 22:17 UTC = 00:17 en verano / 23:17 en invierno (hora de Madrid) -> ~7 h de margen.
+    # Segunda ejecución de respaldo a las 01:47 UTC por si GitHub se salta la primera.
+    # (Minutos "raros" para evitar las horas en punto, que es cuando GitHub va más saturado.)
+    - cron: "17 22 * * *"
+    - cron: "47 1 * * *"
   workflow_dispatch: {}
 
 permissions:
