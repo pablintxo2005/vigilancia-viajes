@@ -1,5 +1,5 @@
 {
- "fecha_consulta": "2026-10-19 00:13 UTC",
+ "fecha_consulta": "2026-10-19 06:50 UTC",
  "umbral": 150,
  "bajada_pct": 20,
  "avisos": [],
@@ -11,42 +11,42 @@
    "pais": "IT",
    "combinaciones": {
     "2026-12-04_2026-12-08": {
-     "origen": "BIO",
+     "origen": "BIQ",
      "destino": "MXP",
      "fecha": "2026-12-04",
-     "precio": 105.0,
-     "aerolineas": "Vueling",
-     "salida": "2026-12-04 07:35",
-     "llegada": "2026-12-04 12:25",
+     "precio": 154.0,
+     "aerolineas": "Air France",
+     "salida": "2026-12-04 11:40",
+     "llegada": "2026-12-04 23:00",
      "escalas": 1,
-     "duracion_vuelo_min": 170,
+     "duracion_vuelo_min": 190,
      "fuente": "Google Flights",
-     "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDQoAWoFEgNCSU9yBRIDTVhQQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
+     "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDQoAWoFEgNCSVFyBRIDTVhQQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
      "vuelta": {
       "origen": "MXP",
-      "destino": "BIO",
+      "destino": "BIQ",
       "fecha": "2026-12-08",
-      "precio": 161.0,
-      "aerolineas": "Vueling",
-      "salida": "2026-12-08 22:30",
-      "llegada": "2026-12-09 08:20",
+      "precio": 136.0,
+      "aerolineas": "Air France",
+      "salida": "2026-12-08 18:30",
+      "llegada": "2026-12-09 10:55",
       "escalas": 1,
-      "duracion_vuelo_min": 180,
+      "duracion_vuelo_min": 185,
       "fuente": "Google Flights",
-      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDgoAWoFEgNNWFByBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
+      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDgoAWoFEgNNWFByBRIDQklRQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
      },
-     "total": 266.0
+     "total": 290.0
     },
     "2026-12-04_2026-12-09": {
      "origen": "BIO",
      "destino": "MXP",
      "fecha": "2026-12-04",
-     "precio": 105.0,
+     "precio": 135.0,
      "aerolineas": "Vueling",
-     "salida": "2026-12-04 07:35",
-     "llegada": "2026-12-04 12:25",
+     "salida": "2026-12-04 11:30",
+     "llegada": "2026-12-04 16:30",
      "escalas": 1,
-     "duracion_vuelo_min": 170,
+     "duracion_vuelo_min": 165,
      "fuente": "Google Flights",
      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDQoAWoFEgNCSU9yBRIDTVhQQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
      "vuelta": {
@@ -62,7 +62,7 @@
       "fuente": "Google Flights",
       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDkoAWoFEgNNWFByBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
      },
-     "total": 167.0
+     "total": 197.0
     },
     "2026-12-05_2026-12-09": {
      "origen": "BIO",
@@ -176,15 +176,6 @@
      "noches": 4,
      "opciones": [
       {
-       "nombre": "Fly&Rest MXP | Suite | Airport Transfer 24/7",
-       "tipo": "Apartment in Casorate Sempione",
-       "precio_total": 289.0,
-       "precio_noche": 72.0,
-       "valoracion": 5.0,
-       "resenas": 18,
-       "enlace": "https://www.airbnb.es/rooms/1618757706574354580?check_in=2026-12-05&check_out=2026-12-09&adults=2"
-      },
-      {
        "nombre": "Terminal 11 home - 5' Malpensa 25' Milano",
        "tipo": "Condo in Gallarate",
        "precio_total": 289.0,
@@ -192,6 +183,15 @@
        "valoracion": 5.0,
        "resenas": 17,
        "enlace": "https://www.airbnb.es/rooms/1679804282029203996?check_in=2026-12-05&check_out=2026-12-09&adults=2"
+      },
+      {
+       "nombre": "Fly&Rest MXP | Suite | Airport Transfer 24/7",
+       "tipo": "Apartment in Casorate Sempione",
+       "precio_total": 289.0,
+       "precio_noche": 72.0,
+       "valoracion": 5.0,
+       "resenas": 18,
+       "enlace": "https://www.airbnb.es/rooms/1618757706574354580?check_in=2026-12-05&check_out=2026-12-09&adults=2"
       },
       {
        "nombre": "*7 Minutes from MXP* [Lake Maggiore]",
@@ -449,6 +449,15 @@
        "enlace": "https://www.airbnb.es/rooms/10387841?check_in=2026-12-04&check_out=2026-12-09&adults=2"
       },
       {
+       "nombre": "Cozy Double: Convenient Base Near Munich Airport",
+       "tipo": "Apartment in Freising",
+       "precio_total": 350.0,
+       "precio_noche": 70.0,
+       "valoracion": 4.77,
+       "resenas": 141,
+       "enlace": "https://www.airbnb.es/rooms/888268801801778648?check_in=2026-12-04&check_out=2026-12-09&adults=2"
+      },
+      {
        "nombre": "Private room in a beautiful and quiet location",
        "tipo": "Room in Freising",
        "precio_total": 350.0,
@@ -456,15 +465,6 @@
        "valoracion": 4.94,
        "resenas": 210,
        "enlace": "https://www.airbnb.es/rooms/662306876636085749?check_in=2026-12-04&check_out=2026-12-09&adults=2"
-      },
-      {
-       "nombre": "Cozy Double: Convenient Base Near Munich Airport",
-       "tipo": "Apartment in Freising",
-       "precio_total": 352.0,
-       "precio_noche": 70.0,
-       "valoracion": 4.77,
-       "resenas": 141,
-       "enlace": "https://www.airbnb.es/rooms/888268801801778648?check_in=2026-12-04&check_out=2026-12-09&adults=2"
       }
      ],
      "booking": "https://www.booking.com/searchresults.es.html?ss=Munich&checkin=2026-12-04&checkout=2026-12-09&group_adults=2&no_rooms=1&order=price",
@@ -489,8 +489,8 @@
       {
        "nombre": "Cozy Double: Convenient Base Near Munich Airport",
        "tipo": "Apartment in Freising",
-       "precio_total": 270.0,
-       "precio_noche": 68.0,
+       "precio_total": 268.0,
+       "precio_noche": 67.0,
        "valoracion": 4.77,
        "resenas": 141,
        "enlace": "https://www.airbnb.es/rooms/888268801801778648?check_in=2026-12-05&check_out=2026-12-09&adults=2"
@@ -517,58 +517,58 @@
    "pais": "IT",
    "combinaciones": {
     "2026-12-04_2026-12-08": {
-     "origen": "BIO",
+     "origen": "BIQ",
      "destino": "VCE",
      "fecha": "2026-12-04",
-     "precio": 150.0,
-     "aerolineas": "Vueling",
-     "salida": "2026-12-04 08:55",
-     "llegada": "2026-12-04 14:25",
+     "precio": 176.0,
+     "aerolineas": "Air France",
+     "salida": "2026-12-04 07:00",
+     "llegada": "2026-12-04 17:10",
      "escalas": 1,
-     "duracion_vuelo_min": 175,
+     "duracion_vuelo_min": 200,
      "fuente": "Google Flights",
-     "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDQoAWoFEgNCSU9yBRIDVkNFQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
+     "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDQoAWoFEgNCSVFyBRIDVkNFQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
      "vuelta": {
       "origen": "VCE",
-      "destino": "BIO",
+      "destino": "BIQ",
       "fecha": "2026-12-08",
-      "precio": 168.0,
-      "aerolineas": "Vueling",
-      "salida": "2026-12-08 22:20",
-      "llegada": "2026-12-09 08:20",
+      "precio": 155.0,
+      "aerolineas": "Air France",
+      "salida": "2026-12-08 18:05",
+      "llegada": "2026-12-09 10:55",
       "escalas": 1,
-      "duracion_vuelo_min": 200,
+      "duracion_vuelo_min": 205,
       "fuente": "Google Flights",
-      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDgoAWoFEgNWQ0VyBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
+      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDgoAWoFEgNWQ0VyBRIDQklRQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
      },
-     "total": 318.0
+     "total": 331.0
     },
     "2026-12-04_2026-12-09": {
-     "origen": "BIO",
+     "origen": "BIQ",
      "destino": "VCE",
      "fecha": "2026-12-04",
-     "precio": 150.0,
-     "aerolineas": "Vueling",
-     "salida": "2026-12-04 08:55",
-     "llegada": "2026-12-04 14:25",
+     "precio": 176.0,
+     "aerolineas": "Air France",
+     "salida": "2026-12-04 07:00",
+     "llegada": "2026-12-04 17:10",
      "escalas": 1,
-     "duracion_vuelo_min": 175,
+     "duracion_vuelo_min": 200,
      "fuente": "Google Flights",
-     "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDQoAWoFEgNCSU9yBRIDVkNFQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
+     "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDQoAWoFEgNCSVFyBRIDVkNFQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
      "vuelta": {
       "origen": "VCE",
-      "destino": "BIO",
+      "destino": "BIQ",
       "fecha": "2026-12-09",
-      "precio": 68.0,
-      "aerolineas": "Vueling",
-      "salida": "2026-12-09 22:20",
-      "llegada": "2026-12-10 08:20",
+      "precio": 176.0,
+      "aerolineas": "Air France",
+      "salida": "2026-12-09 06:05",
+      "llegada": "2026-12-09 14:05",
       "escalas": 1,
-      "duracion_vuelo_min": 200,
+      "duracion_vuelo_min": 210,
       "fuente": "Google Flights",
-      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDkoAWoFEgNWQ0VyBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
+      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDkoAWoFEgNWQ0VyBRIDQklRQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
      },
-     "total": 218.0
+     "total": 352.0
     },
     "2026-12-05_2026-12-09": {
      "origen": "BIO",
@@ -586,132 +586,16 @@
       "origen": "VCE",
       "destino": "BIO",
       "fecha": "2026-12-09",
-      "precio": 68.0,
-      "aerolineas": "Vueling",
-      "salida": "2026-12-09 22:20",
-      "llegada": "2026-12-10 08:20",
+      "precio": 167.0,
+      "aerolineas": "SWISS, Edelweiss Air",
+      "salida": "2026-12-09 15:00",
+      "llegada": "2026-12-10 12:35",
       "escalas": 1,
-      "duracion_vuelo_min": 200,
+      "duracion_vuelo_min": 185,
       "fuente": "Google Flights",
       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDkoAWoFEgNWQ0VyBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
      },
-     "total": 139.0
-    }
-   },
-   "alojamiento": {
-    "2026-12-04_2026-12-08": {
-     "lugar": "Venezia",
-     "check_in": "2026-12-04",
-     "check_out": "2026-12-08",
-     "noches": 4,
-     "opciones": [
-      {
-       "nombre": "Eco Venice 1",
-       "tipo": "Place to stay in Italy",
-       "precio_total": 270.0,
-       "precio_noche": 68.0,
-       "valoracion": 4.84,
-       "resenas": 466,
-       "enlace": "https://www.airbnb.es/rooms/72740?check_in=2026-12-04&check_out=2026-12-08&adults=2"
-      },
-      {
-       "nombre": "Eco Venice 3",
-       "tipo": "Place to stay in Italy",
-       "precio_total": 270.0,
-       "precio_noche": 68.0,
-       "valoracion": 4.87,
-       "resenas": 257,
-       "enlace": "https://www.airbnb.es/rooms/1539837?check_in=2026-12-04&check_out=2026-12-08&adults=2"
-      },
-      {
-       "nombre": "Eco Venice 2",
-       "tipo": "Place to stay in Italy",
-       "precio_total": 270.0,
-       "precio_noche": 68.0,
-       "valoracion": 4.9,
-       "resenas": 165,
-       "enlace": "https://www.airbnb.es/rooms/4439252?check_in=2026-12-04&check_out=2026-12-08&adults=2"
-      }
-     ],
-     "booking": "https://www.booking.com/searchresults.es.html?ss=Venezia&checkin=2026-12-04&checkout=2026-12-08&group_adults=2&no_rooms=1&order=price",
-     "airbnb_busqueda": "https://www.airbnb.es/s/Venezia/homes?checkin=2026-12-04&checkout=2026-12-08&adults=2",
-     "nota": ""
-    },
-    "2026-12-04_2026-12-09": {
-     "lugar": "Venezia",
-     "check_in": "2026-12-04",
-     "check_out": "2026-12-09",
-     "noches": 5,
-     "opciones": [
-      {
-       "nombre": "Eco Venice 1",
-       "tipo": "Place to stay in Italy",
-       "precio_total": 338.0,
-       "precio_noche": 68.0,
-       "valoracion": 4.84,
-       "resenas": 466,
-       "enlace": "https://www.airbnb.es/rooms/72740?check_in=2026-12-04&check_out=2026-12-09&adults=2"
-      },
-      {
-       "nombre": "Eco Venice 3",
-       "tipo": "Place to stay in Italy",
-       "precio_total": 338.0,
-       "precio_noche": 68.0,
-       "valoracion": 4.87,
-       "resenas": 257,
-       "enlace": "https://www.airbnb.es/rooms/1539837?check_in=2026-12-04&check_out=2026-12-09&adults=2"
-      },
-      {
-       "nombre": "Eco Venice 2",
-       "tipo": "Place to stay in Italy",
-       "precio_total": 338.0,
-       "precio_noche": 68.0,
-       "valoracion": 4.9,
-       "resenas": 165,
-       "enlace": "https://www.airbnb.es/rooms/4439252?check_in=2026-12-04&check_out=2026-12-09&adults=2"
-      }
-     ],
-     "booking": "https://www.booking.com/searchresults.es.html?ss=Venezia&checkin=2026-12-04&checkout=2026-12-09&group_adults=2&no_rooms=1&order=price",
-     "airbnb_busqueda": "https://www.airbnb.es/s/Venezia/homes?checkin=2026-12-04&checkout=2026-12-09&adults=2",
-     "nota": ""
-    },
-    "2026-12-05_2026-12-09": {
-     "lugar": "Venezia",
-     "check_in": "2026-12-05",
-     "check_out": "2026-12-09",
-     "noches": 4,
-     "opciones": [
-      {
-       "nombre": "Eco Venice 1",
-       "tipo": "Place to stay in Italy",
-       "precio_total": 270.0,
-       "precio_noche": 68.0,
-       "valoracion": 4.84,
-       "resenas": 466,
-       "enlace": "https://www.airbnb.es/rooms/72740?check_in=2026-12-05&check_out=2026-12-09&adults=2"
-      },
-      {
-       "nombre": "Eco Venice 3",
-       "tipo": "Place to stay in Italy",
-       "precio_total": 270.0,
-       "precio_noche": 68.0,
-       "valoracion": 4.87,
-       "resenas": 257,
-       "enlace": "https://www.airbnb.es/rooms/1539837?check_in=2026-12-05&check_out=2026-12-09&adults=2"
-      },
-      {
-       "nombre": "Eco Venice 2",
-       "tipo": "Place to stay in Italy",
-       "precio_total": 270.0,
-       "precio_noche": 68.0,
-       "valoracion": 4.9,
-       "resenas": 165,
-       "enlace": "https://www.airbnb.es/rooms/4439252?check_in=2026-12-05&check_out=2026-12-09&adults=2"
-      }
-     ],
-     "booking": "https://www.booking.com/searchresults.es.html?ss=Venezia&checkin=2026-12-05&checkout=2026-12-09&group_adults=2&no_rooms=1&order=price",
-     "airbnb_busqueda": "https://www.airbnb.es/s/Venezia/homes?checkin=2026-12-05&checkout=2026-12-09&adults=2",
-     "nota": ""
+     "total": 238.0
     }
    }
   },
@@ -724,7 +608,7 @@
      "origen": "BIO",
      "destino": "TRN",
      "fecha": "2026-12-04",
-     "precio": 100.0,
+     "precio": 90.0,
      "aerolineas": "Wizz Air",
      "salida": "2026-12-04 08:30",
      "llegada": "2026-12-04 10:15",
@@ -745,13 +629,13 @@
       "fuente": "Google Flights",
       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDgoAWoFEgNUUk5yBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
      },
-     "total": 377.0
+     "total": 367.0
     },
     "2026-12-04_2026-12-09": {
      "origen": "BIO",
      "destino": "TRN",
      "fecha": "2026-12-04",
-     "precio": 100.0,
+     "precio": 90.0,
      "aerolineas": "Wizz Air",
      "salida": "2026-12-04 08:30",
      "llegada": "2026-12-04 10:15",
@@ -763,7 +647,7 @@
       "origen": "TRN",
       "destino": "BIO",
       "fecha": "2026-12-09",
-      "precio": 36.0,
+      "precio": 30.0,
       "aerolineas": "Wizz Air",
       "salida": "2026-12-09 06:00",
       "llegada": "2026-12-09 07:50",
@@ -772,13 +656,13 @@
       "fuente": "Google Flights",
       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDkoAWoFEgNUUk5yBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
      },
-     "total": 136.0
+     "total": 120.0
     },
     "2026-12-05_2026-12-09": {
      "origen": "BIO",
      "destino": "TRN",
      "fecha": "2026-12-05",
-     "precio": 127.0,
+     "precio": 131.0,
      "aerolineas": "KLM",
      "salida": "2026-12-05 06:50",
      "llegada": "2026-12-05 15:50",
@@ -790,7 +674,7 @@
       "origen": "TRN",
       "destino": "BIO",
       "fecha": "2026-12-09",
-      "precio": 36.0,
+      "precio": 30.0,
       "aerolineas": "Wizz Air",
       "salida": "2026-12-09 06:00",
       "llegada": "2026-12-09 07:50",
@@ -799,7 +683,7 @@
       "fuente": "Google Flights",
       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDkoAWoFEgNUUk5yBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
      },
-     "total": 163.0
+     "total": 161.0
     }
    },
    "alojamiento": {
@@ -1153,7 +1037,7 @@
       "origen": "STN",
       "destino": "BIO",
       "fecha": "2026-12-09",
-      "precio": 298.0,
+      "precio": 297.0,
       "aerolineas": "Royal Air Maroc",
       "salida": "2026-12-09 07:30",
       "llegada": "2026-12-09 18:45",
@@ -1162,7 +1046,7 @@
       "fuente": "Google Flights",
       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDkoAWoFEgNTVE5yBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
      },
-     "total": 964.0
+     "total": 963.0
     },
     "2026-12-05_2026-12-09": {
      "origen": "SDR",
@@ -1191,6 +1075,122 @@
      },
      "total": 235.0
     }
+   },
+   "alojamiento": {
+    "2026-12-04_2026-12-08": {
+     "lugar": "London",
+     "check_in": "2026-12-04",
+     "check_out": "2026-12-08",
+     "noches": 4,
+     "opciones": [
+      {
+       "nombre": "Closest property to Stansted airport.",
+       "tipo": "Room in Essex",
+       "precio_total": 264.0,
+       "precio_noche": 66.0,
+       "valoracion": 4.76,
+       "resenas": 139,
+       "enlace": "https://www.airbnb.es/rooms/1534835618860661463?check_in=2026-12-04&check_out=2026-12-08&adults=2"
+      },
+      {
+       "nombre": "5 mins to Stansted | Stay + Parking",
+       "tipo": "Apartment in Elsenham",
+       "precio_total": 283.0,
+       "precio_noche": 71.0,
+       "valoracion": 4.91,
+       "resenas": 609,
+       "enlace": "https://www.airbnb.es/rooms/54225455?check_in=2026-12-04&check_out=2026-12-08&adults=2"
+      },
+      {
+       "nombre": "18th Century overnight stay 9 mins of Stansted ",
+       "tipo": "Room in Elsenham",
+       "precio_total": 307.0,
+       "precio_noche": 77.0,
+       "valoracion": 4.9,
+       "resenas": 10,
+       "enlace": "https://www.airbnb.es/rooms/1754361230052014029?check_in=2026-12-04&check_out=2026-12-08&adults=2"
+      }
+     ],
+     "booking": "https://www.booking.com/searchresults.es.html?ss=London&checkin=2026-12-04&checkout=2026-12-08&group_adults=2&no_rooms=1&order=price",
+     "airbnb_busqueda": "https://www.airbnb.es/s/London/homes?checkin=2026-12-04&checkout=2026-12-08&adults=2",
+     "nota": ""
+    },
+    "2026-12-04_2026-12-09": {
+     "lugar": "London",
+     "check_in": "2026-12-04",
+     "check_out": "2026-12-09",
+     "noches": 5,
+     "opciones": [
+      {
+       "nombre": "Closest property to Stansted airport.",
+       "tipo": "Room in Essex",
+       "precio_total": 331.0,
+       "precio_noche": 66.0,
+       "valoracion": 4.76,
+       "resenas": 139,
+       "enlace": "https://www.airbnb.es/rooms/1534835618860661463?check_in=2026-12-04&check_out=2026-12-09&adults=2"
+      },
+      {
+       "nombre": "No.1 Double Ensuite with small kitchenette",
+       "tipo": "Room in Great Hallingbury",
+       "precio_total": 387.0,
+       "precio_noche": 77.0,
+       "valoracion": 4.73,
+       "resenas": 37,
+       "enlace": "https://www.airbnb.es/rooms/753982863704879456?check_in=2026-12-04&check_out=2026-12-09&adults=2"
+      },
+      {
+       "nombre": "No.2 Double Ensuite with small kitchenette",
+       "tipo": "Room in Great Hallingbury",
+       "precio_total": 387.0,
+       "precio_noche": 77.0,
+       "valoracion": 4.89,
+       "resenas": 46,
+       "enlace": "https://www.airbnb.es/rooms/755550163077369621?check_in=2026-12-04&check_out=2026-12-09&adults=2"
+      }
+     ],
+     "booking": "https://www.booking.com/searchresults.es.html?ss=London&checkin=2026-12-04&checkout=2026-12-09&group_adults=2&no_rooms=1&order=price",
+     "airbnb_busqueda": "https://www.airbnb.es/s/London/homes?checkin=2026-12-04&checkout=2026-12-09&adults=2",
+     "nota": ""
+    },
+    "2026-12-05_2026-12-09": {
+     "lugar": "London",
+     "check_in": "2026-12-05",
+     "check_out": "2026-12-09",
+     "noches": 4,
+     "opciones": [
+      {
+       "nombre": "Closest property to Stansted airport.",
+       "tipo": "Room in Essex",
+       "precio_total": 264.0,
+       "precio_noche": 66.0,
+       "valoracion": 4.76,
+       "resenas": 139,
+       "enlace": "https://www.airbnb.es/rooms/1534835618860661463?check_in=2026-12-05&check_out=2026-12-09&adults=2"
+      },
+      {
+       "nombre": "King En-Suite, 5 Min to STN Airport, Free Parking",
+       "tipo": "Room in Takeley",
+       "precio_total": 282.0,
+       "precio_noche": 70.0,
+       "valoracion": 5.0,
+       "resenas": 5,
+       "enlace": "https://www.airbnb.es/rooms/1741418835358689762?check_in=2026-12-05&check_out=2026-12-09&adults=2"
+      },
+      {
+       "nombre": "King En-Suite, 5 Min to STN Airport, Free Parking ",
+       "tipo": "Room in Takeley",
+       "precio_total": 286.0,
+       "precio_noche": 72.0,
+       "valoracion": 4.58,
+       "resenas": 12,
+       "enlace": "https://www.airbnb.es/rooms/1744444270100854756?check_in=2026-12-05&check_out=2026-12-09&adults=2"
+      }
+     ],
+     "booking": "https://www.booking.com/searchresults.es.html?ss=London&checkin=2026-12-05&checkout=2026-12-09&group_adults=2&no_rooms=1&order=price",
+     "airbnb_busqueda": "https://www.airbnb.es/s/London/homes?checkin=2026-12-05&checkout=2026-12-09&adults=2",
+     "nota": ""
+    }
    }
   },
   {
@@ -1205,14 +1205,14 @@
   }
  ],
  "puente_comparativas": [
-  "Milan (MXP): salir el 4 en vez del 5: pagas 37 € (28 %); volver el 9 en vez del 8: ahorras 99 € (37 %)",
+  "Milan (MXP): salir el 4 en vez del 5: pagas 67 € (52 %); volver el 9 en vez del 8: ahorras 93 € (32 %)",
   "Geneva (GVA): salir el 4 en vez del 5: pagas 7 € (3 %); volver el 9 en vez del 8: ahorras 53 € (16 %)",
   "Munich (MUC): salir el 4 en vez del 5: pagas 162 € (87 %); volver el 9 en vez del 8: ahorras 81 € (19 %)",
-  "Venezia (VCE): salir el 4 en vez del 5: pagas 79 € (57 %); volver el 9 en vez del 8: ahorras 100 € (31 %)",
-  "Torino (TRN): salir el 4 en vez del 5: ahorras 27 € (17 %); volver el 9 en vez del 8: ahorras 241 € (64 %)",
+  "Venezia (VCE): salir el 4 en vez del 5: pagas 114 € (48 %); volver el 9 en vez del 8: pagas 21 € (6 %)",
+  "Torino (TRN): salir el 4 en vez del 5: ahorras 41 € (25 %); volver el 9 en vez del 8: ahorras 247 € (67 %)",
   "Lyon (LYS): salir el 4 en vez del 5: ahorras 77 € (24 %); volver el 9 en vez del 8: ahorras 73 € (23 %)",
   "Innsbruck (INN): salir el 4 en vez del 5: pagas 85 € (17 %); volver el 9 en vez del 8: ahorras 261 € (31 %)",
-  "London (STN): salir el 4 en vez del 5: pagas 729 € (310 %); volver el 9 en vez del 8: pagas 20 € (2 %)"
+  "London (STN): salir el 4 en vez del 5: pagas 728 € (310 %); volver el 9 en vez del 8: pagas 19 € (2 %)"
  ],
  "esqui": [
   {
@@ -1237,34 +1237,34 @@
      "vuelta": "2027-02-11",
      "dias": 3,
      "B": {
-      "origen": "SDR",
+      "origen": "BIO",
       "destino": "VCE",
       "fecha": "2027-02-09",
-      "precio": 65.0,
+      "precio": 63.0,
       "aerolineas": "Vueling",
-      "salida": "2027-02-09 22:15",
+      "salida": "2027-02-09 19:30",
       "llegada": "2027-02-10 09:10",
       "escalas": 1,
-      "duracion_vuelo_min": 185,
+      "duracion_vuelo_min": 180,
       "fuente": "Google Flights",
-      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMDkoAWoFEgNTRFJyBRIDVkNFQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
+      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMDkoAWoFEgNCSU9yBRIDVkNFQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
       "vuelta": {
        "origen": "VCE",
-       "destino": "SDR",
+       "destino": "BIO",
        "fecha": "2027-02-11",
-       "precio": 84.0,
+       "precio": 56.0,
        "aerolineas": "Vueling",
-       "salida": "2027-02-11 10:00",
-       "llegada": "2027-02-11 17:15",
+       "salida": "2027-02-11 22:20",
+       "llegada": "2027-02-12 08:20",
        "escalas": 1,
-       "duracion_vuelo_min": 195,
+       "duracion_vuelo_min": 200,
        "fuente": "Google Flights",
-       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTEoAWoFEgNWQ0VyBRIDU0RSQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
+       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTEoAWoFEgNWQ0VyBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
       },
-      "total": 149.0
+      "total": 119.0
      },
      "A": null,
-     "total_vuelos": 149.0
+     "total_vuelos": 119.0
     },
     {
      "ida": "2027-02-10",
@@ -1335,44 +1335,44 @@
      "total_vuelos": 130.0
     },
     {
-     "ida": "2027-02-08",
-     "vuelta": "2027-02-13",
+     "ida": "2027-02-10",
+     "vuelta": "2027-02-15",
      "dias": 6,
      "B": {
-      "origen": "SDR",
+      "origen": "BIO",
       "destino": "VCE",
-      "fecha": "2027-02-08",
-      "precio": 73.0,
+      "fecha": "2027-02-10",
+      "precio": 67.0,
       "aerolineas": "Vueling",
-      "salida": "2027-02-08 12:55",
-      "llegada": "2027-02-08 21:25",
+      "salida": "2027-02-10 19:40",
+      "llegada": "2027-02-11 09:10",
       "escalas": 1,
       "duracion_vuelo_min": 180,
       "fuente": "Google Flights",
-      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMDgoAWoFEgNTRFJyBRIDVkNFQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
+      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTAoAWoFEgNCSU9yBRIDVkNFQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
       "vuelta": {
        "origen": "VCE",
-       "destino": "SDR",
-       "fecha": "2027-02-13",
-       "precio": 65.0,
+       "destino": "BIO",
+       "fecha": "2027-02-15",
+       "precio": 52.0,
        "aerolineas": "Vueling",
-       "salida": "2027-02-13 22:20",
-       "llegada": "2027-02-14 13:20",
+       "salida": "2027-02-15 22:20",
+       "llegada": "2027-02-16 08:20",
        "escalas": 1,
        "duracion_vuelo_min": 200,
        "fuente": "Google Flights",
-       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTMoAWoFEgNWQ0VyBRIDU0RSQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
+       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTUoAWoFEgNWQ0VyBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
       },
-      "total": 138.0
+      "total": 119.0
      },
      "A": null,
-     "total_vuelos": 138.0
+     "total_vuelos": 119.0
     }
    ],
    "alojamiento": {
     "lugar": "Ortisei (Val Gardena)",
-    "check_in": "2027-02-08",
-    "check_out": "2027-02-13",
+    "check_in": "2027-02-10",
+    "check_out": "2027-02-15",
     "noches": 5,
     "opciones": [
      {
@@ -1382,31 +1382,31 @@
       "precio_noche": 185.0,
       "valoracion": 4.65,
       "resenas": 20,
-      "enlace": "https://www.airbnb.es/rooms/656844056493683921?check_in=2027-02-08&check_out=2027-02-13&adults=2"
+      "enlace": "https://www.airbnb.es/rooms/656844056493683921?check_in=2027-02-10&check_out=2027-02-15&adults=2"
      },
      {
-      "nombre": "Apt Lara Ruveda 2",
+      "nombre": "Apartments Emilia 2",
       "tipo": "Apartment in Ortisei",
-      "precio_total": 1706.0,
-      "precio_noche": 341.0,
-      "valoracion": 4.93,
-      "resenas": 15,
-      "enlace": "https://www.airbnb.es/rooms/1553645693076295609?check_in=2027-02-08&check_out=2027-02-13&adults=2"
+      "precio_total": 1749.0,
+      "precio_noche": 350.0,
+      "valoracion": 5.0,
+      "resenas": 11,
+      "enlace": "https://www.airbnb.es/rooms/1279656885095740742?check_in=2027-02-10&check_out=2027-02-15&adults=2"
      },
      {
-      "nombre": "192a Greva Apartments 2",
-      "tipo": "Apartment in Santa Cristina Valgardena",
-      "precio_total": 1725.0,
-      "precio_noche": 345.0,
-      "valoracion": 4.65,
-      "resenas": 26,
-      "enlace": "https://www.airbnb.es/rooms/923124444142366224?check_in=2027-02-08&check_out=2027-02-13&adults=2"
+      "nombre": "Ritschhof Apartment Fichte",
+      "tipo": "Apartment in San Pietro",
+      "precio_total": 2062.0,
+      "precio_noche": 412.0,
+      "valoracion": 4.64,
+      "resenas": 14,
+      "enlace": "https://www.airbnb.es/rooms/957859657184111546?check_in=2027-02-10&check_out=2027-02-15&adults=2"
      }
     ],
-    "booking": "https://www.booking.com/searchresults.es.html?ss=Ortisei+%28Val+Gardena%29&checkin=2027-02-08&checkout=2027-02-13&group_adults=2&no_rooms=1&order=price",
-    "airbnb_busqueda": "https://www.airbnb.es/s/Ortisei+%28Val+Gardena%29/homes?checkin=2027-02-08&checkout=2027-02-13&adults=2",
+    "booking": "https://www.booking.com/searchresults.es.html?ss=Ortisei+%28Val+Gardena%29&checkin=2027-02-10&checkout=2027-02-15&group_adults=2&no_rooms=1&order=price",
+    "airbnb_busqueda": "https://www.airbnb.es/s/Ortisei+%28Val+Gardena%29/homes?checkin=2027-02-10&checkout=2027-02-15&adults=2",
     "nota": "",
-    "para_opcion": "2027-02-08_2027-02-13"
+    "para_opcion": "2027-02-10_2027-02-15"
    }
   },
   {
@@ -1586,13 +1586,13 @@
       "enlace": "https://www.airbnb.es/rooms/1227432133632862750?check_in=2027-02-08&check_out=2027-02-12&adults=2"
      },
      {
-      "nombre": "Villetta Chabloz 15a first floor x 2 Guests",
-      "tipo": "Home in Gressan",
-      "precio_total": 298.0,
-      "precio_noche": 74.0,
-      "valoracion": 4.95,
-      "resenas": 97,
-      "enlace": "https://www.airbnb.es/rooms/16140298?check_in=2027-02-08&check_out=2027-02-12&adults=2"
+      "nombre": "Bed & Breakfast in the Alps",
+      "tipo": "Room in Sarre",
+      "precio_total": 272.0,
+      "precio_noche": 68.0,
+      "valoracion": 4.94,
+      "resenas": 403,
+      "enlace": "https://www.airbnb.es/rooms/11689148?check_in=2027-02-08&check_out=2027-02-12&adults=2"
      }
     ],
     "booking": "https://www.booking.com/searchresults.es.html?ss=Aosta&checkin=2027-02-08&checkout=2027-02-12&group_adults=2&no_rooms=1&order=price",
@@ -1616,64 +1616,64 @@
    "A_en_tren": false,
    "opciones": [
     {
-     "ida": "2027-02-09",
-     "vuelta": "2027-02-11",
+     "ida": "2027-02-08",
+     "vuelta": "2027-02-10",
      "dias": 3,
      "B": {
       "origen": "SDR",
       "destino": "BCN",
-      "fecha": "2027-02-09",
-      "precio": 64.0,
-      "aerolineas": "Iberia",
-      "salida": "2027-02-09 10:05",
-      "llegada": "2027-02-09 22:55",
-      "escalas": 1,
-      "duracion_vuelo_min": 145,
+      "fecha": "2027-02-08",
+      "precio": 34.0,
+      "aerolineas": "Vueling",
+      "salida": "2027-02-08 12:55",
+      "llegada": "2027-02-08 14:10",
+      "escalas": 0,
+      "duracion_vuelo_min": 75,
       "fuente": "Google Flights",
-      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMDkoAWoFEgNTRFJyBRIDQkNOQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
+      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMDgoAWoFEgNTRFJyBRIDQkNOQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
       "vuelta": {
        "origen": "BCN",
        "destino": "SDR",
-       "fecha": "2027-02-11",
-       "precio": 27.0,
+       "fecha": "2027-02-10",
+       "precio": 21.0,
        "aerolineas": "Vueling",
-       "salida": "2027-02-11 15:55",
-       "llegada": "2027-02-11 17:15",
+       "salida": "2027-02-10 11:20",
+       "llegada": "2027-02-10 12:40",
        "escalas": 0,
        "duracion_vuelo_min": 80,
        "fuente": "Google Flights",
-       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTEoAWoFEgNCQ05yBRIDU0RSQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
+       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTAoAWoFEgNCQ05yBRIDU0RSQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
       },
-      "total": 91.0
+      "total": 55.0
      },
      "A": {
       "origen": "ZRH",
       "destino": "BCN",
-      "fecha": "2027-02-09",
-      "precio": 53.0,
-      "aerolineas": "Vueling",
-      "salida": "2027-02-09 09:40",
-      "llegada": "2027-02-09 11:30",
-      "escalas": 0,
-      "duracion_vuelo_min": 110,
+      "fecha": "2027-02-08",
+      "precio": 83.0,
+      "aerolineas": "Air Serbia",
+      "salida": "2027-02-08 09:30",
+      "llegada": "2027-02-09 09:10",
+      "escalas": 1,
+      "duracion_vuelo_min": 265,
       "fuente": "Google Flights",
-      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMDkoAWoFEgNaUkhyBRIDQkNOQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
+      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMDgoAWoFEgNaUkhyBRIDQkNOQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
       "vuelta": {
        "origen": "BCN",
        "destino": "ZRH",
-       "fecha": "2027-02-11",
-       "precio": 62.0,
-       "aerolineas": "Vueling",
-       "salida": "2027-02-11 18:40",
-       "llegada": "2027-02-11 20:30",
-       "escalas": 0,
-       "duracion_vuelo_min": 110,
+       "fecha": "2027-02-10",
+       "precio": 64.0,
+       "aerolineas": "Air Serbia",
+       "salida": "2027-02-10 20:35",
+       "llegada": "2027-02-11 08:45",
+       "escalas": 1,
+       "duracion_vuelo_min": 270,
        "fuente": "Google Flights",
-       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTEoAWoFEgNCQ05yBRIDWlJIQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
+       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTAoAWoFEgNCQ05yBRIDWlJIQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
       },
-      "total": 115.0
+      "total": 147.0
      },
-     "total_vuelos": 206.0
+     "total_vuelos": 202.0
     },
     {
      "ida": "2027-02-08",
@@ -1712,7 +1712,7 @@
       "fecha": "2027-02-08",
       "precio": 83.0,
       "aerolineas": "Air Serbia",
-      "salida": "2027-02-08 20:50",
+      "salida": "2027-02-08 09:30",
       "llegada": "2027-02-09 09:10",
       "escalas": 1,
       "duracion_vuelo_min": 265,
@@ -1796,104 +1796,104 @@
      "total_vuelos": 183.0
     },
     {
-     "ida": "2027-02-11",
-     "vuelta": "2027-02-16",
+     "ida": "2027-02-13",
+     "vuelta": "2027-02-18",
      "dias": 6,
      "B": {
-      "origen": "BIO",
+      "origen": "SDR",
       "destino": "BCN",
-      "fecha": "2027-02-11",
-      "precio": 39.0,
+      "fecha": "2027-02-13",
+      "precio": 26.0,
       "aerolineas": "Vueling",
-      "salida": "2027-02-11 17:40",
-      "llegada": "2027-02-11 18:50",
+      "salida": "2027-02-13 18:00",
+      "llegada": "2027-02-13 19:15",
       "escalas": 0,
-      "duracion_vuelo_min": 70,
+      "duracion_vuelo_min": 75,
       "fuente": "Google Flights",
-      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTEoAWoFEgNCSU9yBRIDQkNOQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
+      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTMoAWoFEgNTRFJyBRIDQkNOQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
       "vuelta": {
        "origen": "BCN",
-       "destino": "BIO",
-       "fecha": "2027-02-16",
-       "precio": 48.0,
+       "destino": "SDR",
+       "fecha": "2027-02-18",
+       "precio": 27.0,
        "aerolineas": "Vueling",
-       "salida": "2027-02-16 21:25",
-       "llegada": "2027-02-16 22:40",
+       "salida": "2027-02-18 15:55",
+       "llegada": "2027-02-18 17:15",
        "escalas": 0,
-       "duracion_vuelo_min": 75,
+       "duracion_vuelo_min": 80,
        "fuente": "Google Flights",
-       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTYoAWoFEgNCQ05yBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
+       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTgoAWoFEgNCQ05yBRIDU0RSQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
       },
-      "total": 87.0
+      "total": 53.0
      },
      "A": {
       "origen": "ZRH",
       "destino": "BCN",
-      "fecha": "2027-02-11",
-      "precio": 87.0,
-      "aerolineas": "Vueling",
-      "salida": "2027-02-11 09:40",
-      "llegada": "2027-02-11 11:30",
-      "escalas": 0,
-      "duracion_vuelo_min": 110,
+      "fecha": "2027-02-13",
+      "precio": 83.0,
+      "aerolineas": "Air Serbia",
+      "salida": "2027-02-13 20:50",
+      "llegada": "2027-02-14 19:50",
+      "escalas": 1,
+      "duracion_vuelo_min": 265,
       "fuente": "Google Flights",
-      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTEoAWoFEgNaUkhyBRIDQkNOQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
+      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTMoAWoFEgNaUkhyBRIDQkNOQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
       "vuelta": {
        "origen": "BCN",
        "destino": "ZRH",
-       "fecha": "2027-02-16",
-       "precio": 65.0,
-       "aerolineas": "Vueling",
-       "salida": "2027-02-16 07:00",
-       "llegada": "2027-02-16 08:55",
-       "escalas": 0,
-       "duracion_vuelo_min": 115,
+       "fecha": "2027-02-18",
+       "precio": 64.0,
+       "aerolineas": "Air Serbia",
+       "salida": "2027-02-18 09:55",
+       "llegada": "2027-02-18 20:05",
+       "escalas": 1,
+       "duracion_vuelo_min": 270,
        "fuente": "Google Flights",
-       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTYoAWoFEgNCQ05yBRIDWlJIQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
+       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTgoAWoFEgNCQ05yBRIDWlJIQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
       },
-      "total": 152.0
+      "total": 147.0
      },
-     "total_vuelos": 239.0
+     "total_vuelos": 200.0
     }
    ],
    "alojamiento": {
     "lugar": "Andorra la Vella",
     "check_in": "2027-02-13",
-    "check_out": "2027-02-17",
-    "noches": 4,
+    "check_out": "2027-02-18",
+    "noches": 5,
     "opciones": [
      {
       "nombre": "Hotel Sta. Bárbara 3* Ordino two-bed room",
       "tipo": "Room in Ordino",
-      "precio_total": 443.0,
-      "precio_noche": 111.0,
+      "precio_total": 539.0,
+      "precio_noche": 108.0,
       "valoracion": 4.74,
       "resenas": 74,
-      "enlace": "https://www.airbnb.es/rooms/39595205?check_in=2027-02-13&check_out=2027-02-17&adults=2"
+      "enlace": "https://www.airbnb.es/rooms/39595205?check_in=2027-02-13&check_out=2027-02-18&adults=2"
      },
      {
       "nombre": "Hotel Sta. Bárbara 3* Ordino Double Room",
       "tipo": "Room in Ordino",
-      "precio_total": 471.0,
-      "precio_noche": 118.0,
+      "precio_total": 573.0,
+      "precio_noche": 115.0,
       "valoracion": 4.73,
       "resenas": 59,
-      "enlace": "https://www.airbnb.es/rooms/39596446?check_in=2027-02-13&check_out=2027-02-17&adults=2"
+      "enlace": "https://www.airbnb.es/rooms/39596446?check_in=2027-02-13&check_out=2027-02-18&adults=2"
      },
      {
       "nombre": "LEE Hotel Andorra - Standard Room with views",
       "tipo": "Room in Andorra la Vella",
-      "precio_total": 549.0,
-      "precio_noche": 137.0,
+      "precio_total": 672.0,
+      "precio_noche": 134.0,
       "valoracion": 4.65,
       "resenas": 69,
-      "enlace": "https://www.airbnb.es/rooms/1648150336551649525?check_in=2027-02-13&check_out=2027-02-17&adults=2"
+      "enlace": "https://www.airbnb.es/rooms/1648150336551649525?check_in=2027-02-13&check_out=2027-02-18&adults=2"
      }
     ],
-    "booking": "https://www.booking.com/searchresults.es.html?ss=Andorra+la+Vella&checkin=2027-02-13&checkout=2027-02-17&group_adults=2&no_rooms=1&order=price",
-    "airbnb_busqueda": "https://www.airbnb.es/s/Andorra+la+Vella/homes?checkin=2027-02-13&checkout=2027-02-17&adults=2",
+    "booking": "https://www.booking.com/searchresults.es.html?ss=Andorra+la+Vella&checkin=2027-02-13&checkout=2027-02-18&group_adults=2&no_rooms=1&order=price",
+    "airbnb_busqueda": "https://www.airbnb.es/s/Andorra+la+Vella/homes?checkin=2027-02-13&checkout=2027-02-18&adults=2",
     "nota": "",
-    "para_opcion": "2027-02-13_2027-02-17"
+    "para_opcion": "2027-02-13_2027-02-18"
    }
   },
   {
@@ -1935,9 +1935,9 @@
       "destino": "MUC",
       "fecha": "2027-02-09",
       "precio": 72.0,
-      "aerolineas": "Iberia",
-      "salida": "2027-02-09 13:35",
-      "llegada": "2027-02-09 22:40",
+      "aerolineas": "Air Europa",
+      "salida": "2027-02-09 21:05",
+      "llegada": "2027-02-10 09:45",
       "escalas": 1,
       "duracion_vuelo_min": 230,
       "fuente": "Google Flights",
@@ -2003,9 +2003,9 @@
       "destino": "MUC",
       "fecha": "2027-02-09",
       "precio": 72.0,
-      "aerolineas": "Iberia",
-      "salida": "2027-02-09 13:35",
-      "llegada": "2027-02-09 22:40",
+      "aerolineas": "Air Europa",
+      "salida": "2027-02-09 21:05",
+      "llegada": "2027-02-10 09:45",
       "escalas": 1,
       "duracion_vuelo_min": 230,
       "fuente": "Google Flights",
@@ -2029,78 +2029,78 @@
      "total_vuelos": 185.0
     },
     {
-     "ida": "2027-02-08",
-     "vuelta": "2027-02-13",
+     "ida": "2027-02-11",
+     "vuelta": "2027-02-16",
      "dias": 6,
      "B": {
       "origen": "BIO",
       "destino": "MUC",
-      "fecha": "2027-02-08",
-      "precio": 72.0,
-      "aerolineas": "Air Europa",
-      "salida": "2027-02-08 21:05",
-      "llegada": "2027-02-09 09:45",
+      "fecha": "2027-02-11",
+      "precio": 92.0,
+      "aerolineas": "Iberia",
+      "salida": "2027-02-11 09:15",
+      "llegada": "2027-02-11 22:40",
       "escalas": 1,
       "duracion_vuelo_min": 230,
       "fuente": "Google Flights",
-      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMDgoAWoFEgNCSU9yBRIDTVVDQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
+      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTEoAWoFEgNCSU9yBRIDTVVDQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
       "vuelta": {
        "origen": "MUC",
        "destino": "BIO",
-       "fecha": "2027-02-13",
-       "precio": 113.0,
-       "aerolineas": "Air Europa",
-       "salida": "2027-02-13 18:55",
-       "llegada": "2027-02-14 07:45",
+       "fecha": "2027-02-16",
+       "precio": 90.0,
+       "aerolineas": "Vueling",
+       "salida": "2027-02-16 21:05",
+       "llegada": "2027-02-17 08:20",
        "escalas": 1,
-       "duracion_vuelo_min": 235,
+       "duracion_vuelo_min": 210,
        "fuente": "Google Flights",
-       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTMoAWoFEgNNVUNyBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
+       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTYoAWoFEgNNVUNyBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
       },
-      "total": 185.0
+      "total": 182.0
      },
      "A": null,
-     "total_vuelos": 185.0
+     "total_vuelos": 182.0
     }
    ],
    "alojamiento": {
     "lugar": "Innsbruck",
-    "check_in": "2027-02-08",
-    "check_out": "2027-02-13",
+    "check_in": "2027-02-11",
+    "check_out": "2027-02-16",
     "noches": 5,
     "opciones": [
      {
-      "nombre": "Quiet apartment near Innsbruck",
-      "tipo": "Apartment in Ampass",
-      "precio_total": 462.0,
-      "precio_noche": 92.0,
-      "valoracion": 4.96,
-      "resenas": 223,
-      "enlace": "https://www.airbnb.es/rooms/45988682?check_in=2027-02-08&check_out=2027-02-13&adults=2"
+      "nombre": "Attic room / cooking facility Top3/Rotental No. 6",
+      "tipo": "Home in Völs",
+      "precio_total": 385.0,
+      "precio_noche": 77.0,
+      "valoracion": 4.51,
+      "resenas": 134,
+      "enlace": "https://www.airbnb.es/rooms/849316891280844377?check_in=2027-02-11&check_out=2027-02-16&adults=2"
      },
      {
       "nombre": "Cozy mountain view apartment with terrace + garden",
       "tipo": "Apartment in Götzens",
-      "precio_total": 545.0,
-      "precio_noche": 109.0,
+      "precio_total": 555.0,
+      "precio_noche": 111.0,
       "valoracion": 4.95,
       "resenas": 44,
-      "enlace": "https://www.airbnb.es/rooms/46931962?check_in=2027-02-08&check_out=2027-02-13&adults=2"
+      "enlace": "https://www.airbnb.es/rooms/46931962?check_in=2027-02-11&check_out=2027-02-16&adults=2"
      },
      {
       "nombre": "Renovated one-room apartment in a quiet courtyard",
       "tipo": "Apartment in Innsbruck",
-      "precio_total": 565.0,
-      "precio_noche": 113.0,
+      "precio_total": 582.0,
+      "precio_noche": 116.0,
       "valoracion": 4.68,
       "resenas": 347,
-      "enlace": "https://www.airbnb.es/rooms/761316598416539828?check_in=2027-02-08&check_out=2027-02-13&adults=2"
+      "enlace": "https://www.airbnb.es/rooms/761316598416539828?check_in=2027-02-11&check_out=2027-02-16&adults=2"
      }
     ],
-    "booking": "https://www.booking.com/searchresults.es.html?ss=Innsbruck&checkin=2027-02-08&checkout=2027-02-13&group_adults=2&no_rooms=1&order=price",
-    "airbnb_busqueda": "https://www.airbnb.es/s/Innsbruck/homes?checkin=2027-02-08&checkout=2027-02-13&adults=2",
+    "booking": "https://www.booking.com/searchresults.es.html?ss=Innsbruck&checkin=2027-02-11&checkout=2027-02-16&group_adults=2&no_rooms=1&order=price",
+    "airbnb_busqueda": "https://www.airbnb.es/s/Innsbruck/homes?checkin=2027-02-11&checkout=2027-02-16&adults=2",
     "nota": "",
-    "para_opcion": "2027-02-08_2027-02-13"
+    "para_opcion": "2027-02-11_2027-02-16"
    }
   },
   {
@@ -2126,9 +2126,9 @@
       "destino": "MUC",
       "fecha": "2027-02-09",
       "precio": 72.0,
-      "aerolineas": "Iberia",
-      "salida": "2027-02-09 13:35",
-      "llegada": "2027-02-09 22:40",
+      "aerolineas": "Air Europa",
+      "salida": "2027-02-09 21:05",
+      "llegada": "2027-02-10 09:45",
       "escalas": 1,
       "duracion_vuelo_min": 230,
       "fuente": "Google Flights",
@@ -2194,9 +2194,9 @@
       "destino": "MUC",
       "fecha": "2027-02-09",
       "precio": 72.0,
-      "aerolineas": "Iberia",
-      "salida": "2027-02-09 13:35",
-      "llegada": "2027-02-09 22:40",
+      "aerolineas": "Air Europa",
+      "salida": "2027-02-09 21:05",
+      "llegada": "2027-02-10 09:45",
       "escalas": 1,
       "duracion_vuelo_min": 230,
       "fuente": "Google Flights",
@@ -2220,55 +2220,46 @@
      "total_vuelos": 185.0
     },
     {
-     "ida": "2027-02-08",
-     "vuelta": "2027-02-13",
+     "ida": "2027-02-11",
+     "vuelta": "2027-02-16",
      "dias": 6,
      "B": {
       "origen": "BIO",
       "destino": "MUC",
-      "fecha": "2027-02-08",
-      "precio": 72.0,
-      "aerolineas": "Air Europa",
-      "salida": "2027-02-08 21:05",
-      "llegada": "2027-02-09 09:45",
+      "fecha": "2027-02-11",
+      "precio": 92.0,
+      "aerolineas": "Iberia",
+      "salida": "2027-02-11 09:15",
+      "llegada": "2027-02-11 22:40",
       "escalas": 1,
       "duracion_vuelo_min": 230,
       "fuente": "Google Flights",
-      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMDgoAWoFEgNCSU9yBRIDTVVDQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
+      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTEoAWoFEgNCSU9yBRIDTVVDQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
       "vuelta": {
        "origen": "MUC",
        "destino": "BIO",
-       "fecha": "2027-02-13",
-       "precio": 113.0,
-       "aerolineas": "Air Europa",
-       "salida": "2027-02-13 18:55",
-       "llegada": "2027-02-14 07:45",
+       "fecha": "2027-02-16",
+       "precio": 90.0,
+       "aerolineas": "Vueling",
+       "salida": "2027-02-16 21:05",
+       "llegada": "2027-02-17 08:20",
        "escalas": 1,
-       "duracion_vuelo_min": 235,
+       "duracion_vuelo_min": 210,
        "fuente": "Google Flights",
-       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTMoAWoFEgNNVUNyBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
+       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTYoAWoFEgNNVUNyBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
       },
-      "total": 185.0
+      "total": 182.0
      },
      "A": null,
-     "total_vuelos": 185.0
+     "total_vuelos": 182.0
     }
    ],
    "alojamiento": {
     "lugar": "Schladming",
-    "check_in": "2027-02-08",
-    "check_out": "2027-02-13",
+    "check_in": "2027-02-11",
+    "check_out": "2027-02-16",
     "noches": 5,
     "opciones": [
-     {
-      "nombre": "Haus Hoamatl - Hochwurzen Room",
-      "tipo": "Room in Schladming",
-      "precio_total": 405.0,
-      "precio_noche": 81.0,
-      "valoracion": 4.98,
-      "resenas": 189,
-      "enlace": "https://www.airbnb.es/rooms/16080987?check_in=2027-02-08&check_out=2027-02-13&adults=2"
-     },
      {
       "nombre": "Haus Hoamatl - Dachstein Room",
       "tipo": "Room in Schladming",
@@ -2276,22 +2267,31 @@
       "precio_noche": 81.0,
       "valoracion": 4.98,
       "resenas": 205,
-      "enlace": "https://www.airbnb.es/rooms/19859211?check_in=2027-02-08&check_out=2027-02-13&adults=2"
+      "enlace": "https://www.airbnb.es/rooms/19859211?check_in=2027-02-11&check_out=2027-02-16&adults=2"
+     },
+     {
+      "nombre": "Haus Hoamatl - Hochwurzen Room",
+      "tipo": "Room in Schladming",
+      "precio_total": 405.0,
+      "precio_noche": 81.0,
+      "valoracion": 4.98,
+      "resenas": 189,
+      "enlace": "https://www.airbnb.es/rooms/16080987?check_in=2027-02-11&check_out=2027-02-16&adults=2"
      },
      {
       "nombre": "Private room overlooking the Planai!",
       "tipo": "Room in Ramsau am Dachstein",
-      "precio_total": 528.0,
-      "precio_noche": 106.0,
+      "precio_total": 539.0,
+      "precio_noche": 108.0,
       "valoracion": 4.9,
       "resenas": 103,
-      "enlace": "https://www.airbnb.es/rooms/706309322653694401?check_in=2027-02-08&check_out=2027-02-13&adults=2"
+      "enlace": "https://www.airbnb.es/rooms/706309322653694401?check_in=2027-02-11&check_out=2027-02-16&adults=2"
      }
     ],
-    "booking": "https://www.booking.com/searchresults.es.html?ss=Schladming&checkin=2027-02-08&checkout=2027-02-13&group_adults=2&no_rooms=1&order=price",
-    "airbnb_busqueda": "https://www.airbnb.es/s/Schladming/homes?checkin=2027-02-08&checkout=2027-02-13&adults=2",
+    "booking": "https://www.booking.com/searchresults.es.html?ss=Schladming&checkin=2027-02-11&checkout=2027-02-16&group_adults=2&no_rooms=1&order=price",
+    "airbnb_busqueda": "https://www.airbnb.es/s/Schladming/homes?checkin=2027-02-11&checkout=2027-02-16&adults=2",
     "nota": "",
-    "para_opcion": "2027-02-08_2027-02-13"
+    "para_opcion": "2027-02-11_2027-02-16"
    }
   },
   {
@@ -2308,33 +2308,33 @@
    "A_en_tren": true,
    "opciones": [
     {
-     "ida": "2027-02-08",
-     "vuelta": "2027-02-10",
+     "ida": "2027-02-09",
+     "vuelta": "2027-02-11",
      "dias": 3,
      "B": {
       "origen": "BIO",
       "destino": "ZRH",
-      "fecha": "2027-02-08",
-      "precio": 81.0,
-      "aerolineas": "Iberia",
-      "salida": "2027-02-08 13:35",
-      "llegada": "2027-02-08 22:30",
+      "fecha": "2027-02-09",
+      "precio": 63.0,
+      "aerolineas": "Vueling",
+      "salida": "2027-02-09 19:30",
+      "llegada": "2027-02-10 08:55",
       "escalas": 1,
-      "duracion_vuelo_min": 210,
+      "duracion_vuelo_min": 185,
       "fuente": "Google Flights",
-      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMDgoAWoFEgNCSU9yBRIDWlJIQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
+      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMDkoAWoFEgNCSU9yBRIDWlJIQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
       "vuelta": {
        "origen": "ZRH",
        "destino": "BIO",
-       "fecha": "2027-02-10",
-       "precio": 103.0,
-       "aerolineas": "Iberia",
-       "salida": "2027-02-10 11:55",
-       "llegada": "2027-02-10 23:15",
+       "fecha": "2027-02-11",
+       "precio": 121.0,
+       "aerolineas": "Vueling",
+       "salida": "2027-02-11 21:20",
+       "llegada": "2027-02-12 08:20",
        "escalas": 1,
-       "duracion_vuelo_min": 210,
+       "duracion_vuelo_min": 195,
        "fuente": "Google Flights",
-       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTAoAWoFEgNaUkhyBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
+       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTEoAWoFEgNaUkhyBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
       },
       "total": 184.0
      },
@@ -2533,106 +2533,106 @@
      "total_vuelos": 161.0
     },
     {
-     "ida": "2027-02-10",
-     "vuelta": "2027-02-13",
+     "ida": "2027-02-11",
+     "vuelta": "2027-02-14",
      "dias": 4,
      "B": {
-      "origen": "BIO",
-      "destino": "GVA",
-      "fecha": "2027-02-10",
-      "precio": 73.0,
-      "aerolineas": "Iberia",
-      "salida": "2027-02-10 13:35",
-      "llegada": "2027-02-10 22:20",
-      "escalas": 1,
-      "duracion_vuelo_min": 190,
+      "origen": "BIQ",
+      "destino": "LYS",
+      "fecha": "2027-02-11",
+      "precio": 83.0,
+      "aerolineas": "Air France",
+      "salida": "2027-02-11 06:45",
+      "llegada": "2027-02-11 08:00",
+      "escalas": 0,
+      "duracion_vuelo_min": 75,
       "fuente": "Google Flights",
-      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTAoAWoFEgNCSU9yBRIDR1ZBQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
+      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTEoAWoFEgNCSVFyBRIDTFlTQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
       "vuelta": {
        "origen": "LYS",
-       "destino": "BIO",
-       "fecha": "2027-02-13",
-       "precio": 78.0,
-       "aerolineas": "Vueling",
-       "salida": "2027-02-13 16:40",
-       "llegada": "2027-02-13 22:55",
-       "escalas": 1,
-       "duracion_vuelo_min": 160,
+       "destino": "BIQ",
+       "fecha": "2027-02-14",
+       "precio": 35.0,
+       "aerolineas": "easyJet",
+       "salida": "2027-02-14 14:20",
+       "llegada": "2027-02-14 15:35",
+       "escalas": 0,
+       "duracion_vuelo_min": 75,
        "fuente": "Google Flights",
-       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTMoAWoFEgNMWVNyBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
+       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTQoAWoFEgNMWVNyBRIDQklRQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
       },
-      "total": 151.0
+      "total": 118.0
      },
      "A": null,
-     "total_vuelos": 151.0
+     "total_vuelos": 118.0
     },
     {
-     "ida": "2027-02-09",
-     "vuelta": "2027-02-13",
+     "ida": "2027-02-10",
+     "vuelta": "2027-02-14",
      "dias": 5,
      "B": {
-      "origen": "BIO",
+      "origen": "BIQ",
       "destino": "LYS",
-      "fecha": "2027-02-09",
-      "precio": 63.0,
-      "aerolineas": "Vueling",
-      "salida": "2027-02-09 19:30",
-      "llegada": "2027-02-10 08:35",
-      "escalas": 1,
-      "duracion_vuelo_min": 155,
+      "fecha": "2027-02-10",
+      "precio": 83.0,
+      "aerolineas": "Air France",
+      "salida": "2027-02-10 06:45",
+      "llegada": "2027-02-10 08:00",
+      "escalas": 0,
+      "duracion_vuelo_min": 75,
       "fuente": "Google Flights",
-      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMDkoAWoFEgNCSU9yBRIDTFlTQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
+      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTAoAWoFEgNCSVFyBRIDTFlTQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
       "vuelta": {
        "origen": "LYS",
-       "destino": "BIO",
-       "fecha": "2027-02-13",
-       "precio": 78.0,
-       "aerolineas": "Vueling",
-       "salida": "2027-02-13 16:40",
-       "llegada": "2027-02-13 22:55",
-       "escalas": 1,
-       "duracion_vuelo_min": 160,
+       "destino": "BIQ",
+       "fecha": "2027-02-14",
+       "precio": 35.0,
+       "aerolineas": "easyJet",
+       "salida": "2027-02-14 14:20",
+       "llegada": "2027-02-14 15:35",
+       "escalas": 0,
+       "duracion_vuelo_min": 75,
        "fuente": "Google Flights",
-       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTMoAWoFEgNMWVNyBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
+       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTQoAWoFEgNMWVNyBRIDQklRQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
       },
-      "total": 141.0
+      "total": 118.0
      },
      "A": null,
-     "total_vuelos": 141.0
+     "total_vuelos": 118.0
     },
     {
      "ida": "2027-02-09",
      "vuelta": "2027-02-14",
      "dias": 6,
      "B": {
-      "origen": "BIO",
+      "origen": "BIQ",
       "destino": "LYS",
       "fecha": "2027-02-09",
-      "precio": 63.0,
-      "aerolineas": "Vueling",
-      "salida": "2027-02-09 19:30",
-      "llegada": "2027-02-10 08:35",
-      "escalas": 1,
-      "duracion_vuelo_min": 155,
+      "precio": 83.0,
+      "aerolineas": "Air France",
+      "salida": "2027-02-09 06:55",
+      "llegada": "2027-02-09 08:10",
+      "escalas": 0,
+      "duracion_vuelo_min": 75,
       "fuente": "Google Flights",
-      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMDkoAWoFEgNCSU9yBRIDTFlTQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
+      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMDkoAWoFEgNCSVFyBRIDTFlTQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
       "vuelta": {
        "origen": "LYS",
-       "destino": "BIO",
+       "destino": "BIQ",
        "fecha": "2027-02-14",
-       "precio": 88.0,
-       "aerolineas": "Vueling",
-       "salida": "2027-02-14 21:20",
-       "llegada": "2027-02-15 08:20",
-       "escalas": 1,
-       "duracion_vuelo_min": 165,
+       "precio": 35.0,
+       "aerolineas": "easyJet",
+       "salida": "2027-02-14 14:20",
+       "llegada": "2027-02-14 15:35",
+       "escalas": 0,
+       "duracion_vuelo_min": 75,
        "fuente": "Google Flights",
-       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTQoAWoFEgNMWVNyBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
+       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTQoAWoFEgNMWVNyBRIDQklRQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
       },
-      "total": 151.0
+      "total": 118.0
      },
      "A": null,
-     "total_vuelos": 151.0
+     "total_vuelos": 118.0
     }
    ],
    "alojamiento": {
@@ -2651,6 +2651,15 @@
       "enlace": "https://www.airbnb.es/rooms/1133204208411791770?check_in=2027-02-09&check_out=2027-02-14&adults=2"
      },
      {
+      "nombre": "Cosy Apartment, Taconnaz",
+      "tipo": "Condo in Les Houches",
+      "precio_total": 466.0,
+      "precio_noche": 93.0,
+      "valoracion": 4.82,
+      "resenas": 215,
+      "enlace": "https://www.airbnb.es/rooms/16028367?check_in=2027-02-09&check_out=2027-02-14&adults=2"
+     },
+     {
       "nombre": "Studio at the foot of Brévent",
       "tipo": "Apartment in Chamonix",
       "precio_total": 572.0,
@@ -2658,15 +2667,6 @@
       "valoracion": 4.79,
       "resenas": 29,
       "enlace": "https://www.airbnb.es/rooms/43611246?check_in=2027-02-09&check_out=2027-02-14&adults=2"
-     },
-     {
-      "nombre": "Studio #7",
-      "tipo": "Apartment in Les Houches",
-      "precio_total": 580.0,
-      "precio_noche": 116.0,
-      "valoracion": 4.95,
-      "resenas": 80,
-      "enlace": "https://www.airbnb.es/rooms/1200755802256119653?check_in=2027-02-09&check_out=2027-02-14&adults=2"
      }
     ],
     "booking": "https://www.booking.com/searchresults.es.html?ss=Chamonix&checkin=2027-02-09&checkout=2027-02-14&group_adults=2&no_rooms=1&order=price",
@@ -2694,20 +2694,8 @@
    "llegada_ida": "2026-11-06 14:45",
    "salida_vuelta": "2026-11-08 06:15",
    "llegada_vuelta": "2026-11-08 09:10",
-   "precio_ida_vuelta": 37.98,
+   "precio_ida_vuelta": 36.98,
    "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-11-06&dateIn=2026-11-08&originIata=BIQ&destinationIata=STN&isReturn=true"
-  },
-  {
-   "origen": "BIQ",
-   "destino": "STN",
-   "ciudad": "Londres",
-   "pais": "Reino Unido",
-   "salida_ida": "2026-11-20 13:50",
-   "llegada_ida": "2026-11-20 14:45",
-   "salida_vuelta": "2026-11-22 06:15",
-   "llegada_vuelta": "2026-11-22 09:10",
-   "precio_ida_vuelta": 44.74,
-   "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-11-20&dateIn=2026-11-22&originIata=BIQ&destinationIata=STN&isReturn=true"
   },
   {
    "origen": "BIQ",
@@ -2718,8 +2706,20 @@
    "llegada_ida": "2026-11-13 14:45",
    "salida_vuelta": "2026-11-15 06:15",
    "llegada_vuelta": "2026-11-15 09:10",
-   "precio_ida_vuelta": 45.83,
+   "precio_ida_vuelta": 43.98,
    "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-11-13&dateIn=2026-11-15&originIata=BIQ&destinationIata=STN&isReturn=true"
+  },
+  {
+   "origen": "BIQ",
+   "destino": "STN",
+   "ciudad": "Londres",
+   "pais": "Reino Unido",
+   "salida_ida": "2026-11-20 13:50",
+   "llegada_ida": "2026-11-20 14:45",
+   "salida_vuelta": "2026-11-22 06:15",
+   "llegada_vuelta": "2026-11-22 09:10",
+   "precio_ida_vuelta": 43.98,
+   "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-11-20&dateIn=2026-11-22&originIata=BIQ&destinationIata=STN&isReturn=true"
   },
   {
    "origen": "BIQ",
@@ -2754,7 +2754,7 @@
    "llegada_ida": "2026-12-04 14:45",
    "salida_vuelta": "2026-12-06 06:15",
    "llegada_vuelta": "2026-12-06 09:10",
-   "precio_ida_vuelta": 78.56,
+   "precio_ida_vuelta": 79.96,
    "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-12-04&dateIn=2026-12-06&originIata=BIQ&destinationIata=STN&isReturn=true"
   },
   {
@@ -2774,24 +2774,24 @@
    "destino": "CRL",
    "ciudad": "Charleroi",
    "pais": "Bélgica",
-   "salida_ida": "2026-11-20 15:35",
-   "llegada_ida": "2026-11-20 17:20",
-   "salida_vuelta": "2026-11-22 12:45",
-   "llegada_vuelta": "2026-11-22 14:30",
-   "precio_ida_vuelta": 86.98,
-   "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-11-20&dateIn=2026-11-22&originIata=BIQ&destinationIata=CRL&isReturn=true"
+   "salida_ida": "2026-11-27 15:35",
+   "llegada_ida": "2026-11-27 17:20",
+   "salida_vuelta": "2026-11-29 12:45",
+   "llegada_vuelta": "2026-11-29 14:30",
+   "precio_ida_vuelta": 83.49,
+   "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-11-27&dateIn=2026-11-29&originIata=BIQ&destinationIata=CRL&isReturn=true"
   },
   {
    "origen": "BIQ",
    "destino": "CRL",
    "ciudad": "Charleroi",
    "pais": "Bélgica",
-   "salida_ida": "2026-11-27 15:35",
-   "llegada_ida": "2026-11-27 17:20",
-   "salida_vuelta": "2026-11-29 12:45",
-   "llegada_vuelta": "2026-11-29 14:30",
-   "precio_ida_vuelta": 93.98,
-   "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-11-27&dateIn=2026-11-29&originIata=BIQ&destinationIata=CRL&isReturn=true"
+   "salida_ida": "2026-11-20 15:35",
+   "llegada_ida": "2026-11-20 17:20",
+   "salida_vuelta": "2026-11-22 12:45",
+   "llegada_vuelta": "2026-11-22 14:30",
+   "precio_ida_vuelta": 85.98,
+   "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-11-20&dateIn=2026-11-22&originIata=BIQ&destinationIata=CRL&isReturn=true"
   },
   {
    "origen": "VIT",
@@ -2826,8 +2826,20 @@
    "llegada_ida": "2026-12-04 17:20",
    "salida_vuelta": "2026-12-06 12:45",
    "llegada_vuelta": "2026-12-06 14:30",
-   "precio_ida_vuelta": 107.17,
+   "precio_ida_vuelta": 109.96,
    "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-12-04&dateIn=2026-12-06&originIata=BIQ&destinationIata=CRL&isReturn=true"
+  },
+  {
+   "origen": "BIQ",
+   "destino": "STN",
+   "ciudad": "Londres",
+   "pais": "Reino Unido",
+   "salida_ida": "2026-12-18 13:50",
+   "llegada_ida": "2026-12-18 14:45",
+   "salida_vuelta": "2026-12-20 06:15",
+   "llegada_vuelta": "2026-12-20 09:10",
+   "precio_ida_vuelta": 118.84,
+   "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-12-18&dateIn=2026-12-20&originIata=BIQ&destinationIata=STN&isReturn=true"
   },
   {
    "origen": "BIQ",
@@ -2843,15 +2855,27 @@
   },
   {
    "origen": "BIQ",
+   "destino": "CRL",
+   "ciudad": "Charleroi",
+   "pais": "Bélgica",
+   "salida_ida": "2026-12-18 15:35",
+   "llegada_ida": "2026-12-18 17:20",
+   "salida_vuelta": "2026-12-20 12:45",
+   "llegada_vuelta": "2026-12-20 14:30",
+   "precio_ida_vuelta": 187.38,
+   "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-12-18&dateIn=2026-12-20&originIata=BIQ&destinationIata=CRL&isReturn=true"
+  },
+  {
+   "origen": "SDR",
    "destino": "STN",
    "ciudad": "Londres",
    "pais": "Reino Unido",
-   "salida_ida": "2026-12-18 13:50",
-   "llegada_ida": "2026-12-18 14:45",
-   "salida_vuelta": "2026-12-20 06:15",
-   "llegada_vuelta": "2026-12-20 09:10",
-   "precio_ida_vuelta": 120.41,
-   "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-12-18&dateIn=2026-12-20&originIata=BIQ&destinationIata=STN&isReturn=true"
+   "salida_ida": "2026-10-23 21:40",
+   "llegada_ida": "2026-10-23 22:30",
+   "salida_vuelta": "2026-10-25 13:15",
+   "llegada_vuelta": "2026-10-25 16:10",
+   "precio_ida_vuelta": 189.69,
+   "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-10-23&dateIn=2026-10-25&originIata=SDR&destinationIata=STN&isReturn=true"
   },
   {
    "origen": "BIQ",
@@ -2867,30 +2891,6 @@
   },
   {
    "origen": "BIQ",
-   "destino": "CRL",
-   "ciudad": "Charleroi",
-   "pais": "Bélgica",
-   "salida_ida": "2026-12-18 15:35",
-   "llegada_ida": "2026-12-18 17:20",
-   "salida_vuelta": "2026-12-20 12:45",
-   "llegada_vuelta": "2026-12-20 14:30",
-   "precio_ida_vuelta": 191.65,
-   "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-12-18&dateIn=2026-12-20&originIata=BIQ&destinationIata=CRL&isReturn=true"
-  },
-  {
-   "origen": "SDR",
-   "destino": "STN",
-   "ciudad": "Londres",
-   "pais": "Reino Unido",
-   "salida_ida": "2026-10-23 21:40",
-   "llegada_ida": "2026-10-23 22:30",
-   "salida_vuelta": "2026-10-25 13:15",
-   "llegada_vuelta": "2026-10-25 16:10",
-   "precio_ida_vuelta": 201.23,
-   "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-10-23&dateIn=2026-10-25&originIata=SDR&destinationIata=STN&isReturn=true"
-  },
-  {
-   "origen": "BIQ",
    "destino": "STN",
    "ciudad": "Londres",
    "pais": "Reino Unido",
@@ -2898,7 +2898,7 @@
    "llegada_ida": "2026-10-23 17:35",
    "salida_vuelta": "2026-10-25 06:15",
    "llegada_vuelta": "2026-10-25 09:10",
-   "precio_ida_vuelta": 239.06,
+   "precio_ida_vuelta": 269.48,
    "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-10-23&dateIn=2026-10-25&originIata=BIQ&destinationIata=STN&isReturn=true"
   },
   {
@@ -2910,7 +2910,7 @@
    "llegada_ida": "2026-10-30 17:20",
    "salida_vuelta": "2026-11-01 12:45",
    "llegada_vuelta": "2026-11-01 14:30",
-   "precio_ida_vuelta": 280.37,
+   "precio_ida_vuelta": 287.22,
    "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-10-30&dateIn=2026-11-01&originIata=BIQ&destinationIata=CRL&isReturn=true"
   },
   {
@@ -2922,7 +2922,7 @@
    "llegada_ida": "2026-10-23 21:45",
    "salida_vuelta": "2026-10-25 12:45",
    "llegada_vuelta": "2026-10-25 14:30",
-   "precio_ida_vuelta": 350.62,
+   "precio_ida_vuelta": 342.38,
    "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-10-23&dateIn=2026-10-25&originIata=BIQ&destinationIata=CRL&isReturn=true"
   }
  ],
@@ -2936,7 +2936,7 @@
    "llegada_ida": "2026-11-06 14:45",
    "salida_vuelta": "2026-11-08 06:15",
    "llegada_vuelta": "2026-11-08 09:10",
-   "precio_ida_vuelta": 37.98,
+   "precio_ida_vuelta": 36.98,
    "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-11-06&dateIn=2026-11-08&originIata=BIQ&destinationIata=STN&isReturn=true",
    "pais_codigo": "GB",
    "alojamiento": {
@@ -3032,6 +3032,17 @@
  ],
  "bajadas": [
   {
+   "origen": "SOF",
+   "destino": "ZRH",
+   "fecha": "2027-02-12",
+   "precio_hoy": 76.0,
+   "minimo_anterior": 138.0,
+   "bajada_pct": 44.9,
+   "salida": "2027-02-12 05:00",
+   "aerolineas": "Air Serbia",
+   "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMTIoAWoFEgNTT0ZyBRIDWlJIQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
+  },
+  {
    "origen": "EAS",
    "destino": "MXP",
    "fecha": "2026-12-05",
@@ -3043,10 +3054,10 @@
    "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDUoAWoFEgNFQVNyBRIDTVhQQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
   }
  ],
- "peticiones_google": 542,
- "exitos_google": 424,
- "sin_vuelos_google": 118,
+ "peticiones_google": 464,
+ "exitos_google": 442,
+ "sin_vuelos_google": 22,
  "errores_google": 0,
- "rutas_saltadas": 233,
+ "rutas_saltadas": 313,
  "busquedas_airbnb": 21
 }
