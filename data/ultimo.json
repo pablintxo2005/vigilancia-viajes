@@ -1,5 +1,5 @@
 {
- "fecha_consulta": "2026-10-21 00:37 UTC",
+ "fecha_consulta": "2026-10-21 06:34 UTC",
  "umbral": 150,
  "bajada_pct": 20,
  "avisos": [],
@@ -14,7 +14,7 @@
      "origen": "BIO",
      "destino": "MXP",
      "fecha": "2026-12-04",
-     "precio": 129.0,
+     "precio": 134.0,
      "aerolineas": "Vueling",
      "salida": "2026-12-04 08:55",
      "llegada": "2026-12-04 14:20",
@@ -35,13 +35,13 @@
       "fuente": "Google Flights",
       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDgoAWoFEgNNWFByBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
      },
-     "total": 307.0
+     "total": 312.0
     },
     "2026-12-04_2026-12-09": {
      "origen": "BIO",
      "destino": "MXP",
      "fecha": "2026-12-04",
-     "precio": 129.0,
+     "precio": 134.0,
      "aerolineas": "Vueling",
      "salida": "2026-12-04 08:55",
      "llegada": "2026-12-04 14:20",
@@ -62,13 +62,13 @@
       "fuente": "Google Flights",
       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDkoAWoFEgNNWFByBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
      },
-     "total": 181.0
+     "total": 186.0
     },
     "2026-12-05_2026-12-09": {
      "origen": "BIO",
      "destino": "MXP",
      "fecha": "2026-12-05",
-     "precio": 52.0,
+     "precio": 48.0,
      "aerolineas": "Vueling",
      "salida": "2026-12-05 19:40",
      "llegada": "2026-12-06 09:20",
@@ -89,7 +89,7 @@
       "fuente": "Google Flights",
       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDkoAWoFEgNNWFByBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
      },
-     "total": 104.0
+     "total": 100.0
     }
    },
    "alojamiento": {
@@ -109,15 +109,6 @@
        "enlace": "https://www.airbnb.es/rooms/851905947453844955?check_in=2026-12-04&check_out=2026-12-08&adults=2"
       },
       {
-       "nombre": "[NEW] Lake Maggiore - Milan and airport 7 minutes away",
-       "tipo": "Apartment in Somma Lombardo",
-       "precio_total": 291.0,
-       "precio_noche": 73.0,
-       "valoracion": 4.82,
-       "resenas": 108,
-       "enlace": "https://www.airbnb.es/rooms/839608398033610539?check_in=2026-12-04&check_out=2026-12-08&adults=2"
-      },
-      {
        "nombre": "Fly&Rest MXP | Suite | Airport Transfer 24/7",
        "tipo": "Apartment in Casorate Sempione",
        "precio_total": 292.0,
@@ -125,6 +116,15 @@
        "valoracion": 5.0,
        "resenas": 20,
        "enlace": "https://www.airbnb.es/rooms/1618757706574354580?check_in=2026-12-04&check_out=2026-12-08&adults=2"
+      },
+      {
+       "nombre": "New grey",
+       "tipo": "Condo in Somma Lombardo",
+       "precio_total": 294.0,
+       "precio_noche": 74.0,
+       "valoracion": 4.95,
+       "resenas": 21,
+       "enlace": "https://www.airbnb.es/rooms/1384018070612879510?check_in=2026-12-04&check_out=2026-12-08&adults=2"
       }
      ],
      "booking": "https://www.booking.com/searchresults.es.html?ss=Milan&checkin=2026-12-04&checkout=2026-12-08&group_adults=2&no_rooms=1&order=price",
@@ -147,15 +147,6 @@
        "enlace": "https://www.airbnb.es/rooms/1618757706574354580?check_in=2026-12-04&check_out=2026-12-09&adults=2"
       },
       {
-       "nombre": "Terminal 11 home - 5' Malpensa 25' Milano",
-       "tipo": "Condo in Gallarate",
-       "precio_total": 356.0,
-       "precio_noche": 71.0,
-       "valoracion": 5.0,
-       "resenas": 18,
-       "enlace": "https://www.airbnb.es/rooms/1679804282029203996?check_in=2026-12-04&check_out=2026-12-09&adults=2"
-      },
-      {
        "nombre": "*7 Minutes from MXP* [Lake Maggiore]",
        "tipo": "Apartment in Somma Lombardo",
        "precio_total": 358.0,
@@ -163,6 +154,15 @@
        "valoracion": 4.84,
        "resenas": 132,
        "enlace": "https://www.airbnb.es/rooms/851905947453844955?check_in=2026-12-04&check_out=2026-12-09&adults=2"
+      },
+      {
+       "nombre": "New grey",
+       "tipo": "Condo in Somma Lombardo",
+       "precio_total": 360.0,
+       "precio_noche": 72.0,
+       "valoracion": 4.95,
+       "resenas": 21,
+       "enlace": "https://www.airbnb.es/rooms/1384018070612879510?check_in=2026-12-04&check_out=2026-12-09&adults=2"
       }
      ],
      "booking": "https://www.booking.com/searchresults.es.html?ss=Milan&checkin=2026-12-04&checkout=2026-12-09&group_adults=2&no_rooms=1&order=price",
@@ -194,13 +194,13 @@
        "enlace": "https://www.airbnb.es/rooms/851905947453844955?check_in=2026-12-05&check_out=2026-12-09&adults=2"
       },
       {
-       "nombre": "Terminal 11 home - 5' Malpensa 25' Milano",
-       "tipo": "Condo in Gallarate",
-       "precio_total": 293.0,
-       "precio_noche": 73.0,
-       "valoracion": 5.0,
-       "resenas": 18,
-       "enlace": "https://www.airbnb.es/rooms/1679804282029203996?check_in=2026-12-05&check_out=2026-12-09&adults=2"
+       "nombre": "New grey",
+       "tipo": "Condo in Somma Lombardo",
+       "precio_total": 294.0,
+       "precio_noche": 74.0,
+       "valoracion": 4.95,
+       "resenas": 21,
+       "enlace": "https://www.airbnb.es/rooms/1384018070612879510?check_in=2026-12-05&check_out=2026-12-09&adults=2"
       }
      ],
      "booking": "https://www.booking.com/searchresults.es.html?ss=Milan&checkin=2026-12-05&checkout=2026-12-09&group_adults=2&no_rooms=1&order=price",
@@ -370,12 +370,12 @@
      "origen": "BIO",
      "destino": "MUC",
      "fecha": "2026-12-05",
-     "precio": 89.0,
-     "aerolineas": "KLM",
-     "salida": "2026-12-05 17:20",
-     "llegada": "2026-12-06 10:55",
+     "precio": 103.0,
+     "aerolineas": "Vueling",
+     "salida": "2026-12-05 19:40",
+     "llegada": "2026-12-06 09:00",
      "escalas": 1,
-     "duracion_vuelo_min": 215,
+     "duracion_vuelo_min": 200,
      "fuente": "Google Flights",
      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDUoAWoFEgNCSU9yBRIDTVVDQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
      "vuelta": {
@@ -391,7 +391,7 @@
       "fuente": "Google Flights",
       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDkoAWoFEgNNVUNyBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
      },
-     "total": 202.0
+     "total": 216.0
     }
    },
    "alojamiento": {
@@ -478,6 +478,15 @@
      "noches": 4,
      "opciones": [
       {
+       "nombre": "\"Charming room\" near SURF TOWN",
+       "tipo": "Room in Hallbergmoos",
+       "precio_total": 242.0,
+       "precio_noche": 60.0,
+       "valoracion": 4.62,
+       "resenas": 82,
+       "enlace": "https://www.airbnb.es/rooms/708058?check_in=2026-12-05&check_out=2026-12-09&adults=2"
+      },
+      {
        "nombre": "Cozy Double: Convenient Base Near Munich Airport",
        "tipo": "Apartment in Freising",
        "precio_total": 263.0,
@@ -487,22 +496,13 @@
        "enlace": "https://www.airbnb.es/rooms/888268801801778648?check_in=2026-12-05&check_out=2026-12-09&adults=2"
       },
       {
-       "nombre": "Private room in a beautiful and quiet location",
-       "tipo": "Room in Freising",
-       "precio_total": 282.0,
-       "precio_noche": 70.0,
-       "valoracion": 4.94,
-       "resenas": 211,
-       "enlace": "https://www.airbnb.es/rooms/662306876636085749?check_in=2026-12-05&check_out=2026-12-09&adults=2"
-      },
-      {
-       "nombre": "Double | Ramada MUC | Therme Erding",
-       "tipo": "Hotel room in Oberding",
-       "precio_total": 284.0,
-       "precio_noche": 71.0,
-       "valoracion": 4.6,
-       "resenas": 5,
-       "enlace": "https://www.airbnb.es/rooms/1657942785180830703?check_in=2026-12-05&check_out=2026-12-09&adults=2"
+       "nombre": "Comfortable overnight stay in a caravan with kitchen",
+       "tipo": "Loft in Hallbergmoos",
+       "precio_total": 264.0,
+       "precio_noche": 66.0,
+       "valoracion": 4.65,
+       "resenas": 57,
+       "enlace": "https://www.airbnb.es/rooms/674250?check_in=2026-12-05&check_out=2026-12-09&adults=2"
       }
      ],
      "booking": "https://www.booking.com/searchresults.es.html?ss=Munich&checkin=2026-12-05&checkout=2026-12-09&group_adults=2&no_rooms=1&order=price",
@@ -606,15 +606,6 @@
      "noches": 4,
      "opciones": [
       {
-       "nombre": "Eco Venice 1",
-       "tipo": "Place to stay in Italy",
-       "precio_total": 270.0,
-       "precio_noche": 68.0,
-       "valoracion": 4.84,
-       "resenas": 467,
-       "enlace": "https://www.airbnb.es/rooms/72740?check_in=2026-12-04&check_out=2026-12-08&adults=2"
-      },
-      {
        "nombre": "Eco Venice 3",
        "tipo": "Place to stay in Italy",
        "precio_total": 270.0,
@@ -622,6 +613,15 @@
        "valoracion": 4.87,
        "resenas": 257,
        "enlace": "https://www.airbnb.es/rooms/1539837?check_in=2026-12-04&check_out=2026-12-08&adults=2"
+      },
+      {
+       "nombre": "Eco Venice 1",
+       "tipo": "Place to stay in Italy",
+       "precio_total": 270.0,
+       "precio_noche": 68.0,
+       "valoracion": 4.84,
+       "resenas": 467,
+       "enlace": "https://www.airbnb.es/rooms/72740?check_in=2026-12-04&check_out=2026-12-08&adults=2"
       },
       {
        "nombre": "Eco Venice 2",
@@ -645,7 +645,7 @@
      "opciones": [
       {
        "nombre": "Eco Venice 3",
-       "tipo": "Place to stay in Venice",
+       "tipo": "Place to stay in Italy",
        "precio_total": 338.0,
        "precio_noche": 68.0,
        "valoracion": 4.87,
@@ -654,7 +654,7 @@
       },
       {
        "nombre": "Eco Venice 1",
-       "tipo": "Place to stay in Venice",
+       "tipo": "Place to stay in Italy",
        "precio_total": 338.0,
        "precio_noche": 68.0,
        "valoracion": 4.84,
@@ -663,7 +663,7 @@
       },
       {
        "nombre": "Eco Venice 2",
-       "tipo": "Place to stay in Venice",
+       "tipo": "Place to stay in Italy",
        "precio_total": 338.0,
        "precio_noche": 68.0,
        "valoracion": 4.9,
@@ -682,6 +682,15 @@
      "noches": 4,
      "opciones": [
       {
+       "nombre": "Eco Venice 3",
+       "tipo": "Place to stay in Italy",
+       "precio_total": 270.0,
+       "precio_noche": 68.0,
+       "valoracion": 4.87,
+       "resenas": 257,
+       "enlace": "https://www.airbnb.es/rooms/1539837?check_in=2026-12-05&check_out=2026-12-09&adults=2"
+      },
+      {
        "nombre": "Eco Venice 1",
        "tipo": "Place to stay in Italy",
        "precio_total": 270.0,
@@ -698,15 +707,6 @@
        "valoracion": 4.9,
        "resenas": 165,
        "enlace": "https://www.airbnb.es/rooms/4439252?check_in=2026-12-05&check_out=2026-12-09&adults=2"
-      },
-      {
-       "nombre": "Eco Venice 3",
-       "tipo": "Place to stay in Italy",
-       "precio_total": 270.0,
-       "precio_noche": 68.0,
-       "valoracion": 4.87,
-       "resenas": 257,
-       "enlace": "https://www.airbnb.es/rooms/1539837?check_in=2026-12-05&check_out=2026-12-09&adults=2"
       }
      ],
      "booking": "https://www.booking.com/searchresults.es.html?ss=Venezia&checkin=2026-12-05&checkout=2026-12-09&group_adults=2&no_rooms=1&order=price",
@@ -848,15 +848,6 @@
      "noches": 5,
      "opciones": [
       {
-       "nombre": "Giuditta Room B",
-       "tipo": "Room in Cirié",
-       "precio_total": 327.0,
-       "precio_noche": 65.0,
-       "valoracion": 4.65,
-       "resenas": 20,
-       "enlace": "https://www.airbnb.es/rooms/776718958933725020?check_in=2026-12-04&check_out=2026-12-09&adults=2"
-      },
-      {
        "nombre": "La Casa dei Fiori – San Maurizio",
        "tipo": "Room in San Maurizio Canavese",
        "precio_total": 353.0,
@@ -873,6 +864,15 @@
        "valoracion": 4.8,
        "resenas": 41,
        "enlace": "https://www.airbnb.es/rooms/1136997776193875799?check_in=2026-12-04&check_out=2026-12-09&adults=2"
+      },
+      {
+       "nombre": "Very Central Two-Room Apartment",
+       "tipo": "Condo in Leini",
+       "precio_total": 373.0,
+       "precio_noche": 75.0,
+       "valoracion": 4.87,
+       "resenas": 55,
+       "enlace": "https://www.airbnb.es/rooms/899091915138109773?check_in=2026-12-04&check_out=2026-12-09&adults=2"
       }
      ],
      "booking": "https://www.booking.com/searchresults.es.html?ss=Torino&checkin=2026-12-04&checkout=2026-12-09&group_adults=2&no_rooms=1&order=price",
@@ -967,7 +967,7 @@
       "origen": "LYS",
       "destino": "SDR",
       "fecha": "2026-12-09",
-      "precio": 93.0,
+      "precio": 95.0,
       "aerolineas": "Vueling",
       "salida": "2026-12-09 09:10",
       "llegada": "2026-12-09 20:35",
@@ -976,34 +976,34 @@
       "fuente": "Google Flights",
       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDkoAWoFEgNMWVNyBRIDU0RSQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
      },
-     "total": 290.0
+     "total": 292.0
     },
     "2026-12-05_2026-12-09": {
-     "origen": "BIO",
+     "origen": "EAS",
      "destino": "LYS",
      "fecha": "2026-12-05",
-     "precio": 140.0,
-     "aerolineas": "Vueling",
-     "salida": "2026-12-05 08:55",
-     "llegada": "2026-12-05 16:05",
+     "precio": 207.0,
+     "aerolineas": "Iberia",
+     "salida": "2026-12-05 21:30",
+     "llegada": "2026-12-06 23:45",
      "escalas": 1,
-     "duracion_vuelo_min": 155,
+     "duracion_vuelo_min": 180,
      "fuente": "Google Flights",
-     "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDUoAWoFEgNCSU9yBRIDTFlTQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
+     "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDUoAWoFEgNFQVNyBRIDTFlTQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
      "vuelta": {
       "origen": "LYS",
-      "destino": "BIO",
+      "destino": "EAS",
       "fecha": "2026-12-09",
-      "precio": 162.0,
-      "aerolineas": "Air France",
-      "salida": "2026-12-09 18:35",
-      "llegada": "2026-12-10 11:30",
+      "precio": 115.0,
+      "aerolineas": "Vueling",
+      "salida": "2026-12-09 09:10",
+      "llegada": "2026-12-09 13:35",
       "escalas": 1,
-      "duracion_vuelo_min": 180,
+      "duracion_vuelo_min": 155,
       "fuente": "Google Flights",
-      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDkoAWoFEgNMWVNyBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
+      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDkoAWoFEgNMWVNyBRIDRUFTQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
      },
-     "total": 302.0
+     "total": 322.0
     }
    }
   },
@@ -1031,7 +1031,7 @@
       "precio": 442.0,
       "aerolineas": "Lufthansa",
       "salida": "2026-12-08 18:15",
-      "llegada": "2026-12-09 11:00",
+      "llegada": "2026-12-09 21:55",
       "escalas": 1,
       "duracion_vuelo_min": 305,
       "fuente": "Google Flights",
@@ -1205,12 +1205,12 @@
   }
  ],
  "puente_comparativas": [
-  "Milan (MXP): salir el 4 en vez del 5: pagas 77 € (74 %); volver el 9 en vez del 8: ahorras 126 € (41 %)",
+  "Milan (MXP): salir el 4 en vez del 5: pagas 86 € (86 %); volver el 9 en vez del 8: ahorras 126 € (40 %)",
   "Geneva (GVA): salir el 4 en vez del 5: pagas 43 € (15 %); volver el 9 en vez del 8: ahorras 66 € (17 %)",
-  "Munich (MUC): salir el 4 en vez del 5: pagas 104 € (51 %); volver el 9 en vez del 8: ahorras 163 € (35 %)",
+  "Munich (MUC): salir el 4 en vez del 5: pagas 90 € (42 %); volver el 9 en vez del 8: ahorras 163 € (35 %)",
   "Venezia (VCE): salir el 4 en vez del 5: pagas 71 € (30 %); volver el 9 en vez del 8: ahorras 11 € (3 %)",
   "Torino (TRN): salir el 4 en vez del 5: pagas 47 € (29 %); volver el 9 en vez del 8: ahorras 258 € (55 %)",
-  "Lyon (LYS): salir el 4 en vez del 5: ahorras 12 € (4 %); volver el 9 en vez del 8: ahorras 37 € (11 %)",
+  "Lyon (LYS): salir el 4 en vez del 5: ahorras 30 € (9 %); volver el 9 en vez del 8: ahorras 35 € (11 %)",
   "Innsbruck (INN): salir el 4 en vez del 5: pagas 32 € (5 %); volver el 9 en vez del 8: ahorras 261 € (29 %)",
   "London (STN): salir el 4 en vez del 5: pagas 689 € (269 %); volver el 9 en vez del 8: pagas 19 € (2 %)"
  ],
@@ -2113,38 +2113,38 @@
    "A_en_tren": true,
    "opciones": [
     {
-     "ida": "2027-02-22",
-     "vuelta": "2027-02-24",
+     "ida": "2027-02-20",
+     "vuelta": "2027-02-22",
      "dias": 3,
      "B": {
       "origen": "BIO",
-      "destino": "GVA",
-      "fecha": "2027-02-22",
-      "precio": 51.0,
+      "destino": "LYS",
+      "fecha": "2027-02-20",
+      "precio": 73.0,
       "aerolineas": "Vueling",
-      "salida": "2027-02-22 21:50",
-      "llegada": "2027-02-23 08:15",
+      "salida": "2027-02-20 07:00",
+      "llegada": "2027-02-20 16:05",
       "escalas": 1,
-      "duracion_vuelo_min": 165,
+      "duracion_vuelo_min": 155,
       "fuente": "Google Flights",
-      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMjIoAWoFEgNCSU9yBRIDR1ZBQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
+      "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMjAoAWoFEgNCSU9yBRIDTFlTQgEBSAGIAQGYAQI=&hl=es&curr=EUR",
       "vuelta": {
-       "origen": "LYS",
+       "origen": "GVA",
        "destino": "BIO",
-       "fecha": "2027-02-24",
-       "precio": 64.0,
-       "aerolineas": "Vueling",
-       "salida": "2027-02-24 09:10",
-       "llegada": "2027-02-24 17:20",
-       "escalas": 1,
-       "duracion_vuelo_min": 155,
+       "fecha": "2027-02-22",
+       "precio": 50.0,
+       "aerolineas": "easyJet",
+       "salida": "2027-02-22 11:30",
+       "llegada": "2027-02-22 13:15",
+       "escalas": 0,
+       "duracion_vuelo_min": 105,
        "fuente": "Google Flights",
-       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMjQoAWoFEgNMWVNyBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
+       "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMjIoAWoFEgNHVkFyBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
       },
-      "total": 115.0
+      "total": 123.0
      },
      "A": null,
-     "total_vuelos": 115.0
+     "total_vuelos": 123.0
     },
     {
      "ida": "2027-02-24",
@@ -2265,6 +2265,15 @@
       "enlace": "https://www.airbnb.es/rooms/8417644?check_in=2027-02-24&check_out=2027-03-01&adults=2"
      },
      {
+      "nombre": "Room for rent in apartment in Chamonix center",
+      "tipo": "Room in Chamonix",
+      "precio_total": 445.0,
+      "precio_noche": 89.0,
+      "valoracion": 4.95,
+      "resenas": 111,
+      "enlace": "https://www.airbnb.es/rooms/647546461228801599?check_in=2027-02-24&check_out=2027-03-01&adults=2"
+     },
+     {
       "nombre": "30 m2 2-room apartment, quiet & cozy, ground floor",
       "tipo": "Apartment in Les Houches",
       "precio_total": 460.0,
@@ -2272,15 +2281,6 @@
       "valoracion": 4.97,
       "resenas": 148,
       "enlace": "https://www.airbnb.es/rooms/48163403?check_in=2027-02-24&check_out=2027-03-01&adults=2"
-     },
-     {
-      "nombre": "Bedroom in small Savoyard chalet in Les Bois",
-      "tipo": "Cabin in Chamonix",
-      "precio_total": 583.0,
-      "precio_noche": 117.0,
-      "valoracion": 4.96,
-      "resenas": 24,
-      "enlace": "https://www.airbnb.es/rooms/1520907882001583896?check_in=2027-02-24&check_out=2027-03-01&adults=2"
      }
     ],
     "booking": "https://www.booking.com/searchresults.es.html?ss=Chamonix&checkin=2027-02-24&checkout=2027-03-01&group_adults=2&no_rooms=1&order=price",
@@ -2694,7 +2694,7 @@
    "llegada_ida": "2026-11-06 14:45",
    "salida_vuelta": "2026-11-08 06:15",
    "llegada_vuelta": "2026-11-08 09:10",
-   "precio_ida_vuelta": 39.98,
+   "precio_ida_vuelta": 38.98,
    "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-11-06&dateIn=2026-11-08&originIata=BIQ&destinationIata=STN&isReturn=true"
   },
   {
@@ -2718,7 +2718,7 @@
    "llegada_ida": "2026-11-20 14:45",
    "salida_vuelta": "2026-11-22 06:15",
    "llegada_vuelta": "2026-11-22 09:10",
-   "precio_ida_vuelta": 43.98,
+   "precio_ida_vuelta": 44.33,
    "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-11-20&dateIn=2026-11-22&originIata=BIQ&destinationIata=STN&isReturn=true"
   },
   {
@@ -2747,18 +2747,6 @@
   },
   {
    "origen": "BIQ",
-   "destino": "CRL",
-   "ciudad": "Charleroi",
-   "pais": "Bélgica",
-   "salida_ida": "2026-11-27 15:35",
-   "llegada_ida": "2026-11-27 17:20",
-   "salida_vuelta": "2026-11-29 12:45",
-   "llegada_vuelta": "2026-11-29 14:30",
-   "precio_ida_vuelta": 73.43,
-   "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-11-27&dateIn=2026-11-29&originIata=BIQ&destinationIata=CRL&isReturn=true"
-  },
-  {
-   "origen": "BIQ",
    "destino": "STN",
    "ciudad": "Londres",
    "pais": "Reino Unido",
@@ -2766,8 +2754,20 @@
    "llegada_ida": "2026-12-04 14:45",
    "salida_vuelta": "2026-12-06 06:15",
    "llegada_vuelta": "2026-12-06 09:10",
-   "precio_ida_vuelta": 77.56,
+   "precio_ida_vuelta": 74.31,
    "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-12-04&dateIn=2026-12-06&originIata=BIQ&destinationIata=STN&isReturn=true"
+  },
+  {
+   "origen": "BIQ",
+   "destino": "CRL",
+   "ciudad": "Charleroi",
+   "pais": "Bélgica",
+   "salida_ida": "2026-11-27 15:35",
+   "llegada_ida": "2026-11-27 17:20",
+   "salida_vuelta": "2026-11-29 12:45",
+   "llegada_vuelta": "2026-11-29 14:30",
+   "precio_ida_vuelta": 75.29,
+   "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-11-27&dateIn=2026-11-29&originIata=BIQ&destinationIata=CRL&isReturn=true"
   },
   {
    "origen": "BIQ",
@@ -2814,7 +2814,7 @@
    "llegada_ida": "2026-12-04 17:20",
    "salida_vuelta": "2026-12-06 12:45",
    "llegada_vuelta": "2026-12-06 14:30",
-   "precio_ida_vuelta": 108.96,
+   "precio_ida_vuelta": 106.17,
    "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-12-04&dateIn=2026-12-06&originIata=BIQ&destinationIata=CRL&isReturn=true"
   },
   {
@@ -2826,7 +2826,7 @@
    "llegada_ida": "2026-12-18 14:45",
    "salida_vuelta": "2026-12-20 06:15",
    "llegada_vuelta": "2026-12-20 09:10",
-   "precio_ida_vuelta": 118.84,
+   "precio_ida_vuelta": 117.27,
    "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-12-18&dateIn=2026-12-20&originIata=BIQ&destinationIata=STN&isReturn=true"
   },
   {
@@ -2855,18 +2855,6 @@
   },
   {
    "origen": "BIQ",
-   "destino": "CRL",
-   "ciudad": "Charleroi",
-   "pais": "Bélgica",
-   "salida_ida": "2026-12-18 15:35",
-   "llegada_ida": "2026-12-18 17:20",
-   "salida_vuelta": "2026-12-20 12:45",
-   "llegada_vuelta": "2026-12-20 14:30",
-   "precio_ida_vuelta": 189.15,
-   "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-12-18&dateIn=2026-12-20&originIata=BIQ&destinationIata=CRL&isReturn=true"
-  },
-  {
-   "origen": "BIQ",
    "destino": "STN",
    "ciudad": "Londres",
    "pais": "Reino Unido",
@@ -2874,8 +2862,20 @@
    "llegada_ida": "2026-10-30 14:45",
    "salida_vuelta": "2026-11-01 06:15",
    "llegada_vuelta": "2026-11-01 09:10",
-   "precio_ida_vuelta": 194.38,
+   "precio_ida_vuelta": 185.98,
    "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-10-30&dateIn=2026-11-01&originIata=BIQ&destinationIata=STN&isReturn=true"
+  },
+  {
+   "origen": "BIQ",
+   "destino": "CRL",
+   "ciudad": "Charleroi",
+   "pais": "Bélgica",
+   "salida_ida": "2026-12-18 15:35",
+   "llegada_ida": "2026-12-18 17:20",
+   "salida_vuelta": "2026-12-20 12:45",
+   "llegada_vuelta": "2026-12-20 14:30",
+   "precio_ida_vuelta": 191.28,
+   "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-12-18&dateIn=2026-12-20&originIata=BIQ&destinationIata=CRL&isReturn=true"
   },
   {
    "origen": "BIQ",
@@ -2886,7 +2886,7 @@
    "llegada_ida": "2026-10-30 17:20",
    "salida_vuelta": "2026-11-01 12:45",
    "llegada_vuelta": "2026-11-01 14:30",
-   "precio_ida_vuelta": 302.94,
+   "precio_ida_vuelta": 319.38,
    "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-10-30&dateIn=2026-11-01&originIata=BIQ&destinationIata=CRL&isReturn=true"
   }
  ],
@@ -2900,7 +2900,7 @@
    "llegada_ida": "2026-11-06 14:45",
    "salida_vuelta": "2026-11-08 06:15",
    "llegada_vuelta": "2026-11-08 09:10",
-   "precio_ida_vuelta": 39.98,
+   "precio_ida_vuelta": 38.98,
    "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-11-06&dateIn=2026-11-08&originIata=BIQ&destinationIata=STN&isReturn=true",
    "pais_codigo": "GB",
    "alojamiento": {
@@ -2951,7 +2951,7 @@
    "llegada_ida": "2026-11-27 17:20",
    "salida_vuelta": "2026-11-29 12:45",
    "llegada_vuelta": "2026-11-29 14:30",
-   "precio_ida_vuelta": 73.43,
+   "precio_ida_vuelta": 75.29,
    "enlace": "https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-11-27&dateIn=2026-11-29&originIata=BIQ&destinationIata=CRL&isReturn=true",
    "pais_codigo": "BE",
    "alojamiento": {
@@ -2996,6 +2996,17 @@
  ],
  "bajadas": [
   {
+   "origen": "LYS",
+   "destino": "SDR",
+   "fecha": "2027-02-24",
+   "precio_hoy": 59.0,
+   "minimo_anterior": 120.0,
+   "bajada_pct": 50.8,
+   "salida": "2027-02-24 09:10",
+   "aerolineas": "Vueling",
+   "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMjQoAWoFEgNMWVNyBRIDU0RSQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
+  },
+  {
    "origen": "SOF",
    "destino": "FMM",
    "fecha": "2027-02-22",
@@ -3007,10 +3018,10 @@
    "enlace": "https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMjIoAWoFEgNTT0ZyBRIDRk1NQgEBSAGIAQGYAQI=&hl=es&curr=EUR"
   }
  ],
- "peticiones_google": 454,
- "exitos_google": 438,
- "sin_vuelos_google": 16,
+ "peticiones_google": 453,
+ "exitos_google": 436,
+ "sin_vuelos_google": 17,
  "errores_google": 0,
- "rutas_saltadas": 323,
+ "rutas_saltadas": 324,
  "busquedas_airbnb": 21
 }

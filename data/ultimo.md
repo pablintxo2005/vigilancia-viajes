@@ -1,11 +1,11 @@
-# Vigilancia de vuelos — 2026-10-21 00:37 UTC
+# Vigilancia de vuelos — 2026-10-21 06:34 UTC
 
-Google Flights: 454 consultas (438 con vuelos, 16 sin vuelos, 0 errores, 323 rutas saltadas). Ryanair: 17 tarifas. Airbnb: 21 búsquedas.
+Google Flights: 453 consultas (436 con vuelos, 17 sin vuelos, 0 errores, 324 rutas saltadas). Ryanair: 17 tarifas. Airbnb: 21 búsquedas.
 Vuelos: precio **por persona**, tarifa básica (sin maleta de cabina grande); ida y vuelta de Google = suma de dos billetes de ida; horas locales. Alojamiento: precio **total para 2 personas** con tasas de Airbnb, consultado hoy para esas fechas exactas. Sin coche: todo en tren/bus.
 
 ## 🎁 Ofertas sorpresa de fin de semana (viernes → domingo) desde Bilbao y alrededores (Ryanair, ida y vuelta < 150 €, solo destinos fuera de España)
 
-### 🇬🇧 Londres (STN) — 40 € ida y vuelta por persona
+### 🇬🇧 Londres (STN) — 39 € ida y vuelta por persona
 - ✈️ Ida: vie 06/11 · BIQ 13:50 → STN 14:45
 - ✈️ Vuelta: dom 08/11 · STN 06:15 → BIQ 09:10
 - 🗓️ 2 noches · [ver vuelo en Ryanair](https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-11-06&dateIn=2026-11-08&originIata=BIQ&destinationIata=STN&isReturn=true)
@@ -14,9 +14,9 @@ Vuelos: precio **por persona**, tarifa básica (sin maleta de cabina grande); id
   - **142 € total** (71 €/noche) · Stansted Sleep & Park 1800s Style · ★ 4.86 (7 reseñas) · [Airbnb](https://www.airbnb.es/rooms/1536184666108594860?check_in=2026-11-06&check_out=2026-11-08&adults=2) ✅ precio real
   - **153 € total** (76 €/noche) · Stansted's pleasurable stays. · ★ 4.98 (177 reseñas) · [Airbnb](https://www.airbnb.es/rooms/1012001737246151406?check_in=2026-11-06&check_out=2026-11-08&adults=2) ✅ precio real
   - Comparar: [Booking con estas fechas](https://www.booking.com/searchresults.es.html?ss=Londres&checkin=2026-11-06&checkout=2026-11-08&group_adults=2&no_rooms=1&order=price) · [más pisos en Airbnb](https://www.airbnb.es/s/Londres/homes?checkin=2026-11-06&checkout=2026-11-08&adults=2)
-- 💶 **Total 2 personas: 217 €** (vuelos 80 € + alojamiento 137 €) → **108 € por persona**
+- 💶 **Total 2 personas: 215 €** (vuelos 78 € + alojamiento 137 €) → **107 € por persona**
 
-### 🇧🇪 Charleroi (CRL) — 73 € ida y vuelta por persona
+### 🇧🇪 Charleroi (CRL) — 75 € ida y vuelta por persona
 - ✈️ Ida: vie 27/11 · BIQ 15:35 → CRL 17:20
 - ✈️ Vuelta: dom 29/11 · CRL 12:45 → BIQ 14:30
 - 🗓️ 2 noches · [ver vuelo en Ryanair](https://www.ryanair.com/es/es/trip/flights/select?adults=1&dateOut=2026-11-27&dateIn=2026-11-29&originIata=BIQ&destinationIata=CRL&isReturn=true)
@@ -25,7 +25,7 @@ Vuelos: precio **por persona**, tarifa básica (sin maleta de cabina grande); id
   - **138 € total** (69 €/noche) · Small farmhouse · ★ 4.85 (204 reseñas) · [Airbnb](https://www.airbnb.es/rooms/31578468?check_in=2026-11-27&check_out=2026-11-29&adults=2) ✅ precio real
   - **174 € total** (87 €/noche) · Strée: comfortable house in the heart of the countryside · ★ 4.90 (191 reseñas) · [Airbnb](https://www.airbnb.es/rooms/44044387?check_in=2026-11-27&check_out=2026-11-29&adults=2) ✅ precio real
   - Comparar: [Booking con estas fechas](https://www.booking.com/searchresults.es.html?ss=Charleroi&checkin=2026-11-27&checkout=2026-11-29&group_adults=2&no_rooms=1&order=price) · [más pisos en Airbnb](https://www.airbnb.es/s/Charleroi/homes?checkin=2026-11-27&checkout=2026-11-29&adults=2)
-- 💶 **Total 2 personas: 283 €** (vuelos 147 € + alojamiento 136 €) → **141 € por persona**
+- 💶 **Total 2 personas: 287 €** (vuelos 151 € + alojamiento 136 €) → **143 € por persona**
 
 ## ⛷️ Esquí — viajes de 3-6 días (salidas entre sáb 20/02 y jue 25/02)
 Mejor opción de vuelos para cada duración. B = Bilbao, A = Stuttgart. Cuando A va en tren, el tren lo calcula Claude (DB/SBB/ÖBB).
@@ -58,10 +58,10 @@ Mejor opción de vuelos para cada duración. B = Bilbao, A = Stuttgart. Cuando A
 ### Valais / Mont Blanc (Chamonix, Verbier)
 - 🚆 Sin coche: Lanzadera/bus GVA→Chamonix (~1h15); tren Mont-Blanc Express
 - A (Stuttgart): va en tren
-- **3 días · lun 22/02 → mié 24/02 · vuelos 115 €**
-  - B desde Bilbao — **115 €** por persona
-    - Ida: lun 22/02 · BIO 21:50 → GVA 08:15 · Vueling · 1 escala · 51 € [ver](https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMjIoAWoFEgNCSU9yBRIDR1ZBQgEBSAGIAQGYAQI=&hl=es&curr=EUR)
-    - Vuelta: mié 24/02 · LYS 09:10 → BIO 17:20 · Vueling · 1 escala · 64 € [ver](https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMjQoAWoFEgNMWVNyBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR)
+- **3 días · sáb 20/02 → lun 22/02 · vuelos 123 €**
+  - B desde Bilbao — **123 €** por persona
+    - Ida: sáb 20/02 · BIO 07:00 → LYS 16:05 · Vueling · 1 escala · 73 € [ver](https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMjAoAWoFEgNCSU9yBRIDTFlTQgEBSAGIAQGYAQI=&hl=es&curr=EUR)
+    - Vuelta: lun 22/02 · GVA 11:30 → BIO 13:15 · easyJet · directo · 50 € [ver](https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMjIoAWoFEgNHVkFyBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR)
 - **4 días · mié 24/02 → sáb 27/02 · vuelos 120 €**
   - B desde Bilbao — **120 €** por persona
     - Ida: mié 24/02 · BIO 23:00 → GVA 08:15 · Vueling · 1 escala · 51 € [ver](https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMjQoAWoFEgNCSU9yBRIDR1ZBQgEBSAGIAQGYAQI=&hl=es&curr=EUR)
@@ -76,8 +76,8 @@ Mejor opción de vuelos para cada duración. B = Bilbao, A = Stuttgart. Cuando A
     - Vuelta: lun 01/03 · GVA 11:30 → BIO 13:15 · easyJet · directo · 41 € [ver](https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDMtMDEoAWoFEgNHVkFyBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR)
 - 🏠 Alojamiento 2 personas en Chamonix (5 noches, mié 24/02 → lun 01/03):
   - **265 € total** (53 €/noche) · "The Guest Room"?? · ★ 4.87 (845 reseñas) · [Airbnb](https://www.airbnb.es/rooms/8417644?check_in=2027-02-24&check_out=2027-03-01&adults=2) ✅ precio real
+  - **445 € total** (89 €/noche) · Room for rent in apartment in Chamonix center · ★ 4.95 (111 reseñas) · [Airbnb](https://www.airbnb.es/rooms/647546461228801599?check_in=2027-02-24&check_out=2027-03-01&adults=2) ✅ precio real
   - **460 € total** (92 €/noche) · 30 m2 2-room apartment, quiet & cozy, ground floor · ★ 4.97 (148 reseñas) · [Airbnb](https://www.airbnb.es/rooms/48163403?check_in=2027-02-24&check_out=2027-03-01&adults=2) ✅ precio real
-  - **583 € total** (117 €/noche) · Bedroom in small Savoyard chalet in Les Bois · ★ 4.96 (24 reseñas) · [Airbnb](https://www.airbnb.es/rooms/1520907882001583896?check_in=2027-02-24&check_out=2027-03-01&adults=2) ✅ precio real
   - Comparar: [Booking con estas fechas](https://www.booking.com/searchresults.es.html?ss=Chamonix&checkin=2027-02-24&checkout=2027-03-01&group_adults=2&no_rooms=1&order=price) · [más pisos en Airbnb](https://www.airbnb.es/s/Chamonix/homes?checkin=2027-02-24&checkout=2027-03-01&adults=2)
 
 ### Dolomitas (Val Gardena, Alta Badia)
@@ -220,55 +220,55 @@ Mejor opción de vuelos para cada duración. B = Bilbao, A = Stuttgart. Cuando A
 ## 🎄 Puente de diciembre — B desde aeropuertos de Bilbao (vuelo por persona)
 | Destino | vie 04/12 → mar 08/12 | vie 04/12 → mié 09/12 | sáb 05/12 → mié 09/12 | Mejor |
 |---|---|---|---|---|
-| Milan (MXP) | 307 € (BIO 08:55/21:55) | 181 € (BIO 08:55/22:30) | 104 € (BIO 19:40/22:30) | sáb 05/12 → mié 09/12 |
+| Milan (MXP) | 312 € (BIO 08:55/21:55) | 186 € (BIO 08:55/22:30) | 100 € (BIO 19:40/22:30) | sáb 05/12 → mié 09/12 |
 | Bergamo (BGY) | — | — | — | — |
 | Geneva (GVA) | 393 € (BIO 19:20/20:35) | 327 € (BIO 19:20/21:15) | 284 € (SDR 21:30/14:10) | sáb 05/12 → mié 09/12 |
-| Munich (MUC) | 469 € (BIO 11:30/11:50) | 306 € (BIO 11:30/12:10) | 202 € (BIO 17:20/12:10) | sáb 05/12 → mié 09/12 |
+| Munich (MUC) | 469 € (BIO 11:30/11:50) | 306 € (BIO 11:30/12:10) | 216 € (BIO 19:40/12:10) | sáb 05/12 → mié 09/12 |
 | Venezia (VCE) | 321 € (BIO 21:05/12:05) | 310 € (BIO 21:05/12:10) | 239 € (BIO 19:40/12:10) | sáb 05/12 → mié 09/12 |
 | Torino (TRN) | 465 € (BIO 11:30/14:55) | 207 € (BIO 11:30/06:00) | 160 € (SDR 18:00/09:10) | sáb 05/12 → mié 09/12 |
-| Lyon (LYS) | 327 € (BIO 22:00/11:55) | 290 € (SDR 18:05/09:10) | 302 € (BIO 08:55/18:35) | vie 04/12 → mié 09/12 |
+| Lyon (LYS) | 327 € (BIO 22:00/11:55) | 292 € (SDR 18:05/09:10) | 322 € (EAS 21:30/09:10) | vie 04/12 → mié 09/12 |
 | Innsbruck (INN) | 911 € (BIO 11:45/18:15) | 650 € (BIO 11:45/18:15) | 618 € (BIO 18:30/18:15) | sáb 05/12 → mié 09/12 |
 | Salzburg (SZG) | — | — | — | — |
 | London (STN) | 926 € (BIO 11:55/07:30) | 945 € (BIO 11:55/07:30) | 256 € (SDR 10:55/12:45) | sáb 05/12 → mié 09/12 |
 | Brussels (CRL) | — | — | — | — |
 
 **Efecto de cambiar un día (solo vuelos, por persona):**
-- Milan (MXP): salir el 4 en vez del 5: pagas 77 € (74 %); volver el 9 en vez del 8: ahorras 126 € (41 %)
+- Milan (MXP): salir el 4 en vez del 5: pagas 86 € (86 %); volver el 9 en vez del 8: ahorras 126 € (40 %)
 - Geneva (GVA): salir el 4 en vez del 5: pagas 43 € (15 %); volver el 9 en vez del 8: ahorras 66 € (17 %)
-- Munich (MUC): salir el 4 en vez del 5: pagas 104 € (51 %); volver el 9 en vez del 8: ahorras 163 € (35 %)
+- Munich (MUC): salir el 4 en vez del 5: pagas 90 € (42 %); volver el 9 en vez del 8: ahorras 163 € (35 %)
 - Venezia (VCE): salir el 4 en vez del 5: pagas 71 € (30 %); volver el 9 en vez del 8: ahorras 11 € (3 %)
 - Torino (TRN): salir el 4 en vez del 5: pagas 47 € (29 %); volver el 9 en vez del 8: ahorras 258 € (55 %)
-- Lyon (LYS): salir el 4 en vez del 5: ahorras 12 € (4 %); volver el 9 en vez del 8: ahorras 37 € (11 %)
+- Lyon (LYS): salir el 4 en vez del 5: ahorras 30 € (9 %); volver el 9 en vez del 8: ahorras 35 € (11 %)
 - Innsbruck (INN): salir el 4 en vez del 5: pagas 32 € (5 %); volver el 9 en vez del 8: ahorras 261 € (29 %)
 - London (STN): salir el 4 en vez del 5: pagas 689 € (269 %); volver el 9 en vez del 8: pagas 19 € (2 %)
 
 ### 🇮🇹 Milan (MXP) — detalle
 - **vie 04/12 → mar 08/12**
-  - Vuelo B — **307 €** por persona
-    - Ida: vie 04/12 · BIO 08:55 → MXP 14:20 · Vueling · 1 escala · 129 € [ver](https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDQoAWoFEgNCSU9yBRIDTVhQQgEBSAGIAQGYAQI=&hl=es&curr=EUR)
+  - Vuelo B — **312 €** por persona
+    - Ida: vie 04/12 · BIO 08:55 → MXP 14:20 · Vueling · 1 escala · 134 € [ver](https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDQoAWoFEgNCSU9yBRIDTVhQQgEBSAGIAQGYAQI=&hl=es&curr=EUR)
     - Vuelta: mar 08/12 · MXP 21:55 → BIO 12:50 · Brussels Airlines · 1 escala · 178 € [ver](https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDgoAWoFEgNNWFByBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR)
   - 🏠 Alojamiento 2 personas en Milan (4 noches, vie 04/12 → mar 08/12):
     - **291 € total** (73 €/noche) · *7 Minutes from MXP* [Lake Maggiore] · ★ 4.84 (132 reseñas) · [Airbnb](https://www.airbnb.es/rooms/851905947453844955?check_in=2026-12-04&check_out=2026-12-08&adults=2) ✅ precio real
-    - **291 € total** (73 €/noche) · [NEW] Lake Maggiore - Milan and airport 7 minutes away · ★ 4.82 (108 reseñas) · [Airbnb](https://www.airbnb.es/rooms/839608398033610539?check_in=2026-12-04&check_out=2026-12-08&adults=2) ✅ precio real
     - **292 € total** (73 €/noche) · Fly&Rest MXP | Suite | Airport Transfer 24/7 · ★ 5.00 (20 reseñas) · [Airbnb](https://www.airbnb.es/rooms/1618757706574354580?check_in=2026-12-04&check_out=2026-12-08&adults=2) ✅ precio real
+    - **294 € total** (74 €/noche) · New grey · ★ 4.95 (21 reseñas) · [Airbnb](https://www.airbnb.es/rooms/1384018070612879510?check_in=2026-12-04&check_out=2026-12-08&adults=2) ✅ precio real
     - Comparar: [Booking con estas fechas](https://www.booking.com/searchresults.es.html?ss=Milan&checkin=2026-12-04&checkout=2026-12-08&group_adults=2&no_rooms=1&order=price) · [más pisos en Airbnb](https://www.airbnb.es/s/Milan/homes?checkin=2026-12-04&checkout=2026-12-08&adults=2)
 - **vie 04/12 → mié 09/12**
-  - Vuelo B — **181 €** por persona
-    - Ida: vie 04/12 · BIO 08:55 → MXP 14:20 · Vueling · 1 escala · 129 € [ver](https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDQoAWoFEgNCSU9yBRIDTVhQQgEBSAGIAQGYAQI=&hl=es&curr=EUR)
+  - Vuelo B — **186 €** por persona
+    - Ida: vie 04/12 · BIO 08:55 → MXP 14:20 · Vueling · 1 escala · 134 € [ver](https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDQoAWoFEgNCSU9yBRIDTVhQQgEBSAGIAQGYAQI=&hl=es&curr=EUR)
     - Vuelta: mié 09/12 · MXP 22:30 → BIO 08:20 · Vueling · 1 escala · 52 € [ver](https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDkoAWoFEgNNWFByBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR)
   - 🏠 Alojamiento 2 personas en Milan (5 noches, vie 04/12 → mié 09/12):
     - **354 € total** (71 €/noche) · Fly&Rest MXP | Suite | Airport Transfer 24/7 · ★ 5.00 (20 reseñas) · [Airbnb](https://www.airbnb.es/rooms/1618757706574354580?check_in=2026-12-04&check_out=2026-12-09&adults=2) ✅ precio real
-    - **356 € total** (71 €/noche) · Terminal 11 home - 5' Malpensa 25' Milano · ★ 5.00 (18 reseñas) · [Airbnb](https://www.airbnb.es/rooms/1679804282029203996?check_in=2026-12-04&check_out=2026-12-09&adults=2) ✅ precio real
     - **358 € total** (72 €/noche) · *7 Minutes from MXP* [Lake Maggiore] · ★ 4.84 (132 reseñas) · [Airbnb](https://www.airbnb.es/rooms/851905947453844955?check_in=2026-12-04&check_out=2026-12-09&adults=2) ✅ precio real
+    - **360 € total** (72 €/noche) · New grey · ★ 4.95 (21 reseñas) · [Airbnb](https://www.airbnb.es/rooms/1384018070612879510?check_in=2026-12-04&check_out=2026-12-09&adults=2) ✅ precio real
     - Comparar: [Booking con estas fechas](https://www.booking.com/searchresults.es.html?ss=Milan&checkin=2026-12-04&checkout=2026-12-09&group_adults=2&no_rooms=1&order=price) · [más pisos en Airbnb](https://www.airbnb.es/s/Milan/homes?checkin=2026-12-04&checkout=2026-12-09&adults=2)
 - **sáb 05/12 → mié 09/12**
-  - Vuelo B — **104 €** por persona
-    - Ida: sáb 05/12 · BIO 19:40 → MXP 09:20 · Vueling · 1 escala · 52 € [ver](https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDUoAWoFEgNCSU9yBRIDTVhQQgEBSAGIAQGYAQI=&hl=es&curr=EUR)
+  - Vuelo B — **100 €** por persona
+    - Ida: sáb 05/12 · BIO 19:40 → MXP 09:20 · Vueling · 1 escala · 48 € [ver](https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDUoAWoFEgNCSU9yBRIDTVhQQgEBSAGIAQGYAQI=&hl=es&curr=EUR)
     - Vuelta: mié 09/12 · MXP 22:30 → BIO 08:20 · Vueling · 1 escala · 52 € [ver](https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDkoAWoFEgNNWFByBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR)
   - 🏠 Alojamiento 2 personas en Milan (4 noches, sáb 05/12 → mié 09/12):
     - **287 € total** (72 €/noche) · Fly&Rest MXP | Suite | Airport Transfer 24/7 · ★ 5.00 (20 reseñas) · [Airbnb](https://www.airbnb.es/rooms/1618757706574354580?check_in=2026-12-05&check_out=2026-12-09&adults=2) ✅ precio real
     - **291 € total** (73 €/noche) · *7 Minutes from MXP* [Lake Maggiore] · ★ 4.84 (132 reseñas) · [Airbnb](https://www.airbnb.es/rooms/851905947453844955?check_in=2026-12-05&check_out=2026-12-09&adults=2) ✅ precio real
-    - **293 € total** (73 €/noche) · Terminal 11 home - 5' Malpensa 25' Milano · ★ 5.00 (18 reseñas) · [Airbnb](https://www.airbnb.es/rooms/1679804282029203996?check_in=2026-12-05&check_out=2026-12-09&adults=2) ✅ precio real
+    - **294 € total** (74 €/noche) · New grey · ★ 4.95 (21 reseñas) · [Airbnb](https://www.airbnb.es/rooms/1384018070612879510?check_in=2026-12-05&check_out=2026-12-09&adults=2) ✅ precio real
     - Comparar: [Booking con estas fechas](https://www.booking.com/searchresults.es.html?ss=Milan&checkin=2026-12-05&checkout=2026-12-09&group_adults=2&no_rooms=1&order=price) · [más pisos en Airbnb](https://www.airbnb.es/s/Milan/homes?checkin=2026-12-05&checkout=2026-12-09&adults=2)
 
 ### 🇩🇪 Munich (MUC) — detalle
@@ -291,13 +291,13 @@ Mejor opción de vuelos para cada duración. B = Bilbao, A = Stuttgart. Cuando A
     - **355 € total** (71 €/noche) · Double | Ramada MUC | Therme Erding · ★ 4.60 (5 reseñas) · [Airbnb](https://www.airbnb.es/rooms/1657942785180830703?check_in=2026-12-04&check_out=2026-12-09&adults=2) ✅ precio real
     - Comparar: [Booking con estas fechas](https://www.booking.com/searchresults.es.html?ss=Munich&checkin=2026-12-04&checkout=2026-12-09&group_adults=2&no_rooms=1&order=price) · [más pisos en Airbnb](https://www.airbnb.es/s/Munich/homes?checkin=2026-12-04&checkout=2026-12-09&adults=2)
 - **sáb 05/12 → mié 09/12**
-  - Vuelo B — **202 €** por persona
-    - Ida: sáb 05/12 · BIO 17:20 → MUC 10:55 · KLM · 1 escala · 89 € [ver](https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDUoAWoFEgNCSU9yBRIDTVVDQgEBSAGIAQGYAQI=&hl=es&curr=EUR)
+  - Vuelo B — **216 €** por persona
+    - Ida: sáb 05/12 · BIO 19:40 → MUC 09:00 · Vueling · 1 escala · 103 € [ver](https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDUoAWoFEgNCSU9yBRIDTVVDQgEBSAGIAQGYAQI=&hl=es&curr=EUR)
     - Vuelta: mié 09/12 · MUC 12:10 → BIO 23:15 · Iberia · 1 escala · 113 € [ver](https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDkoAWoFEgNNVUNyBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR)
   - 🏠 Alojamiento 2 personas en Munich (4 noches, sáb 05/12 → mié 09/12):
+    - **242 € total** (60 €/noche) · "Charming room" near SURF TOWN · ★ 4.62 (82 reseñas) · [Airbnb](https://www.airbnb.es/rooms/708058?check_in=2026-12-05&check_out=2026-12-09&adults=2) ✅ precio real
     - **263 € total** (66 €/noche) · Cozy Double: Convenient Base Near Munich Airport · ★ 4.77 (141 reseñas) · [Airbnb](https://www.airbnb.es/rooms/888268801801778648?check_in=2026-12-05&check_out=2026-12-09&adults=2) ✅ precio real
-    - **282 € total** (70 €/noche) · Private room in a beautiful and quiet location · ★ 4.94 (211 reseñas) · [Airbnb](https://www.airbnb.es/rooms/662306876636085749?check_in=2026-12-05&check_out=2026-12-09&adults=2) ✅ precio real
-    - **284 € total** (71 €/noche) · Double | Ramada MUC | Therme Erding · ★ 4.60 (5 reseñas) · [Airbnb](https://www.airbnb.es/rooms/1657942785180830703?check_in=2026-12-05&check_out=2026-12-09&adults=2) ✅ precio real
+    - **264 € total** (66 €/noche) · Comfortable overnight stay in a caravan with kitchen · ★ 4.65 (57 reseñas) · [Airbnb](https://www.airbnb.es/rooms/674250?check_in=2026-12-05&check_out=2026-12-09&adults=2) ✅ precio real
     - Comparar: [Booking con estas fechas](https://www.booking.com/searchresults.es.html?ss=Munich&checkin=2026-12-05&checkout=2026-12-09&group_adults=2&no_rooms=1&order=price) · [más pisos en Airbnb](https://www.airbnb.es/s/Munich/homes?checkin=2026-12-05&checkout=2026-12-09&adults=2)
 
 ### 🇮🇹 Venezia (VCE) — detalle
@@ -306,8 +306,8 @@ Mejor opción de vuelos para cada duración. B = Bilbao, A = Stuttgart. Cuando A
     - Ida: vie 04/12 · BIO 21:05 → VCE 09:20 · Air Europa · 1 escala · 134 € [ver](https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDQoAWoFEgNCSU9yBRIDVkNFQgEBSAGIAQGYAQI=&hl=es&curr=EUR)
     - Vuelta: mar 08/12 · VCE 12:05 → BIO 12:50 · Brussels Airlines · 1 escala · 187 € [ver](https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDgoAWoFEgNWQ0VyBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR)
   - 🏠 Alojamiento 2 personas en Venezia (4 noches, vie 04/12 → mar 08/12):
-    - **270 € total** (68 €/noche) · Eco Venice 1 · ★ 4.84 (467 reseñas) · [Airbnb](https://www.airbnb.es/rooms/72740?check_in=2026-12-04&check_out=2026-12-08&adults=2) ✅ precio real
     - **270 € total** (68 €/noche) · Eco Venice 3 · ★ 4.87 (257 reseñas) · [Airbnb](https://www.airbnb.es/rooms/1539837?check_in=2026-12-04&check_out=2026-12-08&adults=2) ✅ precio real
+    - **270 € total** (68 €/noche) · Eco Venice 1 · ★ 4.84 (467 reseñas) · [Airbnb](https://www.airbnb.es/rooms/72740?check_in=2026-12-04&check_out=2026-12-08&adults=2) ✅ precio real
     - **270 € total** (68 €/noche) · Eco Venice 2 · ★ 4.90 (165 reseñas) · [Airbnb](https://www.airbnb.es/rooms/4439252?check_in=2026-12-04&check_out=2026-12-08&adults=2) ✅ precio real
     - Comparar: [Booking con estas fechas](https://www.booking.com/searchresults.es.html?ss=Venezia&checkin=2026-12-04&checkout=2026-12-08&group_adults=2&no_rooms=1&order=price) · [más pisos en Airbnb](https://www.airbnb.es/s/Venezia/homes?checkin=2026-12-04&checkout=2026-12-08&adults=2)
 - **vie 04/12 → mié 09/12**
@@ -324,9 +324,9 @@ Mejor opción de vuelos para cada duración. B = Bilbao, A = Stuttgart. Cuando A
     - Ida: sáb 05/12 · BIO 19:40 → VCE 09:10 · Vueling · 1 escala · 63 € [ver](https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDUoAWoFEgNCSU9yBRIDVkNFQgEBSAGIAQGYAQI=&hl=es&curr=EUR)
     - Vuelta: mié 09/12 · VCE 12:10 → BIO 11:25 · Tap Air Portugal · 1 escala · 176 € [ver](https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDkoAWoFEgNWQ0VyBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR)
   - 🏠 Alojamiento 2 personas en Venezia (4 noches, sáb 05/12 → mié 09/12):
+    - **270 € total** (68 €/noche) · Eco Venice 3 · ★ 4.87 (257 reseñas) · [Airbnb](https://www.airbnb.es/rooms/1539837?check_in=2026-12-05&check_out=2026-12-09&adults=2) ✅ precio real
     - **270 € total** (68 €/noche) · Eco Venice 1 · ★ 4.84 (467 reseñas) · [Airbnb](https://www.airbnb.es/rooms/72740?check_in=2026-12-05&check_out=2026-12-09&adults=2) ✅ precio real
     - **270 € total** (68 €/noche) · Eco Venice 2 · ★ 4.90 (165 reseñas) · [Airbnb](https://www.airbnb.es/rooms/4439252?check_in=2026-12-05&check_out=2026-12-09&adults=2) ✅ precio real
-    - **270 € total** (68 €/noche) · Eco Venice 3 · ★ 4.87 (257 reseñas) · [Airbnb](https://www.airbnb.es/rooms/1539837?check_in=2026-12-05&check_out=2026-12-09&adults=2) ✅ precio real
     - Comparar: [Booking con estas fechas](https://www.booking.com/searchresults.es.html?ss=Venezia&checkin=2026-12-05&checkout=2026-12-09&group_adults=2&no_rooms=1&order=price) · [más pisos en Airbnb](https://www.airbnb.es/s/Venezia/homes?checkin=2026-12-05&checkout=2026-12-09&adults=2)
 
 ### 🇮🇹 Torino (TRN) — detalle
@@ -344,9 +344,9 @@ Mejor opción de vuelos para cada duración. B = Bilbao, A = Stuttgart. Cuando A
     - Ida: vie 04/12 · BIO 11:30 → TRN 21:15 · Vueling · 1 escala · 188 € [ver](https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDQoAWoFEgNCSU9yBRIDVFJOQgEBSAGIAQGYAQI=&hl=es&curr=EUR)
     - Vuelta: mié 09/12 · TRN 06:00 → BIO 07:50 · Wizz Air · directo · 19 € [ver](https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjYtMTItMDkoAWoFEgNUUk5yBRIDQklPQgEBSAGIAQGYAQI=&hl=es&curr=EUR)
   - 🏠 Alojamiento 2 personas en Torino (5 noches, vie 04/12 → mié 09/12):
-    - **327 € total** (65 €/noche) · Giuditta Room B · ★ 4.65 (20 reseñas) · [Airbnb](https://www.airbnb.es/rooms/776718958933725020?check_in=2026-12-04&check_out=2026-12-09&adults=2) ✅ precio real
     - **353 € total** (71 €/noche) · La Casa dei Fiori – San Maurizio · ★ 4.75 (8 reseñas) · [Airbnb](https://www.airbnb.es/rooms/1288201273169063918?check_in=2026-12-04&check_out=2026-12-09&adults=2) ✅ precio real
     - **367 € total** (73 €/noche) · Apartment with pool table · ★ 4.80 (41 reseñas) · [Airbnb](https://www.airbnb.es/rooms/1136997776193875799?check_in=2026-12-04&check_out=2026-12-09&adults=2) ✅ precio real
+    - **373 € total** (75 €/noche) · Very Central Two-Room Apartment · ★ 4.87 (55 reseñas) · [Airbnb](https://www.airbnb.es/rooms/899091915138109773?check_in=2026-12-04&check_out=2026-12-09&adults=2) ✅ precio real
     - Comparar: [Booking con estas fechas](https://www.booking.com/searchresults.es.html?ss=Torino&checkin=2026-12-04&checkout=2026-12-09&group_adults=2&no_rooms=1&order=price) · [más pisos en Airbnb](https://www.airbnb.es/s/Torino/homes?checkin=2026-12-04&checkout=2026-12-09&adults=2)
 - **sáb 05/12 → mié 09/12**
   - Vuelo B — **160 €** por persona
@@ -359,4 +359,5 @@ Mejor opción de vuelos para cada duración. B = Bilbao, A = Stuttgart. Cuando A
     - Comparar: [Booking con estas fechas](https://www.booking.com/searchresults.es.html?ss=Torino&checkin=2026-12-05&checkout=2026-12-09&group_adults=2&no_rooms=1&order=price) · [más pisos en Airbnb](https://www.airbnb.es/s/Torino/homes?checkin=2026-12-05&checkout=2026-12-09&adults=2)
 
 ## 📉 Bajadas de precio (≥ 20 % frente al mínimo de días anteriores)
+- LYS→SDR mié 24/02 09:10 (Vueling): 59 € (antes mín. 120 €, -50.8 %) [ver](https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMjQoAWoFEgNMWVNyBRIDU0RSQgEBSAGIAQGYAQI=&hl=es&curr=EUR)
 - SOF→FMM lun 22/02 11:00 (Wizz Air): 25 € (antes mín. 32 €, -21.9 %) [ver](https://www.google.com/travel/flights/search?tfs=GhwSCjIwMjctMDItMjIoAWoFEgNTT0ZyBRIDRk1NQgEBSAGIAQGYAQI=&hl=es&curr=EUR)
