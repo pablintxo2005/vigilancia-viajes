@@ -1,151 +1,68 @@
-# Configuración de la vigilancia de viajes
-# Puedes editar este archivo desde GitHub (icono del lápiz). Si algo queda mal escrito,
-# el script usa la configuración original y lo avisa en data/ultimo.md, pero no se rompe.
-# IMPORTANTE: los viajeros NO tienen coche. Todo el transporte por tierra es tren/bus/lanzadera.
+name: Vigilancia diaria de vuelos
 
-moneda: EUR
-idioma: es
-pausa_entre_peticiones_s: 1.0   # pausa entre consultas a Google Flights
-max_peticiones_google: 1400     # tope diario de consultas a Google Flights
-tiempo_max_google_min: 75       # si se supera, corta Google y guarda lo conseguido
-timeout_peticion_s: 30          # tiempo máximo de espera por consulta
-max_escalas: 1
-historico_dias: 30              # días de histórico que se conservan
+on:
+  schedule:
+    # GitHub puede retrasar las ejecuciones programadas VARIAS HORAS (el 18/10 terminó a las
+    # 09:50, después de la tarea de Claude de las 7:51). Por eso se lanza la noche anterior:
+    # 22:17 UTC = 00:17 en verano / 23:17 en invierno (hora de Madrid) -> ~7 h de margen.
+    # Segunda ejecución de respaldo a las 01:47 UTC por si GitHub se salta la primera.
+    # (Minutos "raros" para evitar las horas en punto, que es cuando GitHub va más saturado.)
+    - cron: "17 22 * * *"
+    - cron: "47 1 * * *"
+  workflow_dispatch: {}
 
-umbral_aviso_ida_vuelta_eur: 150
-bajada_relevante_pct: 20
+permissions:
+  contents: write
 
-# Solo viajes al extranjero: se descartan destinos en estos países (código ISO de 2 letras)
-excluir_paises_destino: [ES]
+concurrency:
+  group: vigilancia
+  cancel-in-progress: false
 
-# Zona de búsqueda: toda Europa (incluido Reino Unido, Irlanda, Islandia, Noruega, Suiza, Balcanes,
-# Turquía…) y norte de África. Destinos fuera de estos países se descartan.
-paises_permitidos: [AL, AD, AT, BE, BA, BG, HR, CY, CZ, DK, EE, FI, FR, DE, GR, HU, IS, IE, IT, XK,
-                    LV, LI, LT, LU, MT, MD, MC, ME, NL, MK, NO, PL, PT, RO, SM, RS, SK, SI, SE, CH,
-                    UA, GB, GI, GG, JE, IM, FO, TR, VA,
-                    MA, DZ, TN, LY, EG]
+jobs:
+  buscar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 135
+    steps:
+      - uses: actions/checkout@v4
 
-# Fines de semana con OTRAS aerolíneas (Vueling, Volotea, Iberia, Lufthansa, easyJet…) desde
-# Bilbao (BIO), vía Google Flights. Cada día se revisan unos pocos fines de semana distintos
-# (rotando) a estos destinos, y entran en las mismas secciones que las ofertas de Ryanair.
-google_findes:
-  activo: true
-  origen: BIO
-  findes_por_dia: 2              # fines de semana revisados cada día (1 próximo + 1 desde enero)
-  destinos: [AMS, CDG, ORY, LHR, LGW, BRU, FRA, MUC, ZRH, GVA, LIS, OPO, FCO, MXP, VCE, NCE,
-             MRS, LYS, DUB, EDI, CPH, VIE, PRG, BUD, BER, RAK, TNG, ATH, MLA, KRK]
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
 
-viajeros:
-  A:
-    nombre: "Stuttgart"
-    aeropuertos: [STR, FKB, FMM, FDH, FRA, MUC, ZRH, BSL]
-    principales_esqui: [STR, FMM, MUC, ZRH]        # para no disparar el nº de consultas
-  B:
-    nombre: "Bilbao"
-    aeropuertos: [BIO, EAS, VIT, SDR, BIQ, PNA]
-    principales_esqui: [BIO, SDR, BIQ]
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt || (sleep 30 && pip install -r requirements.txt)
 
-# Destinos de esquí, pensados para llegar SIN COCHE (tren/bus desde el aeropuerto).
-# aeropuertos: a < ~2-3 h en transporte público de la base.
-# vuela_A: false -> el viajero de Stuttgart va en tren (lo calcula la tarea de Claude).
-# base: pueblo/ciudad donde se busca alojamiento (bien conectado con pistas en transporte público).
-destinos_esqui:
-  - zona: "Tirol (Innsbruck: Stubai, Axamer Lizum, Nordkette)"
-    aeropuertos: [INN, MUC, SZG]
-    vuela_A: false
-    base: {nombre: "Innsbruck", lat: 47.2654, lon: 11.3928}
-    transporte: "Tren directo MUC/SZG→Innsbruck; ski-bus gratis con el forfait a las estaciones"
-  - zona: "Salzburgerland (Schladming-Dachstein, Ski Amadé)"
-    aeropuertos: [SZG, MUC]
-    vuela_A: false
-    base: {nombre: "Schladming", lat: 47.3925, lon: 13.6872}
-    transporte: "Tren SZG→Schladming (~1h30); estación a pie del telecabina Planai"
-  - zona: "Graubünden (Davos-Klosters, Laax)"
-    aeropuertos: [ZRH]
-    vuela_A: false
-    base: {nombre: "Davos", lat: 46.8027, lon: 9.8360}
-    transporte: "Tren ZRH→Davos (~2h20, SBB/RhB); A llega en tren Stuttgart→Zúrich"
-  - zona: "Valais / Mont Blanc (Chamonix, Verbier)"
-    aeropuertos: [GVA, LYS]
-    vuela_A: false
-    base: {nombre: "Chamonix", lat: 45.9237, lon: 6.8694}
-    transporte: "Lanzadera/bus GVA→Chamonix (~1h15); tren Mont-Blanc Express"
-  - zona: "Dolomitas (Val Gardena, Alta Badia)"
-    aeropuertos: [VRN, BGY, VCE, TSF, INN]
-    vuela_A: false
-    base: {nombre: "Ortisei (Val Gardena)", lat: 46.5747, lon: 11.6714}
-    transporte: "Tren a Bolzano/Ponte Gardena + bus 350 a Val Gardena"
-  - zona: "Valle de Aosta (Pila, Cervinia, Courmayeur)"
-    aeropuertos: [TRN, MXP, GVA]
-    vuela_A: false
-    base: {nombre: "Aosta", lat: 45.7370, lon: 7.3150}
-    transporte: "Tren/bus a Aosta; telecabina Aosta→Pila desde la ciudad"
-  - zona: "Andorra (Grandvalira, Pal-Arinsal)"
-    aeropuertos: [BCN, TLS]
-    vuela_A: true
-    base: {nombre: "Andorra la Vella", lat: 42.5063, lon: 1.5218}
-    transporte: "Bus directo BCN/TLS→Andorra (~3h, Andbus/Alsa); ski-bus a pistas"
-  - zona: "Bansko (Bulgaria)"
-    aeropuertos: [SOF]
-    vuela_A: true
-    base: {nombre: "Bansko", lat: 41.8383, lon: 23.4885}
-    transporte: "Transfer/bus Sofía→Bansko (~2h30); telecabina desde el pueblo"
+      - name: Buscar vuelos
+        id: buscar
+        continue-on-error: true
+        timeout-minutes: 120
+        run: python -u buscador.py
 
-# Esquí: viajes de entre 3 y 6 días. Cada día se revisa una ventana distinta de días
-# de salida (rota por toda la temporada) y se prueban todas las duraciones posibles.
-temporada_esqui:
-  desde: "2026-12-10"
-  hasta: "2027-03-31"
-  dias_min: 3                    # 3 días = 2 noches
-  dias_max: 6                    # 6 días = 5 noches
-  ventana_dias_salida: 6         # días de salida distintos revisados cada día
+      - name: Guardar resultados en el repo
+        if: always()
+        run: |
+          mkdir -p data
+          git config user.name "vigilancia-bot"
+          git config user.email "vigilancia-bot@users.noreply.github.com"
+          git add -A data
+          if git diff --cached --quiet; then
+            echo "Sin cambios que guardar"
+            exit 0
+          fi
+          git commit -m "Vigilancia $(date -u +%F)"
+          for i in 1 2 3 4 5; do
+            if git pull --rebase -X theirs origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}"; then
+              exit 0
+            fi
+            echo "Reintentando push ($i)..."; sleep 15
+          done
+          exit 1
 
-# Escapadas próximas (Ryanair) desde los aeropuertos de Bilbao
-# SOLO FINES DE SEMANA: ida el viernes y vuelta el domingo.
-sorpresa:
-  semanas_vista: 10              # se miran los fines de semana de las próximas 10 semanas
-  duracion_min_dias: 2
-  duracion_max_dias: 2
-  dias_salida: [vie]
-  dias_vuelta: [dom]
-  max_ofertas_informe: 6         # destinos distintos que se muestran (con alojamiento)
-
-# Fines de semana a partir de enero (mismas reglas: vie -> dom, fuera de España)
-desde_enero:
-  activo: true
-  desde: "2027-01-01"
-  hasta: "2027-06-30"
-  mejores_por_mes: 2             # destinos distintos por mes en el informe (con alojamiento)
-  comparar_con_bilbao: true      # comprueba en Google Flights si desde BIO sale mejor
-
-# Coste y tiempo de llegar desde Bilbao a cada aeropuerto (transporte público, por persona
-# y trayecto). Valores ESTIMADOS: sirven para ordenar las ofertas por coste real.
-acceso_desde_bilbao:
-  BIO: {eur: 3,  min: 30,  como: "Bizkaibus A3247 (Moyua/Termibus → aeropuerto)"}
-  VIT: {eur: 10, min: 80,  como: "bus Bilbao → Vitoria + bus al aeropuerto"}
-  SDR: {eur: 9,  min: 85,  como: "ALSA Bilbao → Santander + bus al aeropuerto"}
-  EAS: {eur: 11, min: 100, como: "bus Bilbao → Donostia + bus E21 al aeropuerto"}
-  BIQ: {eur: 16, min: 150, como: "bus Bilbao → Biarritz (ALSA/FlixBus) + bus al aeropuerto"}
-  PNA: {eur: 16, min: 130, como: "bus Bilbao → Pamplona + bus/taxi al aeropuerto"}
-valor_tiempo_eur_hora: 15
-
-# Alojamiento con precio real (Airbnb: pisos, apartamentos y también hoteles)
-# Para cada destino se buscan tres zonas: CENTRO de la ciudad, AFUERAS y junto al AEROPUERTO
-# (si está lejos del centro), con el tiempo al centro y lo que se ahorra frente al centro.
-alojamiento:
-  activo: true
-  huespedes: 2
-  radio_centro_km: 1.5           # "en el centro" = a menos de esto del centro
-  radio_afueras_km: 12           # búsqueda amplia alrededor del centro (afueras)
-  radio_aeropuerto_km: 4         # búsqueda junto al aeropuerto
-  opciones_centro: 2
-  opciones_baratas: 2
-  valoracion_min: 4.5
-  resenas_min: 5
-  max_busquedas: 90
-  tiempo_max_min: 25
-
-# Memoria de rutas sin vuelos (por día de la semana) para no repetir consultas inútiles
-sin_ruta:
-  fallos_para_saltar: 2          # días distintos sin vuelos antes de saltarla
-  dias_memoria: 10               # pasado este tiempo se vuelve a comprobar
+      - name: Avisar si la búsqueda falló
+        if: steps.buscar.outcome == 'failure'
+        run: |
+          echo "::error::buscador.py terminó con error. Revisa data/ultimo.md (sección Avisos) y el log del paso 'Buscar vuelos'."
+          exit 1
