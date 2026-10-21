@@ -1,11 +1,12 @@
 # Vigilancia de viajes
 
-Script diario (GitHub Actions, sobre las 5:05 en verano / 4:05 en invierno) que consulta **Google Flights** y las **tarifas públicas de Ryanair** para:
+Script diario (GitHub Actions, la noche anterior hacia las 00:17 / 23:17 en invierno, con respaldo a las 03:47) que consulta **Google Flights**, las **tarifas públicas de Ryanair** y **Airbnb** para:
 
-- **Esquí**: viajes de 3 a 6 días entre diciembre y marzo. Cada día revisa una ventana distinta de 6 días de salida (rota por toda la temporada) y todas las duraciones posibles, desde Bilbao (y Stuttgart cuando tiene sentido volar). Destinos elegidos para llegar **sin coche** (tren/bus).
-- **Puente de diciembre**: combinaciones 4–8, 4–9 y 5–9 de diciembre desde los aeropuertos de Bilbao, a 9 destinos fijos + los 5 más baratos que encuentre Ryanair ese día, con el ahorro de salir un día antes / volver un día después.
-- **Ofertas sorpresa**: ida y vuelta de 2–4 días desde Bilbao/Santander/Biarritz… en las próximas 10 semanas (Ryanair).
-- **Alojamiento**: precio real en Airbnb (pisos, apartamentos y hoteles) para 2 personas y las fechas exactas de las mejores opciones, con enlace a Booking para comparar.
+- **Escapadas próximas**: fines de semana (viernes → domingo) de las próximas semanas desde Bilbao y alrededores, solo destinos fuera de España, ordenadas por coste real (vuelo + llegar al aeropuerto desde Bilbao + tiempo).
+- **Fines de semana desde enero**: lo mismo de enero a junio, con los mejores destinos de cada mes (sin repetir siempre los mismos).
+- **Comparación con Bilbao (BIO)**: si una oferta sale de Biarritz, Santander, Vitoria…, se mira en Google Flights el mismo viaje desde BIO con otras aerolíneas.
+- **Esquí**: viajes de 3 a 6 días entre diciembre y marzo, con destinos a los que se llega **sin coche**.
+- **Alojamiento**: precio real en Airbnb para 2 personas y fechas exactas, en tres zonas: **centro**, **afueras** y **junto al aeropuerto**, con distancia y tiempo estimado al centro y cuánto se ahorra frente al centro.
 
 Los resultados se guardan en `data/`:
 
@@ -15,6 +16,7 @@ Los resultados se guardan en `data/`:
 | `data/ultimo.json` | Lo mismo, estructurado |
 | `data/historico.csv` | Precios de los últimos 60 días → permite detectar bajadas |
 | `data/sin_ruta.json` | Rutas sin vuelos (por día de la semana), para no repetir consultas inútiles |
+| `data/centros.json` | Centros de ciudad geolocalizados (OpenStreetMap) para destinos nuevos |
 
 ## Montaje (5 minutos)
 
@@ -26,11 +28,12 @@ Los resultados se guardan en `data/`:
 
 ## Ajustes
 
-Todo se cambia en `config.yaml`: aeropuertos, zonas de esquí, fechas del puente, umbral de aviso, nº de consultas diarias.
+Todo se cambia en `config.yaml`: aeropuertos, zonas de esquí, meses de los fines de semana desde enero, coste de llegar a cada aeropuerto, radios de búsqueda de alojamiento, umbral de aviso, nº de consultas diarias.
 
 ## Limitaciones
 
 - Precios por persona, sumando dos billetes de ida (en low-cost coincide con la ida y vuelta; en aerolíneas tradicionales la i/v a veces es más barata).
 - Incluye solo la tarifa básica: revisa el suplemento de maleta de cabina.
 - `fast-flights` lee Google Flights por su protocolo interno; si Google lo cambia o bloquea, el workflow falla y GitHub te avisa por email. Normalmente se arregla con `pip install -U fast-flights`.
-- Skyscanner, Kayak y Airbnb no se consultan aquí (bloquean scrapers); el alojamiento lo busca la tarea de Claude.
+- Skyscanner, Kayak y Booking no se consultan (bloquean scrapers); el informe trae enlaces de Booking con las fechas puestas.
+- Tiempos y costes de transporte al centro y a los aeropuertos son estimaciones.
