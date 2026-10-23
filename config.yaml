@@ -21,7 +21,7 @@ excluir_paises_destino: [ES]
 # Zona de búsqueda: toda Europa (incluido Reino Unido, Irlanda, Islandia, Noruega, Suiza, Balcanes,
 # Turquía…) y norte de África. Destinos fuera de estos países se descartan.
 paises_permitidos: [AL, AD, AT, BE, BA, BG, HR, CY, CZ, DK, EE, FI, FR, DE, GR, HU, IS, IE, IT, XK,
-                    LV, LI, LT, LU, MT, MD, MC, ME, NL, MK, NO, PL, PT, RO, SM, RS, SK, SI, SE, CH,
+                    LV, LI, LT, LU, MT, MD, MC, ME, NL, MK, "NO", PL, PT, RO, SM, RS, SK, SI, SE, CH,
                     UA, GB, GI, GG, JE, IM, FO, TR, VA,
                     MA, DZ, TN, LY, EG]
 
@@ -117,6 +117,32 @@ desde_enero:
   hasta: "2027-06-30"
   mejores_por_mes: 2             # destinos distintos por mes en el informe (con alojamiento)
   comparar_con_bilbao: true      # comprueba en Google Flights si desde BIO sale mejor
+
+# Viajes con FECHAS FIJAS. Se buscan cada noche antes que lo demás (tienen prioridad):
+#  - B (Bilbao): Ryanair desde todos sus aeropuertos + otras aerolíneas desde BIO (Google Flights)
+#  - alojamiento real en Airbnb para 2 personas en los mejores destinos
+#  - A (Stuttgart): el mejor vuelo a la misma ciudad (si "A" está en viajeros); si no hay, va en tren
+# Cuando pase la fecha, borra el viaje (el informe lo avisa).
+viajes_fijos:
+  - nombre: "Fin de semana largo 27-30 noviembre"
+    activo: true
+    ida: "2026-11-27"            # viernes
+    vuelta: "2026-11-30"         # lunes
+    viajeros: [B, A]             # B es el principal; A se busca para los destinos de B
+    max_destinos: 4              # destinos distintos en el informe (con alojamiento)
+    destinos_google: []          # vacío = los de google_findes (desde BIO)
+    origenes_google_A: [STR, FMM, MUC, ZRH, FRA]
+
+# Coste y tiempo de llegar desde Stuttgart a cada aeropuerto (tren, por persona y trayecto). ESTIMADOS.
+acceso_desde_stuttgart:
+  STR: {eur: 4,  min: 30,  como: "S-Bahn S2/S3 Stuttgart Hbf → aeropuerto"}
+  FKB: {eur: 15, min: 90,  como: "tren a Baden-Baden + bus 285 al aeropuerto"}
+  FMM: {eur: 20, min: 130, como: "tren a Memmingen + bus al aeropuerto"}
+  FDH: {eur: 20, min: 150, como: "tren a Friedrichshafen Flughafen"}
+  FRA: {eur: 30, min: 90,  como: "ICE Stuttgart → Frankfurt Flughafen"}
+  MUC: {eur: 30, min: 180, como: "ICE a München Hbf + S-Bahn S8/S1"}
+  ZRH: {eur: 30, min: 180, como: "IC Stuttgart → Zürich Flughafen"}
+  BSL: {eur: 30, min: 190, como: "tren a Basel SBB + bus 50"}
 
 # Coste y tiempo de llegar desde Bilbao a cada aeropuerto (transporte público, por persona
 # y trayecto). Valores ESTIMADOS: sirven para ordenar las ofertas por coste real.
