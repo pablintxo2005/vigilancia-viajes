@@ -123,7 +123,7 @@ DEFECTO = {'moneda': 'EUR',
                        'ME',
                        'NL',
                        'MK',
-                       False,
+                       'NO',
                        'PL',
                        'PT',
                        'RO',
@@ -278,7 +278,16 @@ DEFECTO = {'moneda': 'EUR',
                  'resenas_min': 5,
                  'max_busquedas': 90,
                  'tiempo_max_min': 25},
- 'sin_ruta': {'fallos_para_saltar': 2, 'dias_memoria': 10}}
+ 'sin_ruta': {'fallos_para_saltar': 2, 'dias_memoria': 10},
+ 'viajes_fijos': [],
+ 'acceso_desde_stuttgart': {'STR': {'eur': 4, 'min': 30, 'como': 'S-Bahn S2/S3 Stuttgart Hbf → aeropuerto'},
+                            'FKB': {'eur': 15, 'min': 90, 'como': 'tren a Baden-Baden + bus 285 al aeropuerto'},
+                            'FMM': {'eur': 20, 'min': 130, 'como': 'tren a Memmingen + bus al aeropuerto'},
+                            'FDH': {'eur': 20, 'min': 150, 'como': 'tren a Friedrichshafen Flughafen'},
+                            'FRA': {'eur': 30, 'min': 90, 'como': 'ICE Stuttgart → Frankfurt Flughafen'},
+                            'MUC': {'eur': 30, 'min': 180, 'como': 'ICE a München Hbf + S-Bahn S8/S1'},
+                            'ZRH': {'eur': 30, 'min': 180, 'como': 'IC Stuttgart → Zürich Flughafen'},
+                            'BSL': {'eur': 30, 'min': 190, 'como': 'tren a Basel SBB + bus 50'}}}
 
 
 # ---------------------------------------------------------------- utilidades
@@ -1391,6 +1400,160 @@ def campana_google_findes(cfg: dict, g: "Google", ventanas: dict) -> dict[str, l
     return res
 
 
+# --------------------------------------------------------- viajes con fechas fijas
+# Para emparejar aeropuertos de una misma ciudad (p. ej. B vuela a Bérgamo y A a Malpensa).
+GRUPO_CIUDAD = {"BGY": "Milán"}
+
+
+def ciudad_grupo(iata: str) -> str:
+    if iata in GRUPO_CIUDAD:
+        return GRUPO_CIUDAD[iata]
+    if iata in CENTROS:
+        return CENTROS[iata][0]
+    c = coords_aeropuerto(iata)
+    return c[2] if c else iata
+
+
+def aeropuertos_de_ciudad(iata: str) -> list[str]:
+    g = ciudad_grupo(iata)
+    otros = [k for k in CENTROS if ciudad_grupo(k) == g]
+    return [iata] + [k for k in otros if k != iata]
+
+
+def acceso_stuttgart(cfg: dict, iata: str) -> dict:
+    """Coste (€/persona/trayecto) y tiempo (min) estimados de Stuttgart al aeropuerto `iata`."""
+    d = (cfg.get("acceso_desde_stuttgart") or {}).get(iata) or {}
+    try:
+        return {"eur": float(d.get("eur", 30)), "min": int(d.get("min", 180)),
+                "como": str(d.get("como", "tren [a confirmar]"))}
+    except Exception:
+        return {"eur": 30.0, "min": 180, "como": "tren [a confirmar]"}
+
+
+def oferta_desde_google(origen: str, dest: str, iv: IdaVuelta) -> dict:
+    nombre = CENTROS.get(dest, (None,))[0]
+    c = coords_aeropuerto(dest)
+    return {
+        "origen": origen, "destino": dest, "ciudad": nombre or (c[2] if c else dest),
+        "pais": c[3] if c else "",
+        "salida_ida": iv.ida.salida, "llegada_ida": iv.ida.llegada,
+        "salida_vuelta": iv.vuelta.salida, "llegada_vuelta": iv.vuelta.llegada,
+        "precio_ida_vuelta": round(iv.precio, 2),
+        "aerolineas": iv.ida.aerolineas if iv.ida.aerolineas == iv.vuelta.aerolineas
+        else f"{iv.ida.aerolineas} / {iv.vuelta.aerolineas}",
+        "escalas": max(iv.ida.escalas or 0, iv.vuelta.escalas or 0),
+        "enlace": iv.ida.enlace, "enlace_vuelta": iv.vuelta.enlace, "fuente": "Google Flights",
+    }
+
+
+def campana_viajes_fijos(cfg: dict, g: "Google", aloj: "Alojamiento") -> tuple[list[dict], list[str]]:
+    """Viajes con fechas concretas (config `viajes_fijos`): vuelos de B desde todos los aeropuertos de
+    Bilbao (Ryanair + Google Flights desde BIO), los mejores destinos con alojamiento real para 2 y,
+    si se pide, el mejor vuelo de A (Stuttgart) a la misma ciudad (Ryanair + Google Flights)."""
+    resultados, avisos = [], []
+    for v in cfg.get("viajes_fijos") or []:
+        try:
+            if not isinstance(v, dict) or not v.get("activo", True):
+                continue
+            ida, vta = date.fromisoformat(str(v["ida"])), date.fromisoformat(str(v["vuelta"]))
+            if vta <= ida:
+                raise ValueError("la vuelta debe ser posterior a la ida")
+            if ida <= hoy():
+                avisos.append(f"Viaje fijo '{v.get('nombre', ida)}' ya pasado: bórralo de config.yaml")
+                continue
+            n = (vta - ida).days
+            nombre = str(v.get("nombre") or f"{ida} → {vta}")
+            log(f"Viaje fijo {nombre}: {ida} → {vta}")
+            tmp = json.loads(json.dumps(cfg))
+            tmp["sorpresa"].update(duracion_min_dias=n, duracion_max_dias=n,
+                                   dias_salida=[ida.weekday()], dias_vuelta=[vta.weekday()])
+
+            def solo_fechas(lista):
+                return [o for o in lista if o["salida_ida"][:10] == ida.isoformat()
+                        and o["salida_vuelta"][:10] == vta.isoformat()]
+
+            # B (Bilbao): Ryanair desde todos sus aeropuertos + Google Flights desde BIO
+            ofertas_b, fallos = ryanair_sorpresa(tmp, cfg["viajeros"]["B"]["aeropuertos"], ida, ida)
+            ofertas_b = solo_fechas(ofertas_b)
+            if fallos:
+                avisos.append(f"Viaje fijo {nombre}: Ryanair falló para " + "; ".join(fallos))
+            destinos_g = [str(d).upper() for d in (v.get("destinos_google")
+                          or (cfg.get("google_findes") or {}).get("destinos") or [])]
+            for dest in destinos_g:
+                if g.desactivado or g.agotado or destino_excluido(cfg, dest):
+                    continue
+                try:
+                    iv = g.ida_vuelta("BIO", [dest], ida.isoformat(), vta.isoformat())
+                except Exception as e:
+                    log(f"  ! viaje fijo google {dest}: {e}")
+                    iv = None
+                if iv:
+                    ofertas_b.append(oferta_desde_google("BIO", dest, iv))
+            ofertas_b = sorted((enriquecer_oferta(cfg, o) for o in ofertas_b),
+                               key=lambda o: (o["coste_gen_pp"], o["precio_ida_vuelta"]))
+            top, ciudades = [], set()
+            for o in ofertas_b:
+                cg = ciudad_grupo(o["destino"])
+                if cg in ciudades:
+                    continue
+                ciudades.add(cg)
+                top.append(o)
+                if len(top) >= int(v.get("max_destinos", 4)):
+                    break
+            comparar_con_bilbao(g, top, cfg)
+
+            # A (Stuttgart): mejor vuelo a la misma ciudad
+            if "A" in [str(x).upper() for x in v.get("viajeros", ["B"])]:
+                ry_a, fallos_a = ryanair_sorpresa(tmp, cfg["viajeros"]["A"]["aeropuertos"], ida, ida)
+                ry_a = solo_fechas(ry_a)
+                if fallos_a:
+                    avisos.append(f"Viaje fijo {nombre}: Ryanair (A) falló para " + "; ".join(fallos_a))
+                orig_a = [str(x).upper() for x in v.get("origenes_google_A")
+                          or cfg["viajeros"]["A"]["principales_esqui"]]
+                for o in top:
+                    cg = ciudad_grupo(o["destino"])
+                    cand = []
+                    for r in ry_a:
+                        if ciudad_grupo(r["destino"]) == cg:
+                            cand.append(dict(r, fuente="Ryanair"))
+                    try:
+                        for oa in orig_a:
+                            iv = g.ida_vuelta(oa, aeropuertos_de_ciudad(o["destino"]),
+                                              ida.isoformat(), vta.isoformat())
+                            if iv:
+                                d = oferta_desde_google(oa, iv.ida.destino, iv)
+                                d["destino_vuelta"] = iv.vuelta.origen
+                                cand.append(d)
+                    except Exception as e:
+                        log(f"  ! viaje fijo A {cg}: {e}")
+                    for c in cand:
+                        acc = acceso_stuttgart(cfg, c["origen"])
+                        c["acceso"] = acc
+                        c["coste_real_pp"] = round(c["precio_ida_vuelta"] + 2 * acc["eur"], 2)
+                    o["vuelo_A"] = min(cand, key=lambda c: c["coste_real_pp"], default=None)
+
+            # Alojamiento real para 2 personas en cada destino
+            for o in top:
+                # Aeropuertos "satélite" (p. ej. Bérgamo para Milán): alojamiento en la ciudad principal
+                ref = aeropuertos_de_ciudad(o["destino"])[1] if o["destino"] in GRUPO_CIUDAD else o["destino"]
+                nom, la, lo, real = aloj.centros.get(ref, o.get("ciudad", ""))
+                o["ciudad_centro"] = nom
+                c = coords_aeropuerto(o["destino"])
+                try:
+                    o["alojamiento"] = aloj.buscar(nom, la, lo, ida.isoformat(), vta.isoformat(),
+                                                   aeropuerto=(c[0], c[1]) if c else None, centro_real=real)
+                except Exception as e:
+                    log(f"  ! alojamiento viaje fijo {nom}: {e}")
+            resultados.append({"nombre": nombre, "ida": ida.isoformat(), "vuelta": vta.isoformat(),
+                               "noches": n, "con_A": any(o.get("vuelo_A") is not None or "vuelo_A" in o
+                                                          for o in top),
+                               "opciones": top, "n_tarifas_B": len(ofertas_b)})
+        except Exception as e:
+            traceback.print_exc()
+            avisos.append(f"Viaje fijo mal definido o con error ({type(e).__name__}: {e}): {v}")
+    return resultados, avisos
+
+
 def comparar_con_bilbao(g: "Google", ofertas: list[dict], cfg: dict) -> None:
     """Para cada oferta que no sale de BIO, mira en Google Flights el mismo viaje desde Bilbao (BIO):
     otras aerolíneas (Vueling, Volotea, Iberia…) y sin tener que ir a otro aeropuerto."""
@@ -1647,6 +1810,49 @@ def total_pp(o: dict) -> float:
     return base + (t_min / 2 if t_min is not None else 0)
 
 
+def tarjeta_viaje_fijo(o: dict, num: str = "") -> list[str]:
+    """Como tarjeta_oferta, pero el total es: vuelo de B (1 persona) + vuelo de A si lo hay + alojamiento 2."""
+    out = [x for x in tarjeta_oferta(o, num) if not x.startswith("- 💶")]
+    out = [x.replace("### ", "#### ", 1) if x.startswith("### ") else x for x in out]
+    a = o.get("vuelo_A")
+    if "vuelo_A" in o:
+        if a:
+            acc = a.get("acceso") or {}
+            esc = a.get("escalas") or 0
+            dest_v = a.get("destino_vuelta") or a["destino"]
+            out.append(f"- 🇩🇪 **A desde Stuttgart: {eur(a['precio_ida_vuelta'])}** i/v por persona "
+                       f"({a.get('aerolineas') or 'Ryanair'}{', ' + str(esc) + ' escala' if esc else ''})")
+            out.append(f"  - Ida: {fecha_corta(a['salida_ida'])} · {a['origen']} {hora(a['salida_ida'])} → "
+                       f"{a['destino']} {hora(a['llegada_ida'])} · [ver]({a['enlace']})")
+            out.append(f"  - Vuelta: {fecha_corta(a['salida_vuelta'])} · {dest_v} {hora(a['salida_vuelta'])} → "
+                       f"{a['origen']} {hora(a['llegada_vuelta'])} · [ver]({a.get('enlace_vuelta') or a['enlace']})")
+            out.append(f"  - Llegar al aeropuerto ({a['origen']}) desde Stuttgart: ~{minutos_txt(acc.get('min'))} y "
+                       f"~{eur(acc.get('eur'))} por trayecto · {acc.get('como', '')} [est.]")
+        else:
+            out.append("- 🇩🇪 A desde Stuttgart: sin vuelo encontrado → va en tren (lo calcula Claude con DB/SBB/ÖBB)")
+    c_min, t_min = aloj_mas_barato(o.get("alojamiento"))
+    b = o["precio_ida_vuelta"] + 2 * float((o.get("acceso") or {}).get("eur", 0))
+    partes = []
+    for etiqueta, al in (("en el centro", c_min), ("con el más barato", t_min if t_min != c_min else None)):
+        if al is None:
+            continue
+        txt = f"{etiqueta}: **{eur(b + al)}** (B + alojamiento 2 pers.)"
+        if a:
+            txt += f" · **{eur(b + al + a['coste_real_pp'])}** con el vuelo de A"
+        partes.append(txt)
+    if partes:
+        out.append(f"- 💶 **Total** (vuelo y bus de B {eur(b)} + alojamiento): " + " · ".join(partes))
+    else:
+        out.append(f"- 💶 Vuelo y bus de B: {eur(b)} (alojamiento sin precio verificado)")
+    return out
+
+
+def total_viaje_fijo(o: dict) -> float:
+    c_min, t_min = aloj_mas_barato(o.get("alojamiento"))
+    b = o["precio_ida_vuelta"] + 2 * float((o.get("acceso") or {}).get("eur", 0))
+    return b + (c_min if c_min is not None else t_min if t_min is not None else 0)
+
+
 MESES = ["", "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre",
          "octubre", "noviembre", "diciembre"]
 
@@ -1691,9 +1897,27 @@ def informe_md(res: dict) -> str:
         op = min(z["opciones"], key=lambda o: o["total_vuelos"] / o["dias"])
         out.append(f"- ⛷️ Esquí: {z['zona']} · {op['dias']} días {fecha_corta(op['ida'])} → "
                    f"{fecha_corta(op['vuelta'])} · vuelos {eur(op['total_vuelos'])}")
+    for vf in res.get("viajes_fijos") or []:
+        if vf["opciones"]:
+            b = min(vf["opciones"], key=total_viaje_fijo)
+            out.append(f"- 🎯 {vf['nombre']}: {b.get('ciudad_centro') or b['ciudad']} · "
+                       f"{fecha_corta(vf['ida'])} → {fecha_corta(vf['vuelta'])} · vuelo B "
+                       f"{eur(b['precio_ida_vuelta'])} · ~{eur(total_viaje_fijo(b))} con alojamiento para 2")
     if not (sorp or ene or zonas_ok):
         out.append("- Nada destacable hoy.")
     out.append("")
+
+    # ---------- Viajes con fechas fijas
+    for vf in res.get("viajes_fijos") or []:
+        out.append(f"## 🎯 Viaje fijo: {vf['nombre']} ({fecha_corta(vf['ida'])} → {fecha_corta(vf['vuelta'])}, "
+                   f"{vf['noches']} noches)")
+        out.append("Vuelo de B (Bilbao y alrededores, 1 persona) + alojamiento para 2 personas; "
+                   "A (Stuttgart) a la misma ciudad si hay vuelo. Ordenado por coste real de B.")
+        if not vf["opciones"]:
+            out.append("- Sin vuelos encontrados hoy para estas fechas (o las fuentes no respondieron; ver avisos).")
+        for k, o in enumerate(vf["opciones"]):
+            out += tarjeta_viaje_fijo(o, ["🥇 ", "🥈 ", "🥉 "][k] if k < 3 else "")
+        out.append("")
 
     # ---------- Escapadas próximas
     umbral = res.get("umbral", 150)
@@ -1796,10 +2020,18 @@ def ejecutar() -> int:
                  "bajada_pct": cfg["bajada_relevante_pct"], "avisos": avisos,
                  "esqui_dias": f"{t['dias_min']}-{t['dias_max']}", "esqui": [], "esqui_salidas": [],
                  "sorpresa": [], "sorpresa_top": [], "enero": [], "enero_top": [], "enero_rango": None,
-                 "bajadas": []}
+                 "bajadas": [], "viajes_fijos": []}
     umbral = float(res["umbral"])
     origenes_b = cfg["viajeros"]["B"]["aeropuertos"]
     ventanas = ventanas_campanas(cfg)
+
+    # 0) Viajes con fechas fijas (prioridad: van primero para no quedarse sin presupuesto)
+    try:
+        res["viajes_fijos"], av_vf = campana_viajes_fijos(cfg, g, aloj)
+        res["avisos"] += av_vf
+    except Exception as e:
+        traceback.print_exc()
+        res["avisos"].append(f"Fallo en viajes con fechas fijas: {type(e).__name__}: {e}")
 
     # 1) Ryanair (rápido): escapadas próximas y fines de semana desde enero
     for campana, clave in (("sorpresa", "sorpresa"), ("enero", "enero")):
