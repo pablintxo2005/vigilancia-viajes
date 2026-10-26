@@ -85,12 +85,13 @@ DIAS_SEMANA = ["lun", "mar", "mié", "jue", "vie", "sáb", "dom"]
 DEFECTO = {'moneda': 'EUR',
  'idioma': 'es',
  'pausa_entre_peticiones_s': 1.0,
- 'max_peticiones_google': 1400,
- 'tiempo_max_google_min': 75,
+ 'max_peticiones_google': 3500,
+ 'tiempo_max_google_min': 165,
  'timeout_peticion_s': 30,
  'max_escalas': 1,
  'historico_dias': 30,
  'umbral_aviso_ida_vuelta_eur': 150,
+ 'umbral_mostrar_eur': 220,
  'bajada_relevante_pct': 20,
  'excluir_paises_destino': ['ES'],
  'paises_permitidos': ['AL',
@@ -148,8 +149,8 @@ DEFECTO = {'moneda': 'EUR',
                        'LY',
                        'EG'],
  'google_findes': {'activo': True,
-                   'origen': 'BIO',
-                   'findes_por_dia': 2,
+                   'origenes': ['BIO'],
+                   'findes_por_dia': 6,
                    'destinos': ['AMS',
                                 'CDG',
                                 'ORY',
@@ -160,32 +161,58 @@ DEFECTO = {'moneda': 'EUR',
                                 'MUC',
                                 'ZRH',
                                 'GVA',
+                                'BSL',
                                 'LIS',
                                 'OPO',
+                                'FAO',
+                                'FNC',
+                                'PDL',
                                 'FCO',
                                 'MXP',
                                 'VCE',
+                                'NAP',
+                                'BLQ',
+                                'FLR',
+                                'PSA',
+                                'TRN',
                                 'NCE',
                                 'MRS',
                                 'LYS',
+                                'TLS',
+                                'NTE',
                                 'DUB',
                                 'EDI',
+                                'MAN',
                                 'CPH',
+                                'OSL',
+                                'ARN',
+                                'HEL',
+                                'KEF',
                                 'VIE',
                                 'PRG',
                                 'BUD',
+                                'WAW',
+                                'KRK',
                                 'BER',
-                                'RAK',
-                                'TNG',
+                                'HAM',
+                                'DUS',
                                 'ATH',
                                 'MLA',
-                                'KRK']},
+                                'IST',
+                                'DBV',
+                                'SPU',
+                                'RAK',
+                                'TNG',
+                                'CMN',
+                                'AGA',
+                                'TUN']},
  'viajeros': {'A': {'nombre': 'Stuttgart',
                     'aeropuertos': ['STR', 'FKB', 'FMM', 'FDH', 'FRA', 'MUC', 'ZRH', 'BSL'],
                     'principales_esqui': ['STR', 'FMM', 'MUC', 'ZRH']},
               'B': {'nombre': 'Bilbao',
                     'aeropuertos': ['BIO', 'EAS', 'VIT', 'SDR', 'BIQ', 'PNA'],
-                    'principales_esqui': ['BIO', 'SDR', 'BIQ']}},
+                    'principales_esqui': ['BIO', 'SDR', 'BIQ'],
+                    'aeropuertos_lejanos': ['ZAZ', 'BOD', 'MAD']}},
  'destinos_esqui': [{'zona': 'Tirol (Innsbruck: Stubai, Axamer Lizum, Nordkette)',
                      'aeropuertos': ['INN', 'MUC', 'SZG'],
                      'vuela_A': False,
@@ -227,26 +254,92 @@ DEFECTO = {'moneda': 'EUR',
                                    'pistas'},
                     {'zona': 'Bansko (Bulgaria)',
                      'aeropuertos': ['SOF'],
-                     'vuela_A': True,
+                     'vuela_A': False,
                      'base': {'nombre': 'Bansko', 'lat': 41.8383, 'lon': 23.4885},
-                     'transporte': 'Transfer/bus Sofía→Bansko (~2h30); telecabina desde el '
-                                   'pueblo'}],
+                     'transporte': 'Transfer/bus Sofía→Bansko (~2h30); telecabina desde el pueblo; '
+                                   'A: vuelo o tren nocturno (lo calcula Claude)'},
+                    {'zona': 'Zillertal (Mayrhofen, Hintertux)',
+                     'aeropuertos': ['INN', 'MUC', 'SZG'],
+                     'vuela_A': False,
+                     'base': {'nombre': 'Mayrhofen', 'lat': 47.1667, 'lon': 11.8667},
+                     'transporte': 'Tren a Jenbach + tren Zillertalbahn a Mayrhofen; ski-bus '
+                                   'gratis a pistas y glaciar de Hintertux'},
+                    {'zona': 'Arlberg (St. Anton)',
+                     'aeropuertos': ['INN', 'ZRH', 'MUC'],
+                     'vuela_A': False,
+                     'base': {'nombre': 'St. Anton am Arlberg', 'lat': 47.1287, 'lon': 10.264},
+                     'transporte': 'Tren directo (Railjet) Innsbruck/Zúrich → St. Anton; estación '
+                                   'junto a los remontes'},
+                    {'zona': 'Kitzbühel (Ski Welt / KitzSki)',
+                     'aeropuertos': ['SZG', 'MUC', 'INN'],
+                     'vuela_A': False,
+                     'base': {'nombre': 'Kitzbühel', 'lat': 47.4464, 'lon': 12.3922},
+                     'transporte': 'Tren Salzburgo/Innsbruck → Kitzbühel (~1h30); remontes a pie '
+                                   'desde el centro'},
+                    {'zona': 'Zermatt (Matterhorn)',
+                     'aeropuertos': ['GVA', 'ZRH', 'BSL', 'MXP'],
+                     'vuela_A': False,
+                     'base': {'nombre': 'Zermatt', 'lat': 46.0207, 'lon': 7.7491},
+                     'transporte': 'Tren SBB a Visp + tren MGB a Zermatt (pueblo sin coches); A en '
+                                   'tren vía Basilea'},
+                    {'zona': 'Jungfrau (Grindelwald, Wengen)',
+                     'aeropuertos': ['ZRH', 'BSL', 'GVA'],
+                     'vuela_A': False,
+                     'base': {'nombre': 'Grindelwald', 'lat': 46.6242, 'lon': 8.0414},
+                     'transporte': 'Tren a Interlaken Ost + tren BOB a Grindelwald; telecabinas '
+                                   'desde el pueblo'},
+                    {'zona': 'Les 3 Vallées (Val Thorens, Méribel)',
+                     'aeropuertos': ['GVA', 'LYS'],
+                     'vuela_A': False,
+                     'base': {'nombre': 'Val Thorens', 'lat': 45.297, 'lon': 6.58},
+                     'transporte': 'Tren a Moûtiers + bus a Val Thorens/Méribel; lanzaderas '
+                                   'directas desde GVA/LYS los sábados'},
+                    {'zona': 'Tatras (Zakopane)',
+                     'aeropuertos': ['KRK'],
+                     'vuela_A': True,
+                     'base': {'nombre': 'Zakopane', 'lat': 49.2992, 'lon': 19.9496},
+                     'transporte': 'Bus Cracovia → Zakopane (~2h, cada 30 min); buses urbanos a '
+                                   'Kasprowy y Gubałówka'}],
  'temporada_esqui': {'desde': '2026-12-10',
                      'hasta': '2027-03-31',
                      'dias_min': 3,
                      'dias_max': 6,
-                     'ventana_dias_salida': 6},
- 'sorpresa': {'semanas_vista': 10,
+                     'ventana_dias_salida': 10},
+ 'sorpresa': {'semanas_vista': 12,
               'duracion_min_dias': 2,
               'duracion_max_dias': 2,
               'dias_salida': ['vie'],
               'dias_vuelta': ['dom'],
-              'max_ofertas_informe': 6},
+              'max_ofertas_informe': 10,
+              'otras_opciones': 25},
  'desde_enero': {'activo': True,
                  'desde': '2027-01-01',
-                 'hasta': '2027-06-30',
-                 'mejores_por_mes': 2,
+                 'hasta': '2027-09-30',
+                 'mejores_por_mes': 3,
                  'comparar_con_bilbao': True},
+ 'viajes_fijos': [],
+ 'acceso_desde_stuttgart': {'STR': {'eur': 4,
+                                    'min': 30,
+                                    'como': 'S-Bahn S2/S3 Stuttgart Hbf → aeropuerto'},
+                            'FKB': {'eur': 15,
+                                    'min': 90,
+                                    'como': 'tren a Baden-Baden + bus 285 al aeropuerto'},
+                            'FMM': {'eur': 20,
+                                    'min': 130,
+                                    'como': 'tren a Memmingen + bus al aeropuerto'},
+                            'FDH': {'eur': 20,
+                                    'min': 150,
+                                    'como': 'tren a Friedrichshafen Flughafen'},
+                            'FRA': {'eur': 30,
+                                    'min': 90,
+                                    'como': 'ICE Stuttgart → Frankfurt Flughafen'},
+                            'MUC': {'eur': 30,
+                                    'min': 180,
+                                    'como': 'ICE a München Hbf + S-Bahn S8/S1'},
+                            'ZRH': {'eur': 30,
+                                    'min': 180,
+                                    'como': 'IC Stuttgart → Zürich Flughafen'},
+                            'BSL': {'eur': 30, 'min': 190, 'como': 'tren a Basel SBB + bus 50'}},
  'acceso_desde_bilbao': {'BIO': {'eur': 3,
                                  'min': 30,
                                  'como': 'Bizkaibus A3247 (Moyua/Termibus → aeropuerto)'},
@@ -265,29 +358,32 @@ DEFECTO = {'moneda': 'EUR',
                                          'aeropuerto'},
                          'PNA': {'eur': 16,
                                  'min': 130,
-                                 'como': 'bus Bilbao → Pamplona + bus/taxi al aeropuerto'}},
+                                 'como': 'bus Bilbao → Pamplona + bus/taxi al aeropuerto'},
+                         'ZAZ': {'eur': 25,
+                                 'min': 240,
+                                 'como': 'bus ALSA Bilbao → Zaragoza + bus 501 al aeropuerto'},
+                         'BOD': {'eur': 30,
+                                 'min': 270,
+                                 'como': 'bus Bilbao → Burdeos (FlixBus/ALSA) + lanzadera '
+                                         "30'Direct"},
+                         'MAD': {'eur': 40,
+                                 'min': 300,
+                                 'como': 'tren/bus Bilbao → Madrid + Cercanías/metro al '
+                                         'aeropuerto'}},
  'valor_tiempo_eur_hora': 15,
  'alojamiento': {'activo': True,
                  'huespedes': 2,
                  'radio_centro_km': 1.5,
                  'radio_afueras_km': 12,
                  'radio_aeropuerto_km': 4,
-                 'opciones_centro': 2,
-                 'opciones_baratas': 2,
+                 'opciones_centro': 3,
+                 'opciones_baratas': 3,
+                 'paginas': 3,
                  'valoracion_min': 4.5,
                  'resenas_min': 5,
-                 'max_busquedas': 90,
-                 'tiempo_max_min': 25},
- 'sin_ruta': {'fallos_para_saltar': 2, 'dias_memoria': 10},
- 'viajes_fijos': [],
- 'acceso_desde_stuttgart': {'STR': {'eur': 4, 'min': 30, 'como': 'S-Bahn S2/S3 Stuttgart Hbf → aeropuerto'},
-                            'FKB': {'eur': 15, 'min': 90, 'como': 'tren a Baden-Baden + bus 285 al aeropuerto'},
-                            'FMM': {'eur': 20, 'min': 130, 'como': 'tren a Memmingen + bus al aeropuerto'},
-                            'FDH': {'eur': 20, 'min': 150, 'como': 'tren a Friedrichshafen Flughafen'},
-                            'FRA': {'eur': 30, 'min': 90, 'como': 'ICE Stuttgart → Frankfurt Flughafen'},
-                            'MUC': {'eur': 30, 'min': 180, 'como': 'ICE a München Hbf + S-Bahn S8/S1'},
-                            'ZRH': {'eur': 30, 'min': 180, 'como': 'IC Stuttgart → Zürich Flughafen'},
-                            'BSL': {'eur': 30, 'min': 190, 'como': 'tren a Basel SBB + bus 50'}}}
+                 'max_busquedas': 220,
+                 'tiempo_max_min': 45},
+ 'sin_ruta': {'fallos_para_saltar': 2, 'dias_memoria': 10}}
 
 
 # ---------------------------------------------------------------- utilidades
@@ -346,6 +442,13 @@ def cargar_config() -> tuple[dict, list[str]]:
         cfg["viajeros"][v]["aeropuertos"] = lista_iata(cfg["viajeros"][v].get("aeropuertos"))
         pe = cfg["viajeros"][v].get("principales_esqui")
         cfg["viajeros"][v]["principales_esqui"] = lista_iata(pe) or cfg["viajeros"][v]["aeropuertos"]
+        cfg["viajeros"][v]["aeropuertos_lejanos"] = lista_iata(cfg["viajeros"][v].get("aeropuertos_lejanos"))
+    gf = cfg.get("google_findes") if isinstance(cfg.get("google_findes"), dict) else {}
+    gf["destinos"] = lista_iata(gf.get("destinos"))
+    gf["origenes"] = lista_iata(gf.get("origenes")) or lista_iata([gf.get("origen") or "BIO"])
+    cfg["google_findes"] = gf
+    # "NO" (Noruega) en YAML se lee como False: se corrige aquí por si acaso
+    cfg["paises_permitidos"] = ["NO" if p is False else str(p).upper() for p in cfg.get("paises_permitidos") or []]
     zonas = []
     for z in cfg.get("destinos_esqui") or []:
         try:
@@ -891,6 +994,17 @@ CENTROS: dict[str, tuple[str, float, float]] = {
     "ZAG": ("Zagreb", 45.8150, 15.9819), "SPU": ("Split", 43.5081, 16.4402),
     "DBV": ("Dubrovnik", 42.6507, 18.0944), "INN": ("Innsbruck", 47.2654, 11.3928),
     "SZG": ("Salzburgo", 47.8095, 13.0550),
+    "HEL": ("Helsinki", 60.1699, 24.9384), "KEF": ("Reikiavik", 64.1466, -21.9426),
+    "IST": ("Estambul", 41.0082, 28.9784), "SAW": ("Estambul", 41.0082, 28.9784),
+    "CMN": ("Casablanca", 33.5731, -7.5898), "TUN": ("Túnez", 36.8065, 10.1815),
+    "FNC": ("Funchal", 32.6669, -16.9241), "PDL": ("Ponta Delgada", 37.7412, -25.6756),
+    "RIX": ("Riga", 56.9496, 24.1052), "TLL": ("Tallin", 59.4370, 24.7536),
+    "VNO": ("Vilna", 54.6872, 25.2797), "GLA": ("Glasgow", 55.8642, -4.2518),
+    "BRS": ("Bristol", 51.4545, -2.5879), "LPL": ("Liverpool", 53.4084, -2.9916),
+    "BHX": ("Birmingham", 52.4862, -1.8904), "STR": ("Stuttgart", 48.7784, 9.1800),
+    "NUE": ("Núremberg", 49.4521, 11.0767), "LUX": ("Luxemburgo", 49.6116, 6.1319),
+    "RHO": ("Rodas", 36.4341, 28.2176), "HER": ("Heraclión", 35.3387, 25.1442),
+    "TIA": ("Tirana", 41.3275, 19.8187), "BEG": ("Belgrado", 44.8125, 20.4612),
 }
 CENTROS_JSON = DATA / "centros.json"
 
@@ -938,7 +1052,7 @@ class Centros:
             return n, float(la), float(lo), True
         c = coords_aeropuerto(iata)
         nombre = ciudad or (c[2] if c else iata)
-        if self.consultas < 15:
+        if self.consultas < 30:
             self.consultas += 1
             try:
                 pais = c[3] if c else ""
@@ -1006,9 +1120,12 @@ class Alojamiento:
         self.n_baratas = int(a.get("opciones_baratas", 2))
         self.val_min = float(a.get("valoracion_min", 4.5))
         self.res_min = int(a.get("resenas_min", 5))
-        self.max_busquedas = int(a.get("max_busquedas", 90))
-        self.limite_tiempo = None
-        self.tiempo_max_s = 60 * float(a.get("tiempo_max_min", 25))
+        self.max_busquedas = int(a.get("max_busquedas", 220))
+        self.paginas = max(1, min(6, int(a.get("paginas", 3))))
+        self.tiempo_usado = 0.0          # solo cuenta el tiempo realmente dedicado a Airbnb
+        self.tiempo_max_s = 60 * float(a.get("tiempo_max_min", 45))
+        self._api_key = None
+        self._paginacion_ok = True       # si la API interna de pyairbnb cambia, se vuelve a 1 página
         self.moneda = cfg["moneda"]
         self.busquedas = self.errores = self.errores_seguidos = 0
         self.desactivado: str | None = ERROR_IMPORT_AIRBNB if self.activo else "desactivado en config.yaml"
@@ -1023,9 +1140,7 @@ class Alojamiento:
     def _disponible(self) -> str | None:
         if self.desactivado:
             return f"Airbnb no consultado: {self.desactivado}"
-        if self.limite_tiempo is None:
-            self.limite_tiempo = time.monotonic() + self.tiempo_max_s
-        if self.busquedas >= self.max_busquedas or time.monotonic() > self.limite_tiempo:
+        if self.busquedas >= self.max_busquedas or self.tiempo_usado > self.tiempo_max_s:
             return "límite diario de búsquedas de alojamiento alcanzado"
         return None
 
@@ -1042,13 +1157,11 @@ class Alojamiento:
         dlat = radio / 111.0
         dlon = radio / (111.0 * max(0.2, math.cos(math.radians(lat))))
         zoom = 15 if radio <= 2 else 13 if radio <= 6 else 11
+        caja = dict(check_in=ci, check_out=co, ne_lat=lat + dlat, ne_long=lon + dlon,
+                    sw_lat=lat - dlat, sw_long=lon - dlon, zoom_value=zoom)
+        t0 = time.monotonic()
         try:
-            def consulta():
-                return pyairbnb.search_first_page(
-                    check_in=ci, check_out=co, ne_lat=lat + dlat, ne_long=lon + dlon,
-                    sw_lat=lat - dlat, sw_long=lon - dlon, zoom_value=zoom, price_min=0, price_max=0,
-                    adults=self.huespedes, currency=self.moneda, language="en", timeout=30)
-            crudos = con_timeout(consulta, 60) or []
+            crudos = self._consultar_paginas(caja)
             self.errores_seguidos = 0
         except Exception as e:
             self.errores += 1
@@ -1060,7 +1173,9 @@ class Alojamiento:
             raise
         finally:
             time.sleep(1.0)
+            self.tiempo_usado += time.monotonic() - t0
         opciones = []
+        vistos = set()
         for r in crudos:
             try:
                 total = _precio_total(r, n)
@@ -1071,8 +1186,9 @@ class Alojamiento:
                 coord = r.get("coordinates") or {}
                 la = float(coord.get("latitude") or 0) or None
                 lo = float(coord.get("longitud") or coord.get("longitude") or 0) or None
-                if total <= 0 or not rid or val < self.val_min or resenas < self.res_min:
+                if total <= 0 or not rid or rid in vistos or val < self.val_min or resenas < self.res_min:
                     continue
+                vistos.add(rid)
                 opciones.append({
                     "id": rid,
                     "nombre": (r.get("name") or r.get("title") or "Alojamiento")[:70],
@@ -1086,6 +1202,54 @@ class Alojamiento:
                 continue
         self.cache[clave] = opciones
         return opciones
+
+    def _primera_pagina(self, caja: dict) -> list:
+        def consulta():
+            return pyairbnb.search_first_page(price_min=0, price_max=0, adults=self.huespedes,
+                                              currency=self.moneda, language="en", timeout=30, **caja)
+        return con_timeout(consulta, 60) or []
+
+    def _consultar_paginas(self, caja: dict) -> list:
+        """Hasta `self.paginas` páginas de resultados (unos 18 anuncios por página). Usa la API interna de
+        pyairbnb (cursor de paginación); si no está disponible o cambia, se queda con la primera página."""
+        if self.paginas <= 1 or not self._paginacion_ok:
+            return self._primera_pagina(caja)
+        _api, _search, _std, _utils = (getattr(pyairbnb, n, None) for n in ("api", "search", "standardize", "utils"))
+        if not all(hasattr(m, f) for m, f in ((_api, "get"), (_search, "get"), (_std, "from_search"),
+                                              (_utils, "get_nested_value"))):
+            self._paginacion_ok = False
+            return self._primera_pagina(caja)
+        todos, cursor = [], ""
+        try:
+            if self._api_key is None:
+                self._api_key = con_timeout(lambda: _api.get("", timeout=30), 45)
+            for pagina in range(self.paginas):
+                def consulta(c=cursor):
+                    return _search.get(
+                        self._api_key, c, caja["check_in"], caja["check_out"], caja["ne_lat"],
+                        caja["ne_long"], caja["sw_lat"], caja["sw_long"], caja["zoom_value"], self.moneda,
+                        "", 0, 0, [], False, self.huespedes, 0, 0, 0, 0, 0, "en", "", "", timeout=30)
+                crudo = con_timeout(consulta, 60)
+                if not isinstance(crudo, dict):
+                    raise RuntimeError("respuesta vacía de Airbnb")
+                res = _std.from_search(crudo) or []
+                todos += res
+                pag = _utils.get_nested_value(crudo, "data.presentation.staysSearch.results.paginationInfo", {})
+                cursor = (pag or {}).get("nextPageCursor") if isinstance(pag, dict) else None
+                if not res or not cursor:
+                    break
+                time.sleep(0.8)
+            return todos
+        except (TypeError, AttributeError, KeyError) as e:
+            # La API interna de pyairbnb ha cambiado: seguimos con una sola página
+            log(f"  ! paginación de Airbnb no disponible ({type(e).__name__}: {e}); se usa 1 página")
+            self._paginacion_ok = False
+            return todos or self._primera_pagina(caja)
+        except Exception:
+            self._api_key = None
+            if todos:
+                return todos
+            raise
 
     def buscar(self, nombre: str, lat, lon, check_in: str, check_out: str,
                aeropuerto: tuple | None = None, centro_real: bool = True) -> dict:
@@ -1297,6 +1461,8 @@ def enriquecer_oferta(cfg: dict, o: dict) -> dict:
     o["acceso"] = acc
     o["coste_real_pp"] = round(o["precio_ida_vuelta"] + 2 * acc["eur"], 2)
     o["coste_gen_pp"] = round(o["coste_real_pp"] + 2 * acc["min"] / 60 * vt, 2)
+    o["chollo"] = o["precio_ida_vuelta"] < float(cfg.get("umbral_aviso_ida_vuelta_eur", 150))
+    o["lejano"] = o["origen"] in set(cfg["viajeros"]["B"].get("aeropuertos_lejanos") or [])
     c = coords_aeropuerto(o["destino"])
     o.setdefault("pais_codigo", c[3] if c else "")
     o.setdefault("alojamiento", None)
@@ -1340,6 +1506,43 @@ def seleccionar_sorpresa(sorpresa: list[dict], umbral: float, maximo: int, cfg: 
     return top
 
 
+def origenes_ryanair_b(cfg: dict) -> list[str]:
+    """Aeropuertos de B para Ryanair: los de alrededor de Bilbao + los lejanos (si están configurados)."""
+    b = cfg["viajeros"]["B"]
+    out = list(b.get("aeropuertos") or [])
+    out += [x for x in b.get("aeropuertos_lejanos") or [] if x not in out]
+    return out
+
+
+def otras_opciones(ofertas: list[dict], top: list[dict], umbral: float, n: int, cfg: dict) -> list[dict]:
+    """Más opciones (sin alojamiento) para una tabla compacta: la mejor por destino y fin de semana,
+    ordenadas por coste real, sin repetir lo que ya sale en tarjetas."""
+    if n <= 0:
+        return []
+    ya = {(o["destino"], o["salida_ida"][:10]) for o in top}
+    mejor: dict[tuple, dict] = {}
+    for o in ofertas:
+        if o["precio_ida_vuelta"] >= umbral:
+            continue
+        k = (o["destino"], o["salida_ida"][:10])
+        if k in ya:
+            continue
+        e = enriquecer_oferta(cfg, o)
+        if k not in mejor or e["coste_gen_pp"] < mejor[k]["coste_gen_pp"]:
+            mejor[k] = e
+    lista = sorted(mejor.values(), key=lambda o: (o["coste_gen_pp"], o["precio_ida_vuelta"]))
+    # variedad: como mucho 3 fechas por destino
+    cuenta, out = {}, []
+    for o in lista:
+        if cuenta.get(o["destino"], 0) >= 3:
+            continue
+        cuenta[o["destino"]] = cuenta.get(o["destino"], 0) + 1
+        out.append(o)
+        if len(out) >= n:
+            break
+    return out
+
+
 def campana_google_findes(cfg: dict, g: "Google", ventanas: dict) -> dict[str, list[dict]]:
     """Fines de semana (vie→dom) desde BIO con cualquier aerolínea vía Google Flights, a una lista de
     destinos. Cada día revisa pocos fines de semana distintos (rota), para no gastar el presupuesto."""
@@ -1347,7 +1550,7 @@ def campana_google_findes(cfg: dict, g: "Google", ventanas: dict) -> dict[str, l
     res: dict[str, list[dict]] = {"sorpresa": [], "enero": []}
     if not gf.get("activo", True) or g.desactivado:
         return res
-    origen = str(gf.get("origen") or "BIO").upper()
+    origenes = [str(x).upper() for x in (gf.get("origenes") or [gf.get("origen") or "BIO"]) if str(x).strip()]
     destinos = [str(d).upper() for d in gf.get("destinos") or [] if str(d).strip()]
     destinos = [d for d in destinos if not destino_excluido(cfg, d)]
     n_dia = max(1, int(gf.get("findes_por_dia", 2)))
@@ -1368,35 +1571,31 @@ def campana_google_findes(cfg: dict, g: "Google", ventanas: dict) -> dict[str, l
     for campana, lista in findes.items():
         if not lista:
             continue
-        k = hoy().toordinal() % len(lista)
-        for i in range(min(cupos.get(campana, 1), len(lista))):
+        cupo = min(cupos.get(campana, 1), len(lista))
+        # Rotación sin solapes: cada día un bloque distinto de fines de semana
+        k = (hoy().toordinal() * cupo) % len(lista)
+        for i in range(cupo):
             plan.append((campana, lista[(k + i) % len(lista)]))
+    # Intercalar campañas (próximo, enero, próximo…) para que, si se acaba el tiempo, haya de los dos
+    orden, vistos = {}, {}
+    for p in plan:
+        vistos[p[0]] = vistos.get(p[0], -1) + 1
+        orden[p] = vistos[p[0]]
+    plan = sorted(plan, key=lambda p: orden[p])
     for campana, vie in plan:
         dom = vie + timedelta(days=dur)
-        log(f"Google fin de semana {origen} {vie} → {dom} ({len(destinos)} destinos)")
-        for dest in destinos:
-            if g.desactivado or g.agotado:
-                break
-            try:
-                iv = g.ida_vuelta(origen, [dest], vie.isoformat(), dom.isoformat())
-            except Exception as e:
-                log(f"  ! google finde {dest}: {e}")
-                continue
-            if not iv:
-                continue
-            nombre = CENTROS.get(dest, (None,))[0]
-            c = coords_aeropuerto(dest)
-            res[campana].append({
-                "origen": origen, "destino": dest, "ciudad": nombre or (c[2] if c else dest),
-                "pais": c[3] if c else "",
-                "salida_ida": iv.ida.salida, "llegada_ida": iv.ida.llegada,
-                "salida_vuelta": iv.vuelta.salida, "llegada_vuelta": iv.vuelta.llegada,
-                "precio_ida_vuelta": round(iv.precio, 2),
-                "aerolineas": iv.ida.aerolineas if iv.ida.aerolineas == iv.vuelta.aerolineas
-                else f"{iv.ida.aerolineas} / {iv.vuelta.aerolineas}",
-                "escalas": max(iv.ida.escalas or 0, iv.vuelta.escalas or 0),
-                "enlace": iv.ida.enlace, "enlace_vuelta": iv.vuelta.enlace, "fuente": "Google Flights",
-            })
+        for origen in origenes:
+            log(f"Google fin de semana {origen} {vie} → {dom} ({len(destinos)} destinos)")
+            for dest in destinos:
+                if g.desactivado or g.agotado:
+                    break
+                try:
+                    iv = g.ida_vuelta(origen, [dest], vie.isoformat(), dom.isoformat())
+                except Exception as e:
+                    log(f"  ! google finde {dest}: {e}")
+                    continue
+                if iv:
+                    res[campana].append(oferta_desde_google(origen, dest, iv))
     return res
 
 
@@ -1473,7 +1672,7 @@ def campana_viajes_fijos(cfg: dict, g: "Google", aloj: "Alojamiento") -> tuple[l
                         and o["salida_vuelta"][:10] == vta.isoformat()]
 
             # B (Bilbao): Ryanair desde todos sus aeropuertos + Google Flights desde BIO
-            ofertas_b, fallos = ryanair_sorpresa(tmp, cfg["viajeros"]["B"]["aeropuertos"], ida, ida)
+            ofertas_b, fallos = ryanair_sorpresa(tmp, origenes_ryanair_b(cfg), ida, ida)
             ofertas_b = solo_fechas(ofertas_b)
             if fallos:
                 avisos.append(f"Viaje fijo {nombre}: Ryanair falló para " + "; ".join(fallos))
@@ -1498,7 +1697,7 @@ def campana_viajes_fijos(cfg: dict, g: "Google", aloj: "Alojamiento") -> tuple[l
                     continue
                 ciudades.add(cg)
                 top.append(o)
-                if len(top) >= int(v.get("max_destinos", 4)):
+                if len(top) >= int(v.get("max_destinos", 8)):
                     break
             comparar_con_bilbao(g, top, cfg)
 
@@ -1761,8 +1960,11 @@ def tarjeta_oferta(o: dict, num: str = "") -> list[str]:
     n = noches(o["salida_ida"], o["salida_vuelta"])
     acc = o.get("acceso") or {}
     ciudad = o.get("ciudad_centro") or o["ciudad"]
+    marca = " 🔥 chollo" if o.get("chollo") else ""
     out = ["", f"### {num}{bandera(o.get('pais_codigo', ''))} {ciudad} ({o['destino']}) — "
-               f"{eur(o['precio_ida_vuelta'])} ida y vuelta por persona"]
+               f"{eur(o['precio_ida_vuelta'])} ida y vuelta por persona{marca}"]
+    if o.get("lejano"):
+        out.append(f"- 🧭 Sale de un aeropuerto lejano ({o['origen']}): solo compensa si el precio lo justifica")
     aer = o.get("aerolineas") or "Ryanair"
     esc = o.get("escalas") or 0
     out.append(f"- ✈️ Ida: {fecha_corta(o['salida_ida'])} · {o['origen']} {hora(o['salida_ida'])} → "
@@ -1853,6 +2055,25 @@ def total_viaje_fijo(o: dict) -> float:
     return b + (c_min if c_min is not None else t_min if t_min is not None else 0)
 
 
+def tabla_otras(lista: list[dict], titulo: str) -> list[str]:
+    """Tabla compacta con más opciones (vuelo + llegar al aeropuerto; sin alojamiento)."""
+    if not lista:
+        return []
+    out = ["", f"#### ➕ {titulo} ({len(lista)} opciones más, sin alojamiento)",
+           "| Destino | Fechas | Sale de | Horas ida / vuelta | Vuelo i/v | + bus al aeropuerto | Ver |",
+           "|---|---|---|---|---|---|---|"]
+    for o in lista:
+        acc = o.get("acceso") or {}
+        ciudad = o.get("ciudad_centro") or o.get("ciudad") or o["destino"]
+        aer = (o.get("aerolineas") or "Ryanair")[:22]
+        out.append(f"| {bandera(o.get('pais_codigo', ''))} {ciudad} ({o['destino']}){' 🔥' if o.get('chollo') else ''} "
+                   f"| {fecha_corta(o['salida_ida'])} → {fecha_corta(o['salida_vuelta'])} "
+                   f"| {o['origen']} | {hora(o['salida_ida'])} / {hora(o['salida_vuelta'])} ({aer}) "
+                   f"| **{eur(o['precio_ida_vuelta'])}** | ~{eur(2 * float(acc.get('eur', 0)))} · "
+                   f"{minutos_txt(acc.get('min'))} | [ver]({o['enlace']}) |")
+    return out
+
+
 MESES = ["", "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre",
          "octubre", "noviembre", "diciembre"]
 
@@ -1862,7 +2083,7 @@ def informe_md(res: dict) -> str:
     out.append(f"Google Flights: {res.get('peticiones_google', 0)} consultas "
                f"({res.get('exitos_google', 0)} con vuelos, {res.get('sin_vuelos_google', 0)} sin vuelos, "
                f"{res.get('errores_google', 0)} errores, {res.get('rutas_saltadas', 0)} rutas saltadas). "
-               f"Fines de semana (Ryanair + Google desde BIO): {len(res.get('sorpresa', []))} tarifas próximas + "
+               f"Fines de semana (Ryanair + Google): {len(res.get('sorpresa', []))} tarifas próximas + "
                f"{len(res.get('enero', []))} desde enero. "
                f"Airbnb: {res.get('busquedas_airbnb', 0)} búsquedas.")
     out.append("Vuelos: precio **por persona**, tarifa básica (sin maleta de cabina grande); horas locales. "
@@ -1921,14 +2142,16 @@ def informe_md(res: dict) -> str:
 
     # ---------- Escapadas próximas
     umbral = res.get("umbral", 150)
+    umbral_m = res.get("umbral_mostrar", umbral)
     out.append(f"## 🎁 Escapadas próximas de fin de semana (viernes → domingo) desde Bilbao y alrededores "
-               f"(Europa y norte de África; Ryanair + otras aerolíneas desde BIO; ida y vuelta < {eur(umbral)}; "
-               f"ordenadas por coste real incluyendo llegar al aeropuerto)")
+               f"(Europa y norte de África; Ryanair + otras aerolíneas; vuelos hasta {eur(umbral_m)} i/v, "
+               f"🔥 = chollo por debajo de {eur(umbral)}; ordenadas por coste real incluyendo llegar al aeropuerto)")
     if not sorp:
-        out.append("- Sin ofertas bajo el umbral hoy (o Ryanair no respondió; ver avisos).")
+        out.append("- Sin ofertas hoy (o Ryanair no respondió; ver avisos).")
     medallas = ["🥇 ", "🥈 ", "🥉 "]
     for k, o in enumerate(sorp):
         out += tarjeta_oferta(o, medallas[k] if k < 3 else "")
+    out += tabla_otras(res.get("sorpresa_otras") or [], "Más escapadas próximas")
     out.append("")
 
     # ---------- Desde enero
@@ -1937,7 +2160,7 @@ def informe_md(res: dict) -> str:
         out.append(f"## 📅 Fines de semana a partir de enero (viernes → domingo, {fecha_corta(r[0])} – "
                    f"{fecha_corta(r[1])}) — los mejores de cada mes")
         if not ene:
-            out.append("- Sin ofertas bajo el umbral para esas fechas hoy (o Ryanair no respondió; ver avisos).")
+            out.append("- Sin ofertas para esas fechas hoy (o Ryanair no respondió; ver avisos).")
         mes_actual = None
         for o in ene:
             mes = o["salida_ida"][:7]
@@ -1949,6 +2172,7 @@ def informe_md(res: dict) -> str:
                 except Exception:
                     pass
             out += [x.replace("### ", "#### ", 1) if x.startswith("### ") else x for x in tarjeta_oferta(o)]
+        out += tabla_otras(res.get("enero_otras") or [], "Más fines de semana desde enero")
         out.append("")
 
     # ---------- Esquí
@@ -1994,7 +2218,12 @@ def informe_md(res: dict) -> str:
 def escribir_salidas(res: dict) -> None:
     DATA.mkdir(parents=True, exist_ok=True)
     try:
-        js = json.dumps(res, ensure_ascii=False, indent=1, default=str)
+        # En el JSON no se guardan las miles de tarifas brutas (solo lo que sale en el informe), para que
+        # el repositorio no crezca sin parar; el recuento sí se guarda.
+        ligero = {k: v for k, v in res.items() if k not in ("sorpresa", "enero")}
+        ligero["n_tarifas_sorpresa"] = len(res.get("sorpresa") or [])
+        ligero["n_tarifas_enero"] = len(res.get("enero") or [])
+        js = json.dumps(ligero, ensure_ascii=False, indent=1, default=str)
     except Exception as e:
         js = json.dumps({"error": f"no serializable: {e}"})
     (DATA / "ultimo.json").write_text(js, encoding="utf-8")
@@ -2020,9 +2249,11 @@ def ejecutar() -> int:
                  "bajada_pct": cfg["bajada_relevante_pct"], "avisos": avisos,
                  "esqui_dias": f"{t['dias_min']}-{t['dias_max']}", "esqui": [], "esqui_salidas": [],
                  "sorpresa": [], "sorpresa_top": [], "enero": [], "enero_top": [], "enero_rango": None,
-                 "bajadas": [], "viajes_fijos": []}
+                 "bajadas": [], "viajes_fijos": [], "sorpresa_otras": [], "enero_otras": []}
     umbral = float(res["umbral"])
-    origenes_b = cfg["viajeros"]["B"]["aeropuertos"]
+    umbral_mostrar = max(umbral, float(cfg.get("umbral_mostrar_eur") or umbral))
+    res["umbral_mostrar"] = umbral_mostrar
+    origenes_b = origenes_ryanair_b(cfg)
     ventanas = ventanas_campanas(cfg)
 
     # 0) Viajes con fechas fijas (prioridad: van primero para no quedarse sin presupuesto)
@@ -2051,7 +2282,14 @@ def ejecutar() -> int:
     if "sorpresa" in ventanas and not res["sorpresa"] and not res["enero"]:
         res["avisos"].append("Ryanair no devolvió tarifas de fin de semana (¿caído o cambio en su API?).")
 
-    # 1b) Otras aerolíneas desde Bilbao (Google Flights), fines de semana rotando cada día
+    # 2) Esquí con Google Flights (antes que los fines de semana extra de Google, que rotan cada día)
+    try:
+        res["esqui"], res["esqui_salidas"] = campana_esqui(cfg, g)
+    except Exception as e:
+        traceback.print_exc()
+        res["avisos"].append(f"Fallo en campaña esquí: {type(e).__name__}: {e}")
+
+    # 3) Otras aerolíneas desde Bilbao (Google Flights), fines de semana rotando cada día
     try:
         extra = campana_google_findes(cfg, g, ventanas)
         res["sorpresa"] += extra.get("sorpresa", [])
@@ -2061,28 +2299,24 @@ def ejecutar() -> int:
         res["avisos"].append(f"Fallo buscando fines de semana en Google Flights: {type(e).__name__}: {e}")
     try:
         res["sorpresa_top"] = seleccionar_sorpresa(
-            res["sorpresa"], umbral, int(cfg["sorpresa"].get("max_ofertas_informe", 6)), cfg)
+            res["sorpresa"], umbral_mostrar, int(cfg["sorpresa"].get("max_ofertas_informe", 10)), cfg)
         e = cfg.get("desde_enero") or {}
-        res["enero_top"] = seleccionar_sorpresa(res["enero"], umbral, 0, cfg,
-                                                por_mes=int(e.get("mejores_por_mes", 2)))
+        res["enero_top"] = seleccionar_sorpresa(res["enero"], umbral_mostrar, 0, cfg,
+                                                por_mes=int(e.get("mejores_por_mes", 3)))
+        n_otras = int(cfg["sorpresa"].get("otras_opciones", 25))
+        res["sorpresa_otras"] = otras_opciones(res["sorpresa"], res["sorpresa_top"], umbral_mostrar, n_otras, cfg)
+        res["enero_otras"] = otras_opciones(res["enero"], res["enero_top"], umbral_mostrar, n_otras, cfg)
     except Exception as e:
         traceback.print_exc()
         res["avisos"].append(f"Fallo seleccionando ofertas: {type(e).__name__}: {e}")
 
-    # 2) Google Flights: ¿sale mejor el mismo viaje desde Bilbao (BIO) con otra aerolínea?
+    # 3b) Google Flights: ¿sale mejor el mismo viaje desde Bilbao (BIO) con otra aerolínea?
     try:
         if (cfg.get("desde_enero") or {}).get("comparar_con_bilbao", True):
             comparar_con_bilbao(g, res["sorpresa_top"] + res["enero_top"], cfg)
     except Exception as e:
         traceback.print_exc()
         res["avisos"].append(f"Fallo comparando con Bilbao: {type(e).__name__}: {e}")
-
-    # 3) Esquí con Google Flights
-    try:
-        res["esqui"], res["esqui_salidas"] = campana_esqui(cfg, g)
-    except Exception as e:
-        traceback.print_exc()
-        res["avisos"].append(f"Fallo en campaña esquí: {type(e).__name__}: {e}")
 
     # 4) Alojamiento real (centro, afueras y aeropuerto) para las mejores opciones
     try:
@@ -2138,7 +2372,33 @@ def ejecutar() -> int:
     return 0
 
 
+def informe_reciente_ok(horas: float) -> str | None:
+    """Si ya hay un informe COMPLETO de hace menos de `horas`, devuelve su fecha (para no repetir)."""
+    try:
+        r = json.loads((DATA / "ultimo.json").read_text(encoding="utf-8"))
+        f = datetime.strptime(str(r.get("fecha_consulta", ""))[:16], "%Y-%m-%d %H:%M").replace(tzinfo=timezone.utc)
+        edad_h = (datetime.now(timezone.utc) - f).total_seconds() / 3600
+        completo = (int(r.get("peticiones_google") or 0) >= 100 and int(r.get("exitos_google") or 0) >= 50
+                    and not any("Error general" in str(a) for a in r.get("avisos") or []))
+        if 0 <= edad_h < horas and completo:
+            return r["fecha_consulta"]
+    except Exception:
+        pass
+    return None
+
+
 def main() -> int:
+    # Ejecución de respaldo: si la de esta noche ya terminó bien, no se repite (ahorra tiempo y
+    # evita que Google nos limite por exceso de consultas).
+    try:
+        h = float(os.environ.get("SALTAR_SI_RECIENTE_HORAS") or 0)
+    except ValueError:
+        h = 0
+    if h > 0:
+        f = informe_reciente_ok(h)
+        if f:
+            log(f"Ya hay un informe completo de {f} (menos de {h:g} h): la ejecución de respaldo no hace falta.")
+            return 0
     try:
         return ejecutar()
     except BaseException as e:  # último recurso: dejar siempre un informe
