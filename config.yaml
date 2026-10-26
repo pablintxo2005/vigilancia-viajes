@@ -6,13 +6,14 @@
 moneda: EUR
 idioma: es
 pausa_entre_peticiones_s: 1.0   # pausa entre consultas a Google Flights
-max_peticiones_google: 1400     # tope diario de consultas a Google Flights
-tiempo_max_google_min: 75       # si se supera, corta Google y guarda lo conseguido
+max_peticiones_google: 3500     # tope diario de consultas a Google Flights
+tiempo_max_google_min: 165      # si se supera, corta Google y guarda lo conseguido
 timeout_peticion_s: 30          # tiempo máximo de espera por consulta
 max_escalas: 1
 historico_dias: 30              # días de histórico que se conservan
 
-umbral_aviso_ida_vuelta_eur: 150
+umbral_aviso_ida_vuelta_eur: 150   # por debajo = 🔥 chollo
+umbral_mostrar_eur: 220          # se muestran opciones hasta este precio (i/v por persona)
 bajada_relevante_pct: 20
 
 # Solo viajes al extranjero: se descartan destinos en estos países (código ISO de 2 letras)
@@ -30,10 +31,12 @@ paises_permitidos: [AL, AD, AT, BE, BA, BG, HR, CY, CZ, DK, EE, FI, FR, DE, GR, 
 # (rotando) a estos destinos, y entran en las mismas secciones que las ofertas de Ryanair.
 google_findes:
   activo: true
-  origen: BIO
-  findes_por_dia: 2              # fines de semana revisados cada día (1 próximo + 1 desde enero)
-  destinos: [AMS, CDG, ORY, LHR, LGW, BRU, FRA, MUC, ZRH, GVA, LIS, OPO, FCO, MXP, VCE, NCE,
-             MRS, LYS, DUB, EDI, CPH, VIE, PRG, BUD, BER, RAK, TNG, ATH, MLA, KRK]
+  origenes: [BIO]
+  findes_por_dia: 6              # fines de semana revisados cada día (3 próximos + 3 desde enero)
+  destinos: [AMS, CDG, ORY, LHR, LGW, BRU, FRA, MUC, ZRH, GVA, BSL, LIS, OPO, FAO, FNC, PDL,
+             FCO, MXP, VCE, NAP, BLQ, FLR, PSA, TRN, NCE, MRS, LYS, TLS, NTE, DUB, EDI, MAN,
+             CPH, OSL, ARN, HEL, KEF, VIE, PRG, BUD, WAW, KRK, BER, HAM, DUS, ATH, MLA,
+             IST, DBV, SPU, RAK, TNG, CMN, AGA, TUN]
 
 viajeros:
   A:
@@ -44,6 +47,9 @@ viajeros:
     nombre: "Bilbao"
     aeropuertos: [BIO, EAS, VIT, SDR, BIQ, PNA]
     principales_esqui: [BIO, SDR, BIQ]
+    # Aeropuertos más lejanos con muchas rutas de Ryanair (solo para escapadas y viajes fijos).
+    # Salen en el informe solo si compensan teniendo en cuenta el viaje en bus/tren hasta allí.
+    aeropuertos_lejanos: [ZAZ, BOD, MAD]
 
 # Destinos de esquí, pensados para llegar SIN COCHE (tren/bus desde el aeropuerto).
 # aeropuertos: a < ~2-3 h en transporte público de la base.
@@ -87,9 +93,44 @@ destinos_esqui:
     transporte: "Bus directo BCN/TLS→Andorra (~3h, Andbus/Alsa); ski-bus a pistas"
   - zona: "Bansko (Bulgaria)"
     aeropuertos: [SOF]
-    vuela_A: true
+    vuela_A: false
     base: {nombre: "Bansko", lat: 41.8383, lon: 23.4885}
-    transporte: "Transfer/bus Sofía→Bansko (~2h30); telecabina desde el pueblo"
+    transporte: "Transfer/bus Sofía→Bansko (~2h30); telecabina desde el pueblo; A: vuelo o tren nocturno (lo calcula Claude)"
+  - zona: "Zillertal (Mayrhofen, Hintertux)"
+    aeropuertos: [INN, MUC, SZG]
+    vuela_A: false
+    base: {nombre: "Mayrhofen", lat: 47.1667, lon: 11.8667}
+    transporte: "Tren a Jenbach + tren Zillertalbahn a Mayrhofen; ski-bus gratis a pistas y glaciar de Hintertux"
+  - zona: "Arlberg (St. Anton)"
+    aeropuertos: [INN, ZRH, MUC]
+    vuela_A: false
+    base: {nombre: "St. Anton am Arlberg", lat: 47.1287, lon: 10.2640}
+    transporte: "Tren directo (Railjet) Innsbruck/Zúrich → St. Anton; estación junto a los remontes"
+  - zona: "Kitzbühel (Ski Welt / KitzSki)"
+    aeropuertos: [SZG, MUC, INN]
+    vuela_A: false
+    base: {nombre: "Kitzbühel", lat: 47.4464, lon: 12.3922}
+    transporte: "Tren Salzburgo/Innsbruck → Kitzbühel (~1h30); remontes a pie desde el centro"
+  - zona: "Zermatt (Matterhorn)"
+    aeropuertos: [GVA, ZRH, BSL, MXP]
+    vuela_A: false
+    base: {nombre: "Zermatt", lat: 46.0207, lon: 7.7491}
+    transporte: "Tren SBB a Visp + tren MGB a Zermatt (pueblo sin coches); A en tren vía Basilea"
+  - zona: "Jungfrau (Grindelwald, Wengen)"
+    aeropuertos: [ZRH, BSL, GVA]
+    vuela_A: false
+    base: {nombre: "Grindelwald", lat: 46.6242, lon: 8.0414}
+    transporte: "Tren a Interlaken Ost + tren BOB a Grindelwald; telecabinas desde el pueblo"
+  - zona: "Les 3 Vallées (Val Thorens, Méribel)"
+    aeropuertos: [GVA, LYS]
+    vuela_A: false
+    base: {nombre: "Val Thorens", lat: 45.2970, lon: 6.5800}
+    transporte: "Tren a Moûtiers + bus a Val Thorens/Méribel; lanzaderas directas desde GVA/LYS los sábados"
+  - zona: "Tatras (Zakopane)"
+    aeropuertos: [KRK]
+    vuela_A: true
+    base: {nombre: "Zakopane", lat: 49.2992, lon: 19.9496}
+    transporte: "Bus Cracovia → Zakopane (~2h, cada 30 min); buses urbanos a Kasprowy y Gubałówka"
 
 # Esquí: viajes de entre 3 y 6 días. Cada día se revisa una ventana distinta de días
 # de salida (rota por toda la temporada) y se prueban todas las duraciones posibles.
@@ -98,24 +139,25 @@ temporada_esqui:
   hasta: "2027-03-31"
   dias_min: 3                    # 3 días = 2 noches
   dias_max: 6                    # 6 días = 5 noches
-  ventana_dias_salida: 6         # días de salida distintos revisados cada día
+  ventana_dias_salida: 10        # días de salida distintos revisados cada día
 
 # Escapadas próximas (Ryanair) desde los aeropuertos de Bilbao
 # SOLO FINES DE SEMANA: ida el viernes y vuelta el domingo.
 sorpresa:
-  semanas_vista: 10              # se miran los fines de semana de las próximas 10 semanas
+  semanas_vista: 12              # se miran los fines de semana de las próximas 12 semanas
   duracion_min_dias: 2
   duracion_max_dias: 2
   dias_salida: [vie]
   dias_vuelta: [dom]
-  max_ofertas_informe: 6         # destinos distintos que se muestran (con alojamiento)
+  max_ofertas_informe: 10        # destinos distintos que se muestran con tarjeta y alojamiento
+  otras_opciones: 25             # tabla extra con más destinos/fechas (sin alojamiento)
 
 # Fines de semana a partir de enero (mismas reglas: vie -> dom, fuera de España)
 desde_enero:
   activo: true
   desde: "2027-01-01"
-  hasta: "2027-06-30"
-  mejores_por_mes: 2             # destinos distintos por mes en el informe (con alojamiento)
+  hasta: "2027-09-30"
+  mejores_por_mes: 3             # destinos distintos por mes en el informe (con alojamiento)
   comparar_con_bilbao: true      # comprueba en Google Flights si desde BIO sale mejor
 
 # Viajes con FECHAS FIJAS. Se buscan cada noche antes que lo demás (tienen prioridad):
@@ -129,7 +171,7 @@ viajes_fijos:
     ida: "2026-11-27"            # viernes
     vuelta: "2026-11-30"         # lunes
     viajeros: [B, A]             # B es el principal; A se busca para los destinos de B
-    max_destinos: 4              # destinos distintos en el informe (con alojamiento)
+    max_destinos: 8              # destinos distintos en el informe (con alojamiento)
     destinos_google: []          # vacío = los de google_findes (desde BIO)
     origenes_google_A: [STR, FMM, MUC, ZRH, FRA]
 
@@ -153,6 +195,9 @@ acceso_desde_bilbao:
   EAS: {eur: 11, min: 100, como: "bus Bilbao → Donostia + bus E21 al aeropuerto"}
   BIQ: {eur: 16, min: 150, como: "bus Bilbao → Biarritz (ALSA/FlixBus) + bus al aeropuerto"}
   PNA: {eur: 16, min: 130, como: "bus Bilbao → Pamplona + bus/taxi al aeropuerto"}
+  ZAZ: {eur: 25, min: 240, como: "bus ALSA Bilbao → Zaragoza + bus 501 al aeropuerto"}
+  BOD: {eur: 30, min: 270, como: "bus Bilbao → Burdeos (FlixBus/ALSA) + lanzadera 30'Direct"}
+  MAD: {eur: 40, min: 300, como: "tren/bus Bilbao → Madrid + Cercanías/metro al aeropuerto"}
 valor_tiempo_eur_hora: 15
 
 # Alojamiento con precio real (Airbnb: pisos, apartamentos y también hoteles)
@@ -164,12 +209,13 @@ alojamiento:
   radio_centro_km: 1.5           # "en el centro" = a menos de esto del centro
   radio_afueras_km: 12           # búsqueda amplia alrededor del centro (afueras)
   radio_aeropuerto_km: 4         # búsqueda junto al aeropuerto
-  opciones_centro: 2
-  opciones_baratas: 2
+  opciones_centro: 3
+  opciones_baratas: 3
+  paginas: 3                     # páginas de resultados de Airbnb por zona (más páginas = más opciones)
   valoracion_min: 4.5
   resenas_min: 5
-  max_busquedas: 90
-  tiempo_max_min: 25
+  max_busquedas: 220
+  tiempo_max_min: 45             # tiempo máximo TOTAL dedicado a Airbnb (solo cuenta mientras busca)
 
 # Memoria de rutas sin vuelos (por día de la semana) para no repetir consultas inútiles
 sin_ruta:
