@@ -21,9 +21,12 @@ concurrency:
 jobs:
   buscar:
     runs-on: ubuntu-latest
-    timeout-minutes: 135
+    timeout-minutes: 300
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Última versión de la rama al EMPEZAR (si el respaldo estaba en cola, ve el informe recién hecho)
+          ref: ${{ github.ref_name }}
 
       - uses: actions/setup-python@v5
         with:
@@ -38,7 +41,10 @@ jobs:
       - name: Buscar vuelos
         id: buscar
         continue-on-error: true
-        timeout-minutes: 120
+        timeout-minutes: 280
+        env:
+          # La ejecución de respaldo (01:47 UTC) no repite si la de las 22:17 ya terminó bien
+          SALTAR_SI_RECIENTE_HORAS: ${{ github.event.schedule == '47 1 * * *' && '8' || '0' }}
         run: python -u buscador.py
 
       - name: Guardar resultados en el repo
