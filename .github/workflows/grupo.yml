@@ -1,0 +1,68 @@
+name: Alojamiento para grupo
+
+# Búsqueda puntual (solo a mano, desde Actions → "Alojamiento para grupo" → Run workflow).
+# No envía emails y no toca la vigilancia diaria: guarda el resultado en data/grupo.md.
+on:
+  workflow_dispatch:
+    inputs:
+      viernes:
+        description: "Fecha del viernes (AAAA-MM-DD). Vacío = el próximo viernes"
+        required: false
+        default: ""
+      minimo:
+        description: "Personas (mínimo)"
+        required: false
+        default: "6"
+      maximo:
+        description: "Personas (máximo)"
+        required: false
+        default: "9"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: grupo
+  cancel-in-progress: false
+
+jobs:
+  buscar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt || (sleep 30 && pip install -r requirements.txt)
+
+      - name: Buscar alojamiento
+        continue-on-error: true
+        timeout-minutes: 45
+        run: |
+          ARGS="--minimo ${{ github.event.inputs.minimo || '6' }} --maximo ${{ github.event.inputs.maximo || '9' }}"
+          if [ -n "${{ github.event.inputs.viernes }}" ]; then ARGS="$ARGS --viernes ${{ github.event.inputs.viernes }}"; fi
+          python -u grupo.py $ARGS
+
+      - name: Guardar resultados en el repo
+        if: always()
+        run: |
+          mkdir -p data
+          git config user.name "vigilancia-bot"
+          git config user.email "vigilancia-bot@users.noreply.github.com"
+          git add data/grupo.md data/grupo.json 2>/dev/null || true
+          if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
+          git commit -m "Alojamiento grupo $(date -u +%F)"
+          for i in 1 2 3 4 5; do
+            if git pull --rebase -X theirs origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}"; then exit 0; fi
+            echo "Reintentando push ($i)..."; sleep 15
+          done
+          exit 1
