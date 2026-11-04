@@ -8,7 +8,8 @@ Busca en varias webs:
   - Booking.com (hoteles, hostels, apartamentos): se intenta; si Booking bloquea al robot, se avisa.
   - Albergues juveniles de la zona (Jugendherbergen / Swiss Youth Hostels): lista con enlaces.
 En:
-  - Noche del viernes: alrededor del lago de Constanza (Bodensee), a ~20 min en coche del lago.
+  - Noche del viernes: ciudad de Constanza (Konstanz), a ~20 min en coche del centro
+    (con --zona-viernes bodensee: todo el lago de Constanza, como antes).
   - Noche del sábado: Zúrich, a ~20 min en coche del centro.
 Para el número mínimo y máximo de personas, ordenado por precio por persona.
 Resultado: data/grupo.md (legible) y data/grupo.json.
@@ -43,6 +44,24 @@ ZONAS = {
         "albergues": ["Jugendherberge Konstanz", "Jugendherberge Kreuzlingen", "Jugendherberge Friedrichshafen",
                       "Jugendherberge Lindau", "Jugendherberge Überlingen", "Jugendherberge Meersburg",
                       "Jugendherberge Radolfzell", "Hostel Bregenz", "Hostel Konstanz"],
+    },
+    "konstanz": {
+        "titulo": "Viernes · Constanza (ciudad de Konstanz)",
+        # La distancia se mide al CENTRO de Konstanz (casco antiguo / estación)
+        "referencias": [("Konstanz centro", 47.6603, 9.1758)],
+        # Cajas para cubrir Konstanz y lo que está a ~20 min en coche por carretera:
+        # Kreuzlingen/Tägerwilen (Suiza), Allensbach/Reichenau, Litzelstetten/Dingelsdorf y la orilla suiza
+        "cajas": [(47.6603, 9.1758), (47.6400, 9.1300), (47.7150, 9.0800), (47.7150, 9.1700),
+                  (47.6200, 9.2300)],
+        "radio_caja_km": 6,
+        "max_km": 13,        # ~20 min en coche desde el centro
+        # Lo que está cerca en línea recta pero AL OTRO LADO DEL LAGO (solo en ferry o rodeando el lago):
+        # Meersburg / Hagnau / Uhldingen y Überlingen / Sipplingen  -> se descarta
+        "excluir": [(47.665, 90, 9.200, 180), (47.755, 90, 9.130, 180), (47.775, 90, 9.050, 180)],
+        "booking": "Konstanz",
+        "booking_ciudades": ["Konstanz", "Kreuzlingen", "Allensbach", "Reichenau", "Tägerwilen"],
+        "albergues": ["Jugendherberge Konstanz Otto-Moericke-Turm", "Jugendherberge Kreuzlingen",
+                      "Hostel Konstanz", "Jugendherberge Radolfzell"],
     },
     "zurich": {
         "titulo": "Sábado · Zúrich",
@@ -85,6 +104,9 @@ def buscar_zona(zona: dict, personas: int, ci: str, co: str, cfg: dict) -> tuple
     res = []
     for o in todos.values():
         if not (o.get("lat") and o.get("lon")):
+            continue
+        # zonas descartadas (lat_min, lat_max, lon_min, lon_max): p. ej. la otra orilla del lago
+        if any(a1 <= o["lat"] <= a2 and l1 <= o["lon"] <= l2 for a1, a2, l1, l2 in zona.get("excluir", [])):
             continue
         dist, ref = min((b.distancia_km(o["lat"], o["lon"], la, lo), n) for n, la, lo in zona["referencias"])
         if dist > zona["max_km"]:
@@ -204,12 +226,14 @@ def main() -> int:
     ap.add_argument("--viernes", default=prox_vie.isoformat())
     ap.add_argument("--minimo", type=int, default=6)
     ap.add_argument("--maximo", type=int, default=9)
+    ap.add_argument("--zona-viernes", default="konstanz", choices=["konstanz", "bodensee"],
+                    help="konstanz = ciudad de Constanza (por defecto); bodensee = todo el lago")
     a = ap.parse_args()
     vie = date.fromisoformat(a.viernes)
     sab, dom = vie + timedelta(days=1), vie + timedelta(days=2)
     tamanos = sorted({max(1, a.minimo), max(1, a.maximo)})
     cfg, avisos_cfg = b.cargar_config()
-    noches_plan = [("bodensee", vie.isoformat(), sab.isoformat()), ("zurich", sab.isoformat(), dom.isoformat())]
+    noches_plan = [(a.zona_viernes, vie.isoformat(), sab.isoformat()), ("zurich", sab.isoformat(), dom.isoformat())]
 
     salida = {"generado": time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime()), "zonas": []}
     md = [f"# Alojamiento para el grupo — {salida['generado']}", "",
